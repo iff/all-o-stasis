@@ -1,0 +1,22 @@
+#minimum-right-title
+  h2= gradeName + " Boulders im Minimum"
+
+#minimum-right-content
+  .boulderlist
+
+    // render list of boulders
+    ul#boulderlist
+      - for (var id in grade_list)
+        li
+          span(class="#{grade_list[id].color}", style="display:inline-block;width:40px;")
+            a(href="/boulder/#{grade_list[id].id}", class="#{grade_list[id].color}")
+              = grade_list[id].gradenr
+          span(style="display:inline-block;width: 90px;")
+            -for (var setter in grade_list[id].prettySetters)
+              a(href="/setter/#{grade_list[id].prettySetters[setter]}")
+                = grade_list[id].prettySetters[setter] + " "
+          = grade_list[id].prettyDate
+          -if (grade_list[id].stars.length)
+            span(style="display:inline-block;width: 30px;")
+            = grade_list[id].mean_stars
+

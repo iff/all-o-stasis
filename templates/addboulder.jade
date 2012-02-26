@@ -1,0 +1,49 @@
+#minimum-right-title
+  h2= "Add Boulder"
+
+#minimum-right-content
+
+  form(action="/add/boulder", method="post")
+    p.text.setters
+      input(type="text", name="name", placeholder="name")
+      = " (optional)"
+
+    p.text.setters
+      select(multiple, name="setter_nicks", size="6")
+        - for (var idx in setters)
+          option(value="#{setters[idx].nickname}")
+            = setters[idx].nickname + " [" + setters[idx].name + ']'
+
+    p.text.grade
+      select(name="grade", size="6")
+        option(value= "0") Gelb   [1a  -- 4c]
+        option(value= "1") Gruen  [5a  -- 6a]
+        option(value= "2") Orange [6a+ -- 6b+]
+        option(value= "3") Blau   [6c  -- 7a]
+        option(value= "4") Rot    [7a+ -- 7b+]
+        option(value= "5") Weiss  [7c  -- ?]
+      input(type="text", name="gradenr", placeholder="nr", style="width:30px;")
+
+    p.text.sector
+      select(name="sector")
+        option(value= "11") 11 Block
+        option(value= "10") 10
+        option(value= "9") 9
+        option(value= "8") 8
+        option(value= "7") 7
+        option(value= "6") 6
+        option(value= "5") 5
+        option(value= "4") 4
+        option(value= "3") 3
+        option(value= "2") 2
+        option(value= "1") 1
+
+    p.text.comments
+      input(type="text", name="comments", placeholder="comments")
+      = " (optional)"
+
+    p.text.submit
+      input(type="password", name="secret", placeholder="secret")
+      submit
+        button
+          span add

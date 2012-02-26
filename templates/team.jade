@@ -1,0 +1,16 @@
+#minimum-right-title
+  h2 Team
+
+#minimum-right-content
+  ul#team
+    - for (var setter_id in team)
+      li
+        a(href="/setter/#{team[setter_id].nickname}")
+          span
+            = team[setter_id].nickname
+          = team[setter_id].name
+      -if (isAuth)
+        -if (authSetterRole == 'admin')
+          li
+            span
+            = "Diesen Monat: " + team[setter_id].num_this_month + " / 3, Total: " + team[setter_id].num_total

@@ -1,0 +1,59 @@
+#minimum-right-title
+  -if (hasName)
+    h2= name
+  -else
+    h2= "Boulder"
+
+#minimum-right-content
+
+  div.boulder_header
+    a(href="/stats/grade/#{gradeName}")
+      img.grade_tag(src="/grade_tags/#{gradeTag}.svg")
+    ul#boulder_setters
+      li
+        = "Schrauber/in:"
+      - each set in setters
+        li
+          a(href="/setter/#{set.nickname}")
+            span
+              = set.nickname
+            = set.name
+      li.vote
+        a(href='/boulder/#{boulder._id}/vote/1')
+          = "* &nbsp;&nbsp;"
+        a(href='/boulder/#{boulder._id}/vote/2')
+          = "** &nbsp;"
+        a(href='/boulder/#{boulder._id}/vote/3')
+          = "***"
+
+  div.boulder_rating
+    div(class="boulder_star1", style="height:#{starsCount[0]/totalStars*50 + 1}px; margin-top:#{50 - starsCount[0]/totalStars*50 + 1}px")
+    div(class="boulder_star2", style="height:#{starsCount[1]/totalStars*50 + 1}px; margin-top:#{50 - starsCount[1]/totalStars*50 + 1}px")
+    div(class="boulder_star3", style="height:#{starsCount[2]/totalStars*50 + 1}px; margin-top:#{50 - starsCount[2]/totalStars*50 + 1}px")
+
+  div.boulder_sector
+    img(src="/sectors/Sektoren_#{sector}.svg")
+
+  div.boulder_comment
+    h4= "Info's zum Problem: "
+    = boulder.comments
+
+  -if (isAuth)
+    div.boulder_actions
+      h4= "Aktionen"
+      a(href="/boulder/#{boulder._id}/remove") Abgeschraubt
+      -if (authSetterRole == "admin")
+        = " || "
+        a(href="/boulder/#{boulder._id}/delete") Loeschen
+        form(action="/boulder/#{boulder._id}/upgrade", method="post")
+          p.text.grade
+            input(type="text", name="gradenr", placeholder="neue grade nummer")
+            submit
+              button
+                span Aufwerten
+        form(action="/boulder/#{boulder._id}/downgrade", method="post")
+          p.text.grade
+            input(type="text", name="gradenr", placeholder="neue grade nummer")
+            submit
+              button
+                span Abwerten

@@ -1,0 +1,16 @@
+#minimum-right-title
+  h2= "Passwort aendern"
+
+#minimum-right-content
+
+  form(action="/change/pw", method="post")
+    p
+      input(type="password", name="oldpw", placeholder="altes passwort")
+    p
+      input(type="password", name="newpw", placeholder="neues passwort")
+    p
+      input(type="password", name="newpw_check", placeholder="neues passwort bestaetigen")
+    p
+      submit
+        button
+          span Passwort aendern

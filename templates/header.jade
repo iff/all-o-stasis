@@ -1,0 +1,14 @@
+a(href="http://www.minimum-bouldering.ch")
+  img.logo(src="/Minimum Logo.svg")
+ul#nav
+  li: a(href='/') Boulderliste
+  li: a(href='/team') Team
+  li: a(href='/search') Bouldersuche
+  -if (isAuth)
+    li
+      a(href='/profile') Neuer Boulder
+    li
+      a(href='/logout') Logout
+  -else
+    li
+      a(href='/login') Login

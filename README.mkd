@@ -1,0 +1,63 @@
+# All-o-stasis
+
+["Allostasis is essential in order to maintain internal viability amid
+changing conditions"](http://en.wikipedia.org/wiki/Allostasis)
+
+All-o-stasis is a very simple web interface for route setters and visitors of the
+Minimum boulder gym. The framework tracks all currently available (and history
+of removed) boulders. Additionally, admins can survey the performance of their
+setters.
+
+Visitors can rate boulders (1 - 3 stars).
+
+The project is based on nodejs, express, jade and uses mongodb.
+
+**NOTE** The code is quite hacky in some places! I hope to find time for a
+major cleanup in the near future.
+
+
+## Quick start ##
+
+In order to run the boulder admin install the following dependencies:
+
+    * [nodejs](http://nodejs.org/) v0.6.6 or higher
+    * [npm](http://npmjs.org/) v1.1.0 or higher
+    * [mongodb](http://www.mongodb.org/) v2.0 or higher
+
+Using npm the rest of the dependencies can be installed:
+
+    npm install
+
+To start the server
+
+    * mkdir db (only do that once)
+    * mongod --dbpath db &
+    * node_modules/coffee-script/bin/coffee server.coffee
+    * open localhost:3000 in browser
+
+
+## Documentation ##
+
+Sorry, currently there is no code documentation available.
+
+
+## Using all-o-stasis in your gym?
+
+Currently the code probably needs quiet some tweaking to work for you gym. In
+the not so near future I plan to implement a more modular approach abstracting
+common features of climbing gyms. Until then you most probably have to change
+the database layout and code concerning grades.
+
+If you need further assistance feel free to email me.
+
+
+## Contribute ##
+
+Send me pull requests or email me patches.
+
+
+## License ##
+
+All artwork is under copyright by the Minimum Boulder Gym.
+
+The code is under MIT license, see LICENSE.

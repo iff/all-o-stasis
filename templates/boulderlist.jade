@@ -1,0 +1,27 @@
+#minimum-left-title
+
+#minimum-left-content
+  .boulderlist
+    h2.name= "Boulders chronologisch"
+
+    // render list of boulders
+    ul#boulderlist
+      - var last_date = '0'
+      - for (var id in list)
+        - if (list[id].prettyDate != last_date)
+          - var last_date = list[id].prettyDate
+          li
+            = list[id].prettyDate
+        li
+          div(style="padding-left:50px; margin-left:10px; border-left:2px solid gray;")
+            span(style="display:inline-block;width: 70px;")
+              -for (var setter in list[id].prettySetters)
+                a(href="/setter/#{list[id].prettySetters[setter]}")
+                  = list[id].prettySetters[setter] + " "
+            span(class="#{list[id].color}", style="display:inline-block;width:70px;")
+              a(href="/boulder/#{list[id].id}", class="#{list[id].color}")
+                = list[id].gradenr
+            -if (list[id].stars.length)
+              span(style="display:inline-block;width: 30px;")
+              = list[id].mean_stars
+

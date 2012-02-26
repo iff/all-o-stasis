@@ -1,0 +1,19 @@
+{
+    "name"    : "minimum-boulderadmin",
+    "version" : "0.0.1",
+    "private" : true,
+
+    "dependencies": {
+          "express"       : "2.5.x"
+        , "coffee-script" : "1.2.x"
+        , "jade"          : "0.13.x"
+        , "underscore"    : "1.2.x"
+        , "mongoose"      : "2.3.x"
+        , "connect-mongo" : "0.1.x"
+        , "futures"       : "latest"
+        , "raphael"       : "latest"
+        , "up"            : "0.0.1"
+        , "http-proxy"    : "latest"
+        , "express-validator" : "latest"
+    }
+}

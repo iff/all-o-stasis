@@ -1,0 +1,55 @@
+#minimum-left-title
+
+#minimum-left-content
+  h2= authSetterName
+
+  span.avatar
+    span(class="shadow")
+      img(src="#{avatar}", width="100px")
+
+  div.profile_info
+    ul#profileinfo
+      li
+        = "Total: " + totalBoulders
+      li
+        = bouldersThisMonth + " von 3 Boulders geschraubt im " + thisMonth
+      li
+        = percentMinimumBoulders + "% von den Boulders im Minimum"
+      li
+        a(href='/change/pw') Passwort aendern
+        = " || "
+        a(href='/change/secret') Secret aendern
+
+  div.setter_histogram
+    div.chartlist
+      ul.chartlist
+        - var colors = ["#ffcc00", "#33cc00", "#ff7900", "#0000ff", "#ff0000", "#ffffff"]
+        - var color_labels = ["yellow", "green", "orange", "blue", "red", "white"]
+        - for (var id in histogram)
+          li
+              a(href="/stats/grade/#{color_labels[id]}")&nbsp;
+              span.count
+                #{histogram[id]}
+              span.index(style="width: #{histogram[id]/maxBoulder*75}%; background: #{colors[id]}")
+                = histogram[id]%
+
+  div.setter_boulders
+    // render list of boulders
+    ul#boulderlist
+      - for (var id in boulders)
+        -if(boulders[id].removed)
+          -var style = 'removed'
+        -else
+          -var style = 'active'
+
+        li(class="#{style}")
+          span(class="#{style}, #{boulders[id].color}", style="display:inline-block;width:40px;")
+            a(href="/boulder/#{boulders[id].id}", class="#{boulders[id].color}")
+              = boulders[id].gradenr
+          span(class="#{style}", style="display:inline-block;width: 90px;")
+            = boulders[id].prettySetters
+          span(class="#{style}", style="display:inline-block;width: 100px;")
+            = boulders[id].prettyDate
+          -if (boulders[id].stars.length)
+            span(class="#{style}", style="display:inline-block;width: 30px;")
+            = boulders[id].mean_stars

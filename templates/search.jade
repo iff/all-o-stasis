@@ -1,0 +1,23 @@
+#minimum-right-title
+  h2 Bouldersuche
+
+#minimum-right-content
+
+  -if (errorMsg)
+    = errorMsg
+
+  form(action="/search", method="post")
+    p.text.grade
+      select(name="grade", size="6")
+          option(value= "0") Gelb   [1a  -- 4c]
+          option(value= "1") Gruen  [5a  -- 6a]
+          option(value= "2") Orange [6a+ -- 6b+]
+          option(value= "3") Blau   [6c  -- 7a]
+          option(value= "4") Rot    [7a+ -- 7b+]
+          option(value= "5") Weiss  [7c  -- ?]
+      input(type="text", name="gradenr", placeholder="gradenr")
+
+    p.text.search
+      submit
+        button
+          span search

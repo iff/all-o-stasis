@@ -1,0 +1,17 @@
+#minimum-right-title
+  h2 Login
+
+#minimum-right-content
+
+  -if (isAuth)
+    = "Hallo " + authSetterName + " schon angemeldet, logout!"
+  -else
+    form(action="/login", method="post")
+      p.text.grade
+        input(type="text", name="nickname", placeholder="nickname")
+        input(type="password", name="password", placeholder="password")
+
+      p.text.search
+        submit
+          button
+            span login

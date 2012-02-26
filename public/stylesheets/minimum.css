@@ -1,0 +1,491 @@
+@font-face {
+  font-family: 'Droid Sans';
+  src: 'http://fonts.googleapis.com/css?family=Droid+Sans'
+}
+
+body {
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 14pt;
+    background: #ffffff;
+    color: #000000;
+}
+
+a {
+  text-decoration: none;
+  color: #212121;
+}
+
+a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+h1 {
+    color: #cb4b16;
+    font-size: 48px;
+}
+
+h1, footer {
+    text-align: center;
+    margin: 0 auto
+}
+
+h1:before {
+    content: '{'
+}
+
+h1:after {
+    content: '}'
+}
+
+h1:before, h1:after {
+    font-size: 62px;
+    color: #586e75
+}
+
+span.nav {
+    text-align: right;
+}
+
+span.yellow {
+    color: #ffcc00;
+}
+
+span.green {
+    color: #33cc00;
+}
+
+span.orange {
+    color: #ff7900;
+}
+
+span.blue {
+    color: #0000ff;
+}
+
+span.red {
+    color: #ff0000;
+}
+
+span.white {
+    color: #ffffff;
+}
+
+/* CHART */
+
+div.chartlist {
+    margin-top: 70px;
+    margin-left: 50px;
+    width: 75%;
+}
+
+.chartlist li {
+    position: relative;
+    display: block;
+}
+
+.chartlist .count {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0 0.3em;
+    text-align: right;
+    color: #000;
+    font-weight: bold;
+    font-size: 0.975em;
+}
+
+.chartlist li a {
+    display: block;
+    padding: 1.6em 4.5em 0.4em 0.5em;
+    position: relative;
+    z-index: 2;
+    font-size: 0.82em;
+    text-decoration: none;
+}
+
+.chartlist .index {
+    display: block;
+    position: absolute;
+    border-style:solid;
+    border-width: 1px;
+    top: 0;
+    left: 0;
+    height: 98%;
+    background: #B8E4F5;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+/* boulder list */
+
+#boulderlist {
+    list-style-type: none;
+    line-height: 1.7em;
+    font-size: 14pt;
+    margin-left: 20px;
+}
+
+#boulderlist li {
+}
+
+#boulderlist li.removed {
+    text-decoration: line-through;
+}
+
+#boulderlist span.removed {
+    text-decoration: line-through;
+}
+
+#boulderlist a.yellow {
+    color: #ffcc00;
+}
+
+#boulderlist a.green {
+    color: #33cc00;
+}
+
+#boulderlist a.orange {
+    color: #ff7900;
+}
+
+#boulderlist a.blue {
+    color: #0000ff;
+}
+
+#boulderlist a.red {
+    color: #ff0000;
+}
+
+#boulderlist a.white {
+    color: #ffffff;
+}
+
+#boulderlist a {
+  text-decoration: none;
+  color: #212121;
+}
+
+#boulderlist a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/*******************************
+ * Minimum banner and navigation
+ *******************************/
+
+img.logo {
+    position    : absolute;
+    margin-left : 4px;
+    margin-top  : 2px;
+}
+
+#nav {
+  /*position: absolute;*/
+  float:right;
+  margin-top: 20px;
+  margin-right: 40px;
+  list-style-type: none;
+  font-size: 14px;
+}
+
+#nav li {
+  display       : inline-block;
+  margin-left   : 30px;
+  font-size     : 16px;
+}
+
+#nav a {
+  text-decoration   : none;
+  color             : #212121;
+}
+
+#nav a:hover {
+  color             : #ffffff;
+  text-decoration   : underline;
+}
+
+/*******************************
+ * Setter presentation
+ *******************************/
+
+div.setter_name {
+    padding-left: 130px;
+    padding-top: 13px;
+    margin-bottom: 90px;
+}
+
+div.setter_histogram {
+    min-height : 121px;
+}
+
+div.setter_boulders {
+    margin-top : 50px;
+    margin-left: 50px;
+    min-height : 247px;
+}
+
+#boulder_setters {
+    position: absolute;
+    left: 120px;
+    list-style-type: none;
+    font-size: 20px;
+    line-height: 1.3em;
+}
+
+#boulder_setters li {
+    display: block;
+    margin-left: 30px;
+    font-size: 20px;
+    line-height: 1.3em;
+}
+
+#boulder_setters li.vote {
+    display: block;
+    margin-left: 30px;
+    font-size: 50px;
+    line-height: 1.3em;
+}
+
+#boulder_setters span {
+    display: inline-block;
+    min-width: 55px;
+}
+
+#boulder_setters a {
+    text-decoration: none;
+    color: #212121;
+}
+
+#boulder_setters a:hover {
+    color: #ffcc00;
+}
+
+/*******************************
+ * Boulder presentation
+ *******************************/
+
+div.boulder_header {
+    min-height : 132px;
+}
+
+div.boulder_rating {
+    min-height : 121px;
+}
+
+div.boulder_star1 {
+    position: absolute;
+    display: block;
+    width:40px;
+    border-style:solid;
+    border-width: 1px;
+    margin-left: 150px;
+    background-color: #ab3434;
+    color: #ab3434;
+    vertical-align: bottom;
+}
+div.boulder_star2 {
+    position: absolute;
+    display: block;
+    width:40px;
+    border-style:solid;
+    border-width: 1px;
+    margin-left: 225px;
+    background-color: #ab3434;
+    color: #ab3434;
+    vertical-align: bottom;
+}
+div.boulder_star3 {
+    position: absolute;
+    display: block;
+    width:40px;
+    border-style:solid;
+    border-width: 1px;
+    margin-left: 305px;
+    background-color: #ab3434;
+    color: #ab3434;
+    vertical-align: bottom;
+}
+
+div.boulder_sector {
+    min-height : 247px;
+}
+
+div.boulder_comment {
+    padding-left: 32px;
+}
+
+div.boulder_actions {
+    margin-top   : 40px;
+    padding-left : 32px;
+}
+
+div.boulder_actions a {
+    text-decoration: none;
+    color: #212121;
+}
+
+div.boulder_actions a:hover {
+    color: #ffcc00;
+}
+
+img.grade_tag {
+    position    : absolute;
+    margin-left : 4px;
+    margin-top  : 4px;
+    z-index     : 5;
+}
+
+#boulder_setters {
+    position: absolute;
+    left: 120px;
+    list-style-type: none;
+    font-size: 20px;
+    line-height: 1.3em;
+}
+
+#boulder_setters li {
+    display: block;
+    margin-left: 30px;
+    font-size: 20px;
+    line-height: 1.3em;
+}
+
+#boulder_setters li.vote {
+    display: block;
+    margin-left: 30px;
+    font-size: 50px;
+    line-height: 1.3em;
+}
+
+#boulder_setters span {
+    display: inline-block;
+    min-width: 55px;
+}
+
+#boulder_setters a {
+    text-decoration: none;
+    color: #212121;
+}
+
+#boulder_setters a:hover {
+    color: #ffcc00;
+}
+
+/*******************************
+ * list for team view
+ *******************************/
+
+#team {
+    list-style-type: none;
+    line-height: 1.7em;
+}
+
+#team li {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+#team span {
+    display: inline-block;
+    min-width: 55px;
+}
+
+#team a {
+    text-decoration: none;
+    color: #212121;
+}
+
+#team a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/*******************************
+ * Profile view
+ *******************************/
+
+div.profile_info{
+    padding-left: 120px;
+    margin-top  : 25px;
+}
+
+#profileinfo {
+    list-style-type: none;
+    line-height: 1.7em;
+}
+
+#profileinfo li {
+}
+
+/*******************************
+ * Image shadow
+ *******************************/
+
+
+span.avatar {
+    position    : absolute;
+    margin-left : 0px;
+    margin-top  : 0px;
+    z-index     : 5;
+}
+
+span.shadow {
+    display: inline-block;
+    padding: 2px;
+    border: 4px solid #efefef;
+    position: relative;
+    background: #efefef;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+}
+
+span.shadow:after {
+    z-index: -1;
+    position: absolute;
+    background: transparent;
+    width: 50%;
+    height: 50%;
+    content: '';
+    right: 0;
+    bottom: 0;
+
+    -webkit-transform-origin: right bottom;
+    -moz-transform-origin: right bottom;
+
+    -webkit-transform: skew(20deg) rotate(10deg);
+    -moz-transform: skew(20deg) rotate(10deg);
+
+    -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+}
+
+span.shadow:before {
+    z-index: -1;
+    position: absolute;
+    background: transparent;
+    width: 50%;
+    height: 50%;
+    content: '';
+    left: 0;
+    bottom: 0;
+
+    -webkit-transform-origin: left bottom;
+    -moz-transform-origin: left bottom;
+
+    -webkit-transform: skew(-20deg) rotate(-10deg);
+    -moz-transform: skew(-20deg) rotate(-10deg);
+
+    -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+}
