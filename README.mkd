@@ -39,7 +39,7 @@ To start the server
 
 ## Using all-o-stasis in your gym?
 
-Currently the code probably needs quiet some tweaking to work for your gym. In
+Currently the code probably needs quite some tweaking to work for your gym. In
 the (not so near) future I plan to implement a more modular approach abstracting
 common features of climbing gyms. Until then you most probably have to change
 the database layout and code concerning grades.
