@@ -36,15 +36,11 @@ To start the server
     open localhost:3000 in browser
 
 
-## Documentation ##
-
-Sorry, currently there is no code documentation available.
-
 
 ## Using all-o-stasis in your gym?
 
-Currently the code probably needs quiet some tweaking to work for you gym. In
-the not so near future I plan to implement a more modular approach abstracting
+Currently the code probably needs quiet some tweaking to work for your gym. In
+the (not so near) future I plan to implement a more modular approach abstracting
 common features of climbing gyms. Until then you most probably have to change
 the database layout and code concerning grades.
 
