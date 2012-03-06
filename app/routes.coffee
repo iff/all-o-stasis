@@ -1,12 +1,14 @@
-
 { _ } = require 'underscore'
 
 mw = require './middleware'
-{ renderTwoColumn, renderError } = require './app'
+{ renderTwoColumn, renderError, renderHistogram } = require './app'
 
 
 app.get '/error', (req, res) ->
     renderError req, res, '404', 'la'
+
+app.get '/histogram', mw.loadActiveBoulders, (req, res) ->
+    renderHistogram req, res
 
 app.get '/', mw.loadActiveBoulders, mw.loadSetters, (req, res) ->
     renderTwoColumn req, res, 'boulderlist', 'statistics'
@@ -46,10 +48,6 @@ app.get '/boulder/:boulder/remove', mw.loadBoulder, mw.removeBoulder, (req, res)
 
 app.get '/boulder/:boulder/delete', mw.loadBoulder, mw.deleteBoulder, (req, res) ->
     res.redirect '/'
-
-#FIXME:
-#app.get '/boulder/:boulder/edit', mw.loadActiveBoulders, mw.loadSetters, mw.loadBoulder, mw.loadSettersOfBoulder, (req, res) ->
-#    renderTwoColumn req, res, 'boulderlist', 'editboulder'
 
 
 # ----------------------------------------------------------------------------

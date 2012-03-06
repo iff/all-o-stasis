@@ -1,4 +1,3 @@
-
 { _ } = require 'underscore'
 
 templateLocals = (req, res, viewName) ->
@@ -17,4 +16,8 @@ exports.renderError = (req, res, errornr, error) ->
     header = templateLocals req, res, 'header'
     locals = _.extend header, {errornr: errornr, error: error}
     res.render 'error', locals
+
+exports.renderHistogram = (req, res) ->
+    locals = templateLocals req, res, 'histogram'
+    res.render 'histogram', locals
 
