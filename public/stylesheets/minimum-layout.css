@@ -10,7 +10,7 @@ html,body {
     height     : 100%;
     padding    : 0;
     margin     : 0 auto;
-    width      : 1280px;
+    /*width      : 1280px;*/
 }
 
 #minimum-banner {
@@ -32,7 +32,8 @@ html,body {
 
 #minimum-content {
     /*left          : 50%;*/
-    /*margin-left   : -640px;*/
+    /*margin-left   : -641px;*/
+    margin        : 0 auto;
     position      : relative;
     width         : 1280px;
     border-left   : 1px solid black;
@@ -47,7 +48,7 @@ html,body {
 
 #minimum-layout-left {
     float         : left;
-    top           : 60px;
+    top           : 30px;
     width         : 640px;
     padding-left  : 0px;
     padding-right : 0px;
@@ -58,7 +59,7 @@ html,body {
 
 #minimum-layout-right {
     position      : absolute;
-    top           : 60px;
+    top           : 30px;
     width         : 640px;
     padding-right : 0px;
     padding-left  : 0px;
@@ -69,14 +70,14 @@ html,body {
 #minimum-right-title {
     height       : 70px;
     min-height   : 70px;
-    padding-left : 17px;
+    padding-left : 30px;
 }
 
 #minimum-left-title {
     height       : 70px;
     min-height   : 70px;
-    padding-left : 17px;
-    margin-top   : 60px;
+    padding-left : 30px;
+    margin-top   : 50px;
 }
 
 #minimum-left-content {
