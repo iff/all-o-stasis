@@ -1,0 +1,14 @@
+div(style="width: 100%; min-height: 445px; background: #E5E5E5; overflow-x: hidden;")
+  div(style="width: 400px; background: #E5E5E5; overflow-x: hidden;")
+
+    ul.chartlist
+      - var colors = ["#ffcc00", "#33cc00", "#ff7900", "#0000ff", "#ff0000", "#ffffff"]
+      - var color_labels = ["gelb", "gruen", "orange", "blau", "rot", "weiss"]
+      - for (var id in histogram)
+        li
+            a(href="http://minimum-bouldering.ch/#{color_labels[id]}.html", target="top")&nbsp;
+            span.count
+              #{histogram[id]}
+            span.index(style="width: #{histogram[id]}%; background: #{colors[id]}")
+              = histogram[id]%
+
