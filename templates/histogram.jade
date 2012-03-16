@@ -1,6 +1,8 @@
 div(style="width: 100%; min-height: 445px; background: #E5E5E5; overflow-x: hidden;")
   div(style="width: 400px; background: #E5E5E5; overflow-x: hidden;")
 
+    h3= "Aktuelle Schwierigkeitsverteilung"
+
     ul.chartlist
       - var colors = ["#ffcc00", "#33cc00", "#ff7900", "#0000ff", "#ff0000", "#ffffff"]
       - var color_labels = ["gelb", "gruen", "orange", "blau", "rot", "weiss"]
@@ -12,3 +14,15 @@ div(style="width: 100%; min-height: 445px; background: #E5E5E5; overflow-x: hidd
             span.index(style="width: #{histogram[id]}%; background: #{colors[id]}")
               = histogram[id]%
 
+    hr
+    div(style="text-align:right;")
+      b
+        = totalBoulders
+
+    p(style="font-size:10pt;")
+      = "Gelb   [1a  -- 4c], Gruen  [5a  -- 6a], Orange [6a+ -- 6b+]"
+      = "Blau   [6c  -- 7a], Rot    [7a+ -- 7b+], Weiss  [7c  -- ?]"
+
+    div(style="text-align:right;")
+      p(style="font-size:10pt;")
+        a(href="http://ba.iff.im") Detailansicht
