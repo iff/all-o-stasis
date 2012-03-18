@@ -113,7 +113,14 @@ exports.upgradeBoulder = (req, res, next) ->
         next()
 
 exports.vote = (req, res, next) ->
-    Boulder.vote(req.params['boulder'], req.params['stars']); next()
+    now = new Date()
+    if req.session.next_vote < now.getTime() or not req.session.next_vote?
+        new_minutes = now.getMinutes() + 5
+        now.setMinutes(new_minutes)
+        req.session.next_vote = now.getTime()
+        Boulder.vote(req.params['boulder'], req.params['stars'])
+
+    next()
 
 exports.removeBoulder = (req, res, next) ->
     if req.session.auth_setter_id
