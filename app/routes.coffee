@@ -43,10 +43,10 @@ app.post '/boulder/:boulder/upgrade', mw.loadBoulder, mw.upgradeBoulder, (req, r
 app.post '/boulder/:boulder/downgrade', mw.loadBoulder, mw.downgradeBoulder, (req, res) ->
     res.redirect '/boulder/' + req.params['boulder']
 
-app.get '/boulder/:boulder/remove', mw.loadBoulder, mw.removeBoulder, (req, res) ->
+app.post '/boulder/:boulder/remove', mw.loadBoulder, mw.removeBoulder, (req, res) ->
     res.redirect '/'
 
-app.get '/boulder/:boulder/delete', mw.loadBoulder, mw.deleteBoulder, (req, res) ->
+app.post '/boulder/:boulder/delete', mw.loadBoulder, mw.deleteBoulder, (req, res) ->
     res.redirect '/'
 
 

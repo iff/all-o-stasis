@@ -99,18 +99,18 @@ exports.loadSearched = (req, res, next) ->
 # ----------------------------------------------------------------------------
 #
 exports.downgradeBoulder = (req, res, next) ->
-    if req.body.gradenr isnt ""
-        if req.session.auth_setter_id and req.session.auth_setter_role is 'admin'
-            Boulder.downgrade(req.params['boulder'], req.body.gradenr); next()
-    else
-        next();
+    if req.body.secret is req.session?.auth_setter_secret
+        if req.body.gradenr isnt ""
+            if req.session.auth_setter_id and req.session.auth_setter_role is 'admin'
+                Boulder.downgrade(req.params['boulder'], req.body.gradenr)
+    next()
 
 exports.upgradeBoulder = (req, res, next) ->
-    if req.body.gradenr isnt ""
-        if req.session.auth_setter_id and req.session.auth_setter_role is 'admin'
-            Boulder.upgrade(req.params['boulder'], req.body.gradenr); next()
-    else
-        next()
+    if req.body.secret is req.session?.auth_setter_secret
+        if req.body.gradenr isnt ""
+            if req.session.auth_setter_id and req.session.auth_setter_role is 'admin'
+                Boulder.upgrade(req.params['boulder'], req.body.gradenr)
+    next()
 
 exports.vote = (req, res, next) ->
     now = new Date()
@@ -123,12 +123,14 @@ exports.vote = (req, res, next) ->
     next()
 
 exports.removeBoulder = (req, res, next) ->
-    if req.session.auth_setter_id
-        Boulder.unscrew(req.params['boulder']); next()
+    if req.session.auth_setter_id and req.body.secret is req.session?.auth_setter_secret
+        Boulder.unscrew(req.params['boulder'])
+    next()
 
 exports.deleteBoulder = (req, res, next) ->
-    if req.session.auth_setter_id and req.session.auth_setter_role is 'admin'
-        req.boulder.remove(); next()
+    if req.session.auth_setter_id and req.session.auth_setter_role is 'admin' and req.body.secret is req.session?.auth_setter_secret
+        req.boulder.remove()
+    next()
 
 
 # ----------------------------------------------------------------------------

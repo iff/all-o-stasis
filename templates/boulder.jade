@@ -41,19 +41,29 @@
   -if (isAuth)
     div.boulder_actions
       h4= "Aktionen"
-      a(href="/boulder/#{boulder._id}/remove") Abgeschraubt
+      form(action="/boulder/#{boulder._id}/remove", method="post")
+        input(type="secret", name="secret", placeholder="secret", style="width:50px;")
+        submit
+          button
+            span Abgeschraubt
       -if (authSetterRole == "admin")
-        = " || "
-        a(href="/boulder/#{boulder._id}/delete") Loeschen
+        form(action="/boulder/#{boulder._id}/delete", method="post")
+          p.text.grade
+            input(type="secret", name="secret", placeholder="secret", style="width:50px;")
+            submit
+              button
+                span Loeschen
         form(action="/boulder/#{boulder._id}/upgrade", method="post")
           p.text.grade
             input(type="text", name="gradenr", placeholder="neue grade nummer")
+            input(type="secret", name="secret", placeholder="secret", style="width:50px;")
             submit
               button
                 span Aufwerten
         form(action="/boulder/#{boulder._id}/downgrade", method="post")
           p.text.grade
             input(type="text", name="gradenr", placeholder="neue grade nummer")
+            input(type="secret", name="secret", placeholder="secret", style="width:50px;")
             submit
               button
                 span Abwerten
