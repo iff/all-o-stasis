@@ -42,28 +42,28 @@
     div.boulder_actions
       h4= "Aktionen"
       form(action="/boulder/#{boulder._id}/remove", method="post")
-        input(type="secret", name="secret", placeholder="secret", style="width:50px;")
+        input(type="password", name="secret", placeholder="secret", style="width:50px;")
         submit
           button
             span Abgeschraubt
       -if (authSetterRole == "admin")
         form(action="/boulder/#{boulder._id}/delete", method="post")
           p.text.grade
-            input(type="secret", name="secret", placeholder="secret", style="width:50px;")
+            input(type="password", name="secret", placeholder="secret", style="width:50px;")
             submit
               button
                 span Loeschen
         form(action="/boulder/#{boulder._id}/upgrade", method="post")
           p.text.grade
             input(type="text", name="gradenr", placeholder="neue grade nummer")
-            input(type="secret", name="secret", placeholder="secret", style="width:50px;")
+            input(type="password", name="secret", placeholder="secret", style="width:50px;")
             submit
               button
                 span Aufwerten
         form(action="/boulder/#{boulder._id}/downgrade", method="post")
           p.text.grade
             input(type="text", name="gradenr", placeholder="neue grade nummer")
-            input(type="secret", name="secret", placeholder="secret", style="width:50px;")
+            input(type="password", name="secret", placeholder="secret", style="width:50px;")
             submit
               button
                 span Abwerten
