@@ -115,8 +115,8 @@ exports.upgradeBoulder = (req, res, next) ->
 exports.vote = (req, res, next) ->
     now = new Date()
     if req.session.next_vote < now.getTime() or not req.session.next_vote?
-        new_minutes = now.getMinutes() + 5
-        now.setMinutes(new_minutes)
+        new_seconds = now.getSeconds() + 10
+        now.setSeconds new_seconds
         req.session.next_vote = now.getTime()
         Boulder.vote(req.params['boulder'], req.params['stars'])
 
