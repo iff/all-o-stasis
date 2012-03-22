@@ -49,6 +49,27 @@ class AddBoulderView extends View
         else
             return ""
 
+    sector: ->
+        if @req.body.sector?
+            return @req.body.sector
+        else
+            return ""
+
+    sectors: ->
+        sectors = []
+        sectors[0]  = "11 Block"
+        sectors[1]  = "10"
+        sectors[2]  = "9"
+        sectors[3]  = "8"
+        sectors[4]  = "7"
+        sectors[5]  = "6"
+        sectors[6]  = "5"
+        sectors[7]  = "4"
+        sectors[8]  = "3"
+        sectors[9]  = "2"
+        sectors[10] = "1"
+        return sectors
+
     comments: ->
         if @req.body.comments?
             return @req.body.comments

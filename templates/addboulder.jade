@@ -45,17 +45,13 @@
 
     p.text.sector
       select(name="sector")
-        option(value= "11") 11 Block
-        option(value= "10") 10
-        option(value= "9") 9
-        option(value= "8") 8
-        option(value= "7") 7
-        option(value= "6") 6
-        option(value= "5") 5
-        option(value= "4") 4
-        option(value= "3") 3
-        option(value= "2") 2
-        option(value= "1") 1
+        - for (var idx in sectors)
+          - if (11-idx == sector)
+            option(value="#{11-idx}", selected="yes")
+              =sectors[idx]
+          - else
+            option(value="#{11-idx}")
+              =sectors[idx]
 
     p.text.comments
       input(type="text", name="comments", placeholder="comments", value=comments)
