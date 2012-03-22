@@ -3,28 +3,45 @@
 
 #minimum-right-content
 
+  ul
+  - for (var error in errors)
+    li(style="color:#ff8c3c;")
+      = errors[error]
+
+  - var nicks = setternicknames
+
   form(action="/add/boulder", method="post")
     p.text.setters
-      input(type="text", name="name", placeholder="name")
+      input(type="text", name="name", placeholder="name", value=bouldername)
       = " (optional)"
 
     p.text.setters
       select(multiple, name="setter_nicks", size="6")
         - for (var idx in setters)
-          option(value="#{setters[idx].nickname}")
-            = setters[idx].nickname + " [" + setters[idx].name + ']'
+          - var selected = false
+          - for (var nick in nicks)
+            - if(setters[idx].nickname == nicks[nick])
+              - var selected = true
+
+          - if(selected)
+            option(value="#{setters[idx].nickname}", selected="yes")
+              = setters[idx].nickname + " [" + setters[idx].name + ']'
+          - else
+            option(value="#{setters[idx].nickname}")
+              = setters[idx].nickname + " [" + setters[idx].name + ']'
 
     p.text.grade
       select(name="grade", size="6")
-        option(value= "0") Gelb   [1a  -- 4c]
-        option(value= "1") Gruen  [5a  -- 6a]
-        option(value= "2") Orange [6a+ -- 6b+]
-        option(value= "3") Blau   [6c  -- 7a]
-        option(value= "4") Rot    [7a+ -- 7b+]
-        option(value= "5") Weiss  [7c  -- ?]
+        - for (gr in grade_names)
+          - if (gr != grade)
+            option(value=gr)
+              =grade_names[gr]
+          - else
+            option(value=gr, selected="yes")
+              =grade_names[gr]
 
     p.text.gradenr
-      input(type="text", name="gradenr", placeholder="nr", style="width:50px;")
+      input(type="text", name="gradenr", placeholder="nr", style="width:50px;", value=gradenr)
 
     p.text.sector
       select(name="sector")
@@ -41,7 +58,7 @@
         option(value= "1") 1
 
     p.text.comments
-      input(type="text", name="comments", placeholder="comments")
+      input(type="text", name="comments", placeholder="comments", value=comments)
       = " (optional)"
 
     p.text.submit

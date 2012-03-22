@@ -57,7 +57,7 @@ app.post '/boulder/:boulder/delete', mw.loadBoulder, mw.deleteBoulder, (req, res
 app.get '/profile', mw.loadActiveBoulders, mw.loadProfile, mw.loadSetters, (req, res) ->
     renderTwoColumn req, res, 'profile', 'addboulder'
 
-app.post '/add/boulder', mw.createBoulder, (req, res) ->
+app.post '/add/boulder', mw.loadActiveBoulders, mw.loadProfile, mw.loadSetters, mw.createBoulder, (req, res) ->
     #renderTwoColumn req, res, 'profile', 'boulder'
 
 app.get '/change/pw', mw.loadActiveBoulders, mw.loadProfile, mw.loadSetters, (req, res) ->

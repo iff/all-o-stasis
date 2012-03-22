@@ -234,7 +234,26 @@ exports.loadProfile = (req, res, next) ->
 
 
 exports.createBoulder = (req, res, next) ->
-    if req.body.secret is req.session?.auth_setter_secret
+
+    errors = []
+    req.onValidationError (msg) ->
+        errors.push msg
+
+    req.assert('setter_nicks', 'Mindestens ein Schrauber auswaehlen!').notNull()
+    req.assert('grade'       , 'Grade auswaehlen!').notNull()
+    req.assert('sector'      , 'Sektor auswaehlen!').notNull()
+    req.assert('gradenr'     , 'Grade nummer muss eine Zahl zwischen 1 und 50 sein!').isInt()
+    req.assert('gradenr'     , 'Grade nummer muss kleiner als 50 sein!').max(50)
+    req.assert('gradenr'     , 'Grade nummer muss groesser als 0 sein!').min(1)
+
+    if req.body.secret isnt req.session?.auth_setter_secret
+        errors.push 'Falsches secret eingegeben'
+
+    if errors.length or req.body.secret isnt req.session?.auth_setter_secret
+        req.errors = errors
+        renderTwoColumn req, res, 'profile', 'addboulder'
+        return
+    else
         setter_nicks = []
         if req.body.setter_nicks instanceof Array
             setter_nicks = req.body.setter_nicks
@@ -249,11 +268,11 @@ exports.createBoulder = (req, res, next) ->
             new Boulder(data).save (err, boulder) ->
                 if err
                     console.log err
-                    res.redirect '/profile'
+                    req.errors = [err]
+                    renderTwoColumn req, res, 'profile', 'addboulder'
+                    return
                 else
                     res.redirect '/boulder/' + boulder.id
-    else
-        res.redirect '/profile'
 
 
 # ----------------------------------------------------------------------------
