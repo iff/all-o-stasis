@@ -316,6 +316,8 @@ div.boulder_star3 {
 }
 
 div.boulder_sector {
+    display: inline-block;
+    margin-left: 130px;
     min-height : 247px;
 }
 
