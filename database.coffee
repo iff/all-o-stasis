@@ -1,8 +1,7 @@
-
-mongoose = require('mongoose')
+mongoose = require 'mongoose'
 module.exports = mongoose
 
-mongoose.connect('mongodb://localhost/minimum')
+mongoose.connect 'mongodb://localhost/minimum'
 
 Schema = mongoose.Schema
 ObjectID = Schema.ObjectId
@@ -25,9 +24,17 @@ SetterSchema.statics =
             else
                 callback new Error 'Setter not found'
 
+    nicksToSetterIDs: (setter_nicks, callback) ->
+        Setter.find { 'nickname': { $in : setter_nicks } }, (err, setters) ->
+            ids = []
+            for setter in setters
+                ids.push setter._id
 
-mongoose.model('setter', SetterSchema)
-Setter = mongoose.model('setter')
+            callback null, ids
+
+
+mongoose.model 'setter', SetterSchema
+Setter = mongoose.model 'setter'
 
 
 BoulderSchema = new Schema
@@ -42,7 +49,7 @@ BoulderSchema = new Schema
     comments: { type : [ String ],   requried : false, default: []       },
     addedBy : { type : ObjectID,     required : false                    }
 
-#BoulderSchema.methods =
+
 BoulderSchema.statics =
     downgrade: (id, gradenr) ->
         Boulder.findOne { _id: id }, (err, boulder) ->
@@ -77,5 +84,5 @@ BoulderSchema.statics =
                 boulder.save()
 
 
-mongoose.model('boulder', BoulderSchema)
-Boulder = mongoose.model('boulder')
+mongoose.model 'boulder', BoulderSchema
+Boulder = mongoose.model 'boulder'
