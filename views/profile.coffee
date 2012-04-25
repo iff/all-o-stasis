@@ -86,8 +86,5 @@ class ProfileView extends View
 
             boulder
 
-            #month = boulder.date.getMonth() + 1
-            #boulder.prettyDate = boulder.date.getDate() + "." + month + "." + boulder.date.getFullYear()
-
 
 module.exports = ProfileView
