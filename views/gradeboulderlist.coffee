@@ -1,20 +1,5 @@
 View = require('../view')
-
-findSetterNick = (setter_id, setters) ->
-    for fs in setters
-        if "#{setter_id}" == "#{fs.id}"
-            return fs.nickname
-
-    return null
-
-setterNicknames = (ids, setters) ->
-    ids.map((id) -> findSetterNick(id, setters)).filter((nick) -> nick isnt null)
-
-meanStarRating = (boulder) ->
-    if boulder.stars.length is 0
-        return ""
-    else
-        return [1..Math.round(boulder.rating())].map((x) -> '*').join('')
+{ setterNicknames, meanStarRating } = require '../app/helpers'
 
 class GradeBoulderListView extends View
 
