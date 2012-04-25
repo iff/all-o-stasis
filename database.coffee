@@ -101,10 +101,10 @@ BoulderSchema.methods =
     formattedDate: ->
          pad = (n) -> n < 10 and '0' + n or n
 
-        [ pad(@date.getDate())
-        , pad(@date.getMonth() + 1)
-        ,     @date.getFullYear()
-        ].join '.'
+         [ pad(@date.getDate())
+         , pad(@date.getMonth() + 1)
+         ,     @date.getFullYear()
+         ].join '.'
 
 
 
