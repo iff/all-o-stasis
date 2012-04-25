@@ -70,12 +70,6 @@ exports.loadActiveGradeBoulders = (req, res, next) ->
         return renderError req, res, 500, { err } if err
         req.grade_boulders = boulders; next()
 
-exports.loadBoulder = (req, res, next) ->
-    boulder_id = req.params['boulder']
-    Boulder.findOne { '_id' : boulder_id }, (err, boulder) ->
-        return renderError req, res, 500, { err } if err or !boulder
-        req.boulder = boulder; next()
-
 
 # ----------------------------------------------------------------------------
 # Show search result
@@ -174,14 +168,6 @@ exports.loadSettersOfBoulder = (req, res, next) ->
         return renderError req, res, 500, { err } if err
         req.author_setters = setters; next()
 
-exports.loadSetter = (req, res, next) ->
-    setter_nickname = req.params['nickname']
-    Setter.findOne { 'nickname':  setter_nickname }, (err, setter) ->
-        return renderError req, res, 500, { err } if err or !setter
-        req.setter = setter
-        Boulder.find({ 'setters' : req.setter._id}).sort('date', '-1').exec (err, setter_boulders) ->
-            return renderError req, res, 500, { err } if err
-            req.setter_boulders = setter_boulders; next()
 
 exports.loadSetters = (req, res, next) ->
     Setter.find().sort('nickname', '1').exec (err, setters) ->
@@ -264,6 +250,7 @@ exports.createBoulder = (req, res, next) ->
             setterIDs = []
             for setter in setters
                 setterIDs.push setter._id
+
             data = { setters: setterIDs, grade: req.body.grade, gradenr: req.body.gradenr, sector: req.body.sector, name: req.body.name, comments: req.body.comments, addedBy: req.session.auth_setter_id}
             new Boulder(data).save (err, boulder) ->
                 if err
