@@ -77,5 +77,29 @@ BoulderSchema.statics =
                 boulder.save()
 
 
+BoulderSchema.methods =
+    rating: ->
+        @stars.reduce(((a, x) -> a + x), 0) / @stars.length || 0
+
+    colorName: ->
+        switch @grade
+            when '0' then 'yellow'
+            when '1' then 'green'
+            when '2' then 'orange'
+            when '3' then 'blue'
+            when '4' then 'red'
+            when '5' then 'white'
+            else          'unknown'
+
+    formattedDate: ->
+         pad = (n) -> n < 10 and '0' + n or n
+
+        [ pad(@date.getDate())
+        , pad(@date.getMonth() + 1)
+        ,     @date.getFullYear()
+        ].join '.'
+
+
+
 mongoose.model('boulder', BoulderSchema)
 Boulder = mongoose.model('boulder')
