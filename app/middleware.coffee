@@ -162,13 +162,6 @@ exports.changeSecret = (req, res, next) ->
 # Loading setters
 # ----------------------------------------------------------------------------
 #
-exports.loadSettersOfBoulder = (req, res, next) ->
-    setters_ids = req.boulder.setters
-    Setter.find { '_id': { $in : setters_ids } }, (err, setters) ->
-        return renderError req, res, 500, { err } if err
-        req.author_setters = setters; next()
-
-
 exports.loadSetters = (req, res, next) ->
     Setter.find().sort('nickname', '1').exec (err, setters) ->
         return renderError req, res, 500, { err } if err

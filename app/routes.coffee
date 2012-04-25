@@ -35,7 +35,7 @@ app.post '/search', mw.loadSearched, (req, res) ->
 # Boulder presentation
 # ----------------------------------------------------------------------------
 #
-app.get '/boulder/:boulder', mw.loadSettersOfBoulder, (req, res) ->
+app.get '/boulder/:boulder', (req, res) ->
     renderTwoColumn req, res, 'boulderlist', 'boulder'
 
 app.get '/boulder/:boulder/vote/:stars', mw.vote, (req, res) ->

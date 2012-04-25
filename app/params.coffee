@@ -9,7 +9,12 @@ Boulder = db.model('boulder')
 app.param 'boulder', (req, res, next, boulder_id) ->
     Boulder.findById boulder_id, (err, boulder) ->
         return renderError req, res, 500, { err } if err or !boulder
-        req.boulder = boulder; next()
+        req.boulder = boulder
+
+        setters_ids = req.boulder.setters
+        Setter.find { '_id': { $in : setters_ids } }, (err, setters) ->
+            return renderError req, res, 500, { err } if err
+            req.author_setters = setters; next()
 
 
 app.param 'nickname', (req, res, next, nickname) ->
