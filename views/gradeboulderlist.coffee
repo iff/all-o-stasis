@@ -1,5 +1,21 @@
 View = require('../view')
 
+findSetterNick = (setter_id, setters) ->
+    for fs in setters
+        if "#{setter_id}" == "#{fs.id}"
+            return fs.nickname
+
+    return null
+
+setterNicknames = (ids, setters) ->
+    ids.map((id) -> findSetterNick(id, setters)).filter((nick) -> nick isnt null)
+
+meanStarRating = (boulder) ->
+    if boulder.stars.length is 0
+        return ""
+    else
+        return [1..Math.round(boulder.rating())].map((x) -> '*').join('')
+
 class GradeBoulderListView extends View
 
     gradeName: ->
@@ -20,51 +36,10 @@ class GradeBoulderListView extends View
     grade_list: ->
         for boulder in @req.grade_boulders
 
-            if boulder.grade is '0'
-                boulder.color = "yellow"
-            else if boulder.grade is '1'
-                boulder.color = "green"
-            else if boulder.grade is '2'
-                boulder.color = "orange"
-            else if boulder.grade is '3'
-                boulder.color = "blue"
-            else if boulder.grade is '4'
-                boulder.color = "red"
-            else if boulder.grade is '5'
-                boulder.color = "white"
-            else
-                console.log "ERROR GRADE"
-
-            setters = []
-            for setter in boulder.setters
-                for fs in @req.setters
-                    if "#{setter}" == "#{fs.id}"
-                        setters.push(fs.nickname)
-            #for setter in @req.bs[boulder.id]
-                #setters += setter.nickname + " "
-            boulder.prettySetters = setters
-
-            month = boulder.date.getMonth() + 1
-            if month < 10
-                month = '0' + month
-            day = boulder.date.getDate()
-            if day < 10
-                day = '0' + day
-            boulder.prettyDate = day + "." + month + "." + boulder.date.getFullYear()
-
-            num_stars = 0
-            sum_stars = 0
-            for star in boulder.stars
-                num_stars += 1
-                sum_stars += star
-
-            if num_stars is 0
-                boulder.mean_stars = ""
-            else
-                star_str = ""
-                for star in [1..Math.round(sum_stars / num_stars)]
-                    star_str += "*"
-                boulder.mean_stars = star_str
+            boulder.color         = boulder.colorName()
+            boulder.prettySetters = setterNicknames boulder.setters, @req.setters
+            boulder.prettyDate    = boulder.formattedDate()
+            boulder.mean_stars    = meanStarRating boulder
 
             boulder
 
