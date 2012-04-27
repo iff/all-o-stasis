@@ -4,16 +4,14 @@
 changing conditions"](http://en.wikipedia.org/wiki/Allostasis)
 
 All-o-stasis is a very simple web interface for route setters and visitors of the
-Minimum boulder gym. The framework tracks all currently available (and history
-of removed) boulders. Additionally, admins can survey the performance of their
-setters.
+Minimum boulder gym. The framework provides the following functionality:
 
-Visitors can rate boulders (1 - 3 stars).
+* tracking all currently available (and history of removed) boulders
+* admins can survey the performance of their setters.
+* visitors can rate boulders (1 - 3 stars).
 
 The project is based on nodejs, express, jade and uses mongodb.
 
-**NOTE** The code is quite hacky in some places! I hope to find time for a
-major cleanup in the near future.
 
 
 ## Quick start ##
@@ -34,6 +32,17 @@ To start the server
     mongod --dbpath db &
     node_modules/coffee-script/bin/coffee server.coffee
     open localhost:3000 in browser
+
+
+### Populating the DB (testing) ###
+
+Execute on a mongo shell:
+
+    use minimum
+    setter = { email: "me@mail.ch", name: "Me", role: "admin", password: "PW", nickname: "ME", secret: "123", gradingLevel: 0 }
+    db.setters.save(setter)
+
+then visit the webpage, log in and start adding boulders.
 
 
 
