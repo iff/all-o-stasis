@@ -19,11 +19,11 @@
               = set.nickname
             = set.name
       li.vote
-        a(href='/boulder/#{boulder._id}/vote/1')
+        a(href='/boulder/#{boulder._id}/vote/1', data-method='post')
           = "* &nbsp;&nbsp;"
-        a(href='/boulder/#{boulder._id}/vote/2')
+        a(href='/boulder/#{boulder._id}/vote/2', data-method='post')
           = "** &nbsp;"
-        a(href='/boulder/#{boulder._id}/vote/3')
+        a(href='/boulder/#{boulder._id}/vote/3', data-method='post')
           = "***"
 
   div.boulder_rating

@@ -38,7 +38,7 @@ app.post '/search', mw.loadSearched, (req, res) ->
 app.get '/boulder/:boulder', (req, res) ->
     renderTwoColumn req, res, 'boulderlist', 'boulder'
 
-app.get '/boulder/:boulder/vote/:stars', mw.vote, (req, res) ->
+app.post '/boulder/:boulder/vote/:stars', mw.vote, (req, res) ->
     res.redirect '/boulder/' + req.params['boulder']
 
 app.post '/boulder/:boulder/upgrade', mw.upgradeBoulder, (req, res) ->
