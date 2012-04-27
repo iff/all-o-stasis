@@ -1,5 +1,6 @@
 
 { renderTwoColumn, renderError } = require './app'
+{ fromGradeName } = require './helpers'
 
 db      = require('../database')
 Setter  = db.model('setter')
@@ -17,6 +18,14 @@ app.param 'boulder', (req, res, next, boulder_id) ->
             req.author_setters = setters; next()
 
 
+app.param 'grade', (req, res, next, grade_name) ->
+    grade_id = fromGradeName grade_name
+
+    Boulder.find({ 'removed' : null, 'grade' : grade_id }).sort('date', '-1').exec (err, boulders) ->
+        return renderError req, res, 500, { err } if err
+        req.grade_boulders = boulders; next()
+
+
 app.param 'nickname', (req, res, next, nickname) ->
     Setter.findOne { 'nickname':  nickname }, (err, setter) ->
         return renderError req, res, 500, { err } if err or !setter
@@ -25,3 +34,4 @@ app.param 'nickname', (req, res, next, nickname) ->
         Boulder.find({ 'setters' : req.setter._id}).sort('date', '-1').exec (err, setter_boulders) ->
             return renderError req, res, 500, { err } if err
             req.setter_boulders = setter_boulders; next()
+

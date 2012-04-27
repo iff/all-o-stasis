@@ -82,11 +82,13 @@ app.post '/change/secret', mw.changeSecret, (req, res) ->
 app.get '/setter/:nickname', mw.loadInactiveBoulders, (req, res) ->
     renderTwoColumn req, res, 'boulderlist', 'setter'
 
-app.get '/add/setter', (req, res) ->
-    renderTwoColumn req, res, 'boulderlist', 'boulder'
 
-app.post '/add/setter', mw.createSetter, mw.loadProfile, (req, res) ->
-    renderTwoColumn req, res, 'profile', 'boulder'
+#FIXME:
+#app.get '/add/setter', (req, res) ->
+#    renderTwoColumn req, res, 'boulderlist', 'boulder'
+
+#app.post '/add/setter', mw.createSetter, mw.loadProfile, (req, res) ->
+#    renderTwoColumn req, res, 'profile', 'boulder'
 
 
 # ----------------------------------------------------------------------------
@@ -106,7 +108,7 @@ app.get '/logout', mw.logout, (req, res) ->
 # Routes for statistics
 # ----------------------------------------------------------------------------
 #
-app.get '/stats/grade/:grade', mw.loadActiveGradeBoulders, (req, res) ->
+app.get '/stats/grade/:grade', (req, res) ->
     renderTwoColumn req, res, 'boulderlist', 'gradeboulderlist'
 
 
@@ -114,11 +116,12 @@ app.get '/stats/grade/:grade', mw.loadActiveGradeBoulders, (req, res) ->
 # Routes for activity (see github/wow...)
 # ----------------------------------------------------------------------------
 #
-app.get 'activity', (req, res) ->
-    renderTwoColumn req, res, 'boulderlist', 'activity'
+#TODO:
+#app.get 'activity', (req, res) ->
+#    renderTwoColumn req, res, 'boulderlist', 'activity'
 
-app.get 'activity/:setter_nickname', (req, res) ->
-    renderTwoColumn req, res, 'boulderlist', 'activity'
+#app.get 'activity/:setter_nickname', (req, res) ->
+#    renderTwoColumn req, res, 'boulderlist', 'activity'
 
 
 #XXX: additional helper routes
