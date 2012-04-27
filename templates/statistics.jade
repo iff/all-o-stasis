@@ -19,3 +19,19 @@
             span.index(style="width: #{histogram[id]}%; background: #{colors[id]}")
               = histogram[id]%
 
+
+  div(style="padding-top:20px;")
+    h4= "Top 5 Boulders:"
+    ul#boulderlist
+      - for (var id in top5)
+        li(class="active")
+          span(class="active, #{top5[id].color}", style="display:inline-block;width:40px;")
+            a(href="/boulder/#{top5[id].id}", class="#{top5[id].color}")
+              = top5[id].gradenr
+          span(class="active", style="display:inline-block;width: 90px;")
+            = top5[id].prettySetters
+          span(class="active", style="display:inline-block;width: 100px;text-align:right;")
+            = top5[id].prettyDate
+          -if (top5[id].stars.length)
+            span(class="active", style="display:inline-block;width: 30px;")
+            = top5[id].mean_stars
