@@ -36,7 +36,7 @@ To start the server
 
 ### Populating the DB (testing) ###
 
-Execute on a mongo shell:
+Execute in a mongo shell:
 
     use minimum
     setter = { email: "me@mail.ch", name: "Me", role: "admin", password: "PW", nickname: "ME", secret: "123", gradingLevel: 0 }
