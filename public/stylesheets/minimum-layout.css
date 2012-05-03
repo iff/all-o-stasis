@@ -92,6 +92,7 @@ html,body {
 }
 
 #minimum-right-content {
+    padding-top   : 17px;
     height        : 100%;
     margin-left   : 40px;
     /*min-height    : 740px;*/
