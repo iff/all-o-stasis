@@ -190,6 +190,7 @@ div.chartlist {
     background: #cdc8bc;
     vertical-align: center;
     font-size: 18pt;
+    /*text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;*/
 }
 
 .boulder > div {
