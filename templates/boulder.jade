@@ -35,8 +35,9 @@
     img(src="/sectors/Sektoren_#{sector}.svg")
 
   div.boulder_comment
-    h4= "Info's zum Problem: "
-    = boulder.comments
+    -if (boulder.comments != "")
+      h4= "Infos: "
+        = boulder.comments
 
   -if (isAuth)
     div.boulder_actions
