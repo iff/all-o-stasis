@@ -20,6 +20,19 @@ class SetterView extends View
     avatar: ->
         return '/avatars/' + @req.setter.nickname + '.jpg'
 
+    grading: ->
+        console.log @req.setter.gradingLevel
+        if @req.setter.gradingLevel > 5
+            return 'oft zu schwer'
+        else if @req.setter.gradingLevel < -5
+            return 'oft zu leicht'
+        else if @req.setter.gradingLevel > 0
+            return 'gelegentlich zu schwer'
+        else if @req.setter.gradingLevel < 0
+            return 'gelegentlich zu leicht'
+        else
+            return 'genau richtig'
+
     totalBoulders: ->
         return @req.setter_boulders.length
 
