@@ -265,6 +265,8 @@ div.setter_boulders {
 }
 
 #boulder_setters {
+    margin-top: 0px;
+    padding-top: 5px;
     position: absolute;
     left: 120px;
     list-style-type: none;

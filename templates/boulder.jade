@@ -8,15 +8,13 @@
 
   div.boulder_header
     a(href="/stats/grade/#{gradeName}")
-      img.grade_tag(src="/grade_tags/#{gradeTag}.svg")
+      img.grade_tag(src="/grade_tags/#{gradeTag}.svg", style="float:left;")
     ul#boulder_setters
-      li
-        = "Schrauber/in:"
       - each set in setters
         li
           a(href="/setter/#{set.nickname}")
-            span
-              = set.nickname
+            span(style="display:inline-block;width:40px;")
+              img(class="mini_avatar", style="float:left;", src="/avatars/#{set.nickname}.jpg")
             = set.name
       li.vote
         a(href='/boulder/#{boulder._id}/vote/1', data-method='post')
