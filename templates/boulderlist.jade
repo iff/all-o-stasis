@@ -20,12 +20,33 @@
                   img(class="mini_avatar", style="float:left;", src="/avatars/#{list[id].prettySetters[setter]}.jpg")
 
               div(class="description")
-                span(class="#{list[id].color}", style="display:inline-block;width:70px;")
+                span(class="#{list[id].color}", style="display:inline-block;width:110px;")
                   a(href="/boulder/#{list[id].id}", class="#{list[id].color}")
                     = list[id].gradenr
+
                 -if (list[id].stars.length)
-                  span(style="display:inline-block;width: 30px;")
-                  = list[id].mean_stars
+                  span(style="display:inline-block;width: 80px;")
+                    -var num_stars = list[id].mean_stars
+                    -if (num_stars == "*")
+                      input(name="#{list[id].id}", type="radio", class="star", checked="checked")
+                    -else
+                      input(name="#{list[id].id}", type="radio", class="star")
+
+                    -if (num_stars == "**")
+                      input(name="#{list[id].id}", type="radio", class="star", checked="checked")
+                    -else
+                      input(name="#{list[id].id}", type="radio", class="star")
+
+                    -if (num_stars == "***")
+                      input(name="#{list[id].id}", type="radio", class="star", checked="checked")
+                    -else
+                      input(name="#{list[id].id}", type="radio", class="star")
+                -else
+                  span(style="display:inline-block;width: 80px;")
+                    input(name="#{list[id].id}", type="radio", class="star", value="1")
+                    input(name="#{list[id].id}", type="radio", class="star", value="2")
+                    input(name="#{list[id].id}", type="radio", class="star", value="3")
+
 
           div(style="padding-left:50px; margin-left:10px; border-left:2px solid gray;height:3px;")
 
