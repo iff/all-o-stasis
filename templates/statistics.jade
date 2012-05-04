@@ -5,7 +5,7 @@
 
   p(style="width: 85%;") Willkommen in der Welt der Minimum-Boulders. Hier findest du aktuelle Infos rund um die Boulderprobleme.
 
-  p(style="width: 85%;") Du kannst Boulders bewerten indem du deinem Lieblingsboulder Sternchen (*) verschenkst.
+  p(style="width: 85%;") Du kannst deine Lieblingsboulder mit Sternchen bewerten.
 
   div.chartlist
     ul.chartlist
@@ -21,19 +21,21 @@
 
 
   div(style="padding-top:20px;")
-    h4= "Top 5 Boulders:"
+    h4= "Top 10 Boulders:"
     ul#boulderlist(style="padding-left:70px;")
-      - for (var id in top5)
+      - for (var id in top10)
+        -var rank = parseInt(id) + 1
         li
-          div(class="boulder", style="margin-bottom:5px;")
-            -for (var setter in top5[id].prettySetters)
-              a(href="/setter/#{top5[id].prettySetters[setter]}")
-                img(class="mini_avatar", style="float:left;", src="/avatars/#{top5[id].prettySetters[setter]}.jpg")
+          div(class="boulder", style="margin-bottom:5px;width:30px;float:left;text-align:center;")
+            =rank
+          div(class="boulder", style="margin-bottom:5px;width:410px;")
+            -for (var setter in top10[id].prettySetters)
+              a(href="/setter/#{top10[id].prettySetters[setter]}")
+                img(class="mini_avatar", style="float:left;", src="/avatars/#{top10[id].prettySetters[setter]}.jpg")
 
-            div(class="description")
-              span(class="#{top5[id].color}", style="display:inline-block;width:70px;")
-                a(href="/boulder/#{top5[id].id}", class="#{top5[id].color}")
-                  = top5[id].gradenr
-              -if (top5[id].stars.length)
-                span(style="display:inline-block;width: 30px;")
-                = top5[id].mean_stars
+            div(class="description", style="margin-left: 25px;")
+              span(class="#{top10[id].color}", style="display:inline-block;width:220px;")
+                a(href="/boulder/#{top10[id].id}", class="#{top10[id].color}")
+                  = top10[id].gradenr
+              -if (top10[id].stars.length)
+                = top10[id].num_rating

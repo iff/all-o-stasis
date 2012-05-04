@@ -19,6 +19,16 @@ exports.meanStarRating = (boulder) ->
         return [1..Math.round(boulder.rating())].map((x) -> '*').join('')
 
 
+exports.bayesianRating = (boulder, avg_votes, avg_ratings) ->
+    if boulder.stars.length is 0
+        return 0
+    else
+        my_votes = boulder.stars.length
+        my_ratings = boulder.rating()
+
+        return (avg_votes * avg_ratings) + (my_votes * my_ratings) / (avg_votes * my_votes)
+
+
 exports.fromGradeID = (grade_id) ->
     grade_str = ["yellow", "green", "orange", "blue", "red", "white"]
     return grade_str[grade_id]
