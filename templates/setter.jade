@@ -4,11 +4,22 @@
 #minimum-right-content
   span.avatar
     span(class="shadow")
-      img(src="#{avatar}", widht="100px")
+      img(src="#{avatar}", width="100px")
 
   div.setter_name
-    p= nickname
-    p= name
+    p
+      =name
+    ul#setter_prop
+      li
+        span(style="display:inline-block;width: 100px;")
+          ='Grading: '
+        =grading
+      li
+        span(style="display:inline-block;width: 100px;")
+          ='Best rated: '
+        span(class="#{topBoulder.color}", style="display:inline-block;width:40px;")
+          a(href="/boulder/#{topBoulder.id}", class="#{topBoulder.color}")
+            = topBoulder.gradenr
 
   div.setter_histogram
     div.chartlist

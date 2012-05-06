@@ -1,5 +1,6 @@
 View = require '../view'
-{ setterNicknames, meanStarRating } = require '../app/helpers'
+{ setterNicknames, meanStarRating, computeBayesianRating} = require '../app/helpers'
+{ _ } = require 'underscore'
 
 Futures = require 'futures'
 
@@ -21,7 +22,6 @@ class SetterView extends View
         return '/avatars/' + @req.setter.nickname + '.jpg'
 
     grading: ->
-        console.log @req.setter.gradingLevel
         if @req.setter.gradingLevel > 5
             return 'oft zu schwer'
         else if @req.setter.gradingLevel < -5
@@ -32,6 +32,20 @@ class SetterView extends View
             return 'gelegentlich zu leicht'
         else
             return 'genau richtig'
+
+    topBoulder: ->
+        active = []
+
+        for boulder in @req.setter_boulders
+            if boulder.stars.length isnt 0 and not boulder.removed?
+                active.push(boulder)
+
+        top = computeBayesianRating(active)
+
+        top_boulder = (_.first(top, 1))[0]
+        top_boulder.color = top_boulder.colorName()
+        return top_boulder
+
 
     totalBoulders: ->
         return @req.setter_boulders.length

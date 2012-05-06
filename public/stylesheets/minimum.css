@@ -78,10 +78,34 @@ span.white {
     color: #ffffff;
 }
 
+a.yellow {
+    color: #ffcc00;
+}
+
+a.green {
+    color: #33cc00;
+}
+
+a.orange {
+    color: #ff7900;
+}
+
+a.blue {
+    color: #0000ff;
+}
+
+a.red {
+    color: #ff0000;
+}
+
+a.white {
+    color: #ffffff;
+}
+
 /* CHART */
 
 div.chartlist {
-    margin-top: 70px;
+    margin-top: 50px;
     margin-left: 50px;
     width: 75%;
 }
@@ -250,8 +274,21 @@ img.logo {
 
 div.setter_name {
     padding-left: 130px;
-    padding-top: 13px;
+    padding-top: 0px;
+    margin-top: 0px;
     margin-bottom: 90px;
+    font-size: 16pt;
+}
+
+#setter_prop {
+    list-style-type: none;
+    line-height: 1.7em;
+    font-size: 12pt;
+    margin-left: 0px;
+    padding: 0;
+}
+
+#setter_prop li {
 }
 
 div.setter_histogram {
