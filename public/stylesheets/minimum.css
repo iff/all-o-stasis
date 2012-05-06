@@ -344,6 +344,7 @@ div.setter_boulders {
  *******************************/
 
 div.boulder_header {
+    margin-top: 15px;
     min-height : 132px;
 }
 
