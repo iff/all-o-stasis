@@ -459,7 +459,9 @@ img.grade_tag {
 
 #team {
     list-style-type: none;
-    line-height: 1.7em;
+    line-height: 2.0em;
+    margin-left: 20px;
+    padding-top: 10px;
 }
 
 #team li {
