@@ -36,21 +36,14 @@
 
   div.setter_boulders
     // render list of boulders
-    ul#boulderlist
+    ul#setter-boulderlist
       - for (var id in boulders)
         -if(boulders[id].removed)
-          -var style = 'removed'
+          -var state = 'removed'
         -else
-          -var style = 'active'
+          -var state = 'active'
 
-        li(class="#{style}")
-          span(class="#{style}, #{boulders[id].color}", style="display:inline-block;width:40px;")
+        li(class="#{state}")
+          span(class="#{state}")
             a(href="/boulder/#{boulders[id].id}", class="#{boulders[id].color}")
               = boulders[id].gradenr
-          span(class="#{style}", style="display:inline-block;width: 90px;")
-            = boulders[id].prettySetters
-          span(class="#{style}", style="display:inline-block;width: 100px;text-align:right;")
-            = boulders[id].prettyDate
-          -if (boulders[id].stars.length)
-            span(class="#{style}", style="display:inline-block;width: 30px;")
-            = boulders[id].mean_stars

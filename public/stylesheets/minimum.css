@@ -151,6 +151,37 @@ div.chartlist {
 
 /* boulder list */
 
+#setter-boulderlist {
+    list-style-type: none;
+    font-size: 14pt;
+    margin-left: 4px;
+    width:400px;
+}
+
+#setter-boulderlist li {
+    display:inline;
+}
+
+#setter-boulderlist span {
+    display: inline-block;
+    border: 1px solid #999;
+    font-weight: bold;
+    border-radius: 3px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    background: #cdc8bc;
+
+}
+
+#setter-boulderlist span.removed {
+    background: gray;
+    opacity   : 0.4;
+    text-decoration: line-through;
+}
+
 #boulderlist {
     list-style-type: none;
     line-height: 1.7em;
@@ -299,6 +330,7 @@ div.setter_boulders {
     margin-top : 50px;
     margin-left: 50px;
     min-height : 247px;
+    width      : 470px;
 }
 
 #boulder_setters {
