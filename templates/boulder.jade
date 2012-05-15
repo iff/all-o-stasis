@@ -6,8 +6,9 @@
 
 #minimum-right-content
   div.boulder_header
-    a(href="/stats/grade/#{gradeName}")
-      img.grade_tag(src="/grade_tags/#{gradeTag}.svg", style="float:left;")
+    span#boulder_gradenr
+      a(href="/stats/grade/#{gradeName}", class="#{gradeName}")
+        = gradeNr
     ul#boulder_setters
       - each set in setters
         li
