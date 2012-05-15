@@ -17,7 +17,7 @@
             div(class="boulder")
               -for (var setter in list[id].prettySetters)
                 a(href="/setter/#{list[id].prettySetters[setter]}")
-                  img(class="mini_avatar", style="float:left;", src="/avatars/#{list[id].prettySetters[setter]}.jpg")
+                  img(class="mini_avatar", style="float:left;", src="/avatars/#{list[id].prettySetters[setter]}_small.jpg")
 
               div(class="description")
                 span(class="#{list[id].color}", style="display:inline-block;width:110px;")

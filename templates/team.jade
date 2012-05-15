@@ -8,7 +8,7 @@
         li
           a(href="/setter/#{team[setter_id].nickname}")
             span(style="display:inline-block;width:70px;")
-              img(class="mini_avatar", style="float:left;", src="/avatars/#{team[setter_id].nickname}.jpg")
+              img(class="mini_avatar", style="float:left;", src="/avatars/#{team[setter_id].nickname}_small.jpg")
             = team[setter_id].name
       -if (isAuth)
         -if (authSetterRole == 'admin')
