@@ -249,7 +249,7 @@ div.chartlist {
 }
 
 .boulder > div {
-    padding-left: 100px;
+    padding-left: 120px;
     margin-bottom:3px
 }
 
@@ -381,6 +381,7 @@ div.boulder_header {
 }
 
 div.boulder_rating {
+    margin-top: 25px;
     min-height : 121px;
 }
 
