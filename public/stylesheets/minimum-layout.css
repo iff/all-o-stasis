@@ -10,7 +10,7 @@ html,body {
     height     : 100%;
     padding    : 0;
     margin     : 0 auto;
-    background-image: url(/background.jpg);
+    background-image: url(/background.png);
 }
 
 #minimum-banner {
