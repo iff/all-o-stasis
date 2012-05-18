@@ -13,14 +13,37 @@
             = list[id].prettyDate
         li
           div(style="padding-left:50px; margin-left:10px; border-left:2px solid gray;")
-            span(style="display:inline-block;width: 70px;")
+
+            div(class="boulder")
               -for (var setter in list[id].prettySetters)
                 a(href="/setter/#{list[id].prettySetters[setter]}")
-                  = list[id].prettySetters[setter] + " "
-            span(class="#{list[id].color}", style="display:inline-block;width:70px;")
-              a(href="/boulder/#{list[id].id}", class="#{list[id].color}")
-                = list[id].gradenr
-            -if (list[id].stars.length)
-              span(style="display:inline-block;width: 30px;")
-              = list[id].mean_stars
+                  img(class="mini_avatar", style="float:left;", src="/avatars/#{list[id].prettySetters[setter]}_small.jpg")
+
+              div(class="description")
+                span(class="#{list[id].color}", style="display:inline-block;width:100px;")
+                  a(href="/boulder/#{list[id].id}", class="#{list[id].color}")
+                    = list[id].gradenr
+
+                -if (list[id].stars.length)
+                  span(style="display:inline-block;width: 80px;")
+                    -var num_stars = list[id].mean_stars
+                    img(src="/red_star.gif", style="float:left")
+
+                    -if (num_stars == "**" || num_stars=="***")
+                      img(src="/red_star.gif", style="float:left")
+                    -else
+                      img(src="/empty_star.gif", style="float:left")
+
+                    -if (num_stars == "***")
+                      img(src="/red_star.gif", style="float:left")
+                    -else
+                      img(src="/empty_star.gif", style="float:left")
+                -else
+                  span(style="display:inline-block;width: 80px;")
+                    img(src="/empty_star.gif", style="float:left")
+                    img(src="/empty_star.gif", style="float:left")
+                    img(src="/empty_star.gif", style="float:left")
+
+
+          div(style="padding-left:50px; margin-left:10px; border-left:2px solid gray;height:3px;")
 

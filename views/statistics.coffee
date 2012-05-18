@@ -1,5 +1,5 @@
 View = require('../view')
-{ setterNicknames, meanStarRating } = require '../app/helpers'
+{ setterNicknames, computeBayesianRating } = require '../app/helpers'
 { _ } = require 'underscore'
 
 class IndexView extends View
@@ -19,21 +19,16 @@ class IndexView extends View
 
         return percentages
 
-    top5: ->
-        top = _.values(@req.boulders).sort (lhs, rhs) ->
-            sort_stars = rhs.rating() - lhs.rating()
-            return sort_stars unless sort_stars is 0
-            # sorting according to number of votes
-            return rhs.stars.length - lhs.stars.length
+    top10: ->
+        top = computeBayesianRating(@req.boulders)
+        top_ten = _.first(top, 10)
 
-        top_five = _.first(top, 5)
+        for topb in top_ten
+            topb.color = topb.colorName()
+            topb.prettySetters = setterNicknames topb.setters, @req.setters
+            topb.prettyDate    = topb.formattedDate()
+            topb.num_rating    = topb.bayesian_rating
 
-        for boulder in top_five
-            boulder.color = boulder.colorName()
-            boulder.prettySetters = setterNicknames boulder.setters, @req.setters
-            boulder.prettyDate    = boulder.formattedDate()
-            boulder.mean_stars    = meanStarRating boulder
-
-            boulder
+            topb
 
 module.exports = IndexView

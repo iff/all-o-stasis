@@ -1,22 +1,20 @@
 #minimum-right-title
-  -if (hasName)
+  -if (name)
     h2= name
   -else
     h2= "Boulder"
 
 #minimum-right-content
-
   div.boulder_header
-    a(href="/stats/grade/#{gradeName}")
-      img.grade_tag(src="/grade_tags/#{gradeTag}.svg")
+    span#boulder_gradenr
+      a(href="/stats/grade/#{gradeName}", class="#{gradeName}")
+        = gradeNr
     ul#boulder_setters
-      li
-        = "Schrauber/in:"
       - each set in setters
         li
           a(href="/setter/#{set.nickname}")
-            span
-              = set.nickname
+            span(style="display:inline-block;width:40px;")
+              img(class="mini_avatar", style="float:left;", src="/avatars/#{set.nickname}_small.jpg")
             = set.name
       li.vote
         a(href='/boulder/#{boulder._id}/vote/1', data-method='post')
@@ -35,8 +33,9 @@
     img(src="/sectors/Sektoren_#{sector}.svg")
 
   div.boulder_comment
-    h4= "Info's zum Problem: "
-    = boulder.comments
+    -if (boulder.comments != "")
+      h4= "Infos: "
+        = boulder.comments
 
   -if (isAuth)
     div.boulder_actions

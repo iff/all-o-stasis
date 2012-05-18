@@ -8,6 +8,7 @@ body {
     font-size: 14pt;
     background: #ffffff;
     color: #000000;
+    /*color : #D5DED9;*/
 }
 
 a {
@@ -77,10 +78,34 @@ span.white {
     color: #ffffff;
 }
 
+a.yellow {
+    color: #ffcc00;
+}
+
+a.green {
+    color: #33cc00;
+}
+
+a.orange {
+    color: #ff7900;
+}
+
+a.blue {
+    color: #0000ff;
+}
+
+a.red {
+    color: #ff0000;
+}
+
+a.white {
+    color: #ffffff;
+}
+
 /* CHART */
 
 div.chartlist {
-    margin-top: 70px;
+    margin-top: 50px;
     margin-left: 50px;
     width: 75%;
 }
@@ -125,6 +150,37 @@ div.chartlist {
 }
 
 /* boulder list */
+
+#setter-boulderlist {
+    list-style-type: none;
+    font-size: 14pt;
+    margin-left: 4px;
+    width:400px;
+}
+
+#setter-boulderlist li {
+    display:inline;
+}
+
+#setter-boulderlist span {
+    display: inline-block;
+    border: 1px solid #999;
+    font-weight: bold;
+    border-radius: 3px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    background: #cdc8bc;
+
+}
+
+#setter-boulderlist span.removed {
+    background: #7d7171;
+    opacity   : 0.5;
+    text-decoration: line-through;
+}
 
 #boulderlist {
     list-style-type: none;
@@ -178,6 +234,36 @@ div.chartlist {
   text-decoration: underline;
 }
 
+.boulder {
+    border: 1px solid #999;
+    border-radius: 3px;
+    height: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 300px;
+    font-weight: bold;
+    background: #cdc8bc;
+    vertical-align: center;
+    font-size: 18pt;
+    /*text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;*/
+}
+
+.boulder > div {
+    padding-left: 120px;
+    margin-bottom:3px
+}
+
+.difficulty > span {
+    color: orange;
+}
+
+img.mini_avatar {
+    display:block;margin:0;padding:0;
+    border-radius: 2px;
+    width: 30px;
+    padding-left: 5px;
+}
+
 /*******************************
  * Minimum banner and navigation
  *******************************/
@@ -185,7 +271,7 @@ div.chartlist {
 img.logo {
     position    : absolute;
     margin-left : 4px;
-    margin-top  : 2px;
+    margin-top  : 5px;
 }
 
 #nav {
@@ -219,8 +305,21 @@ img.logo {
 
 div.setter_name {
     padding-left: 130px;
-    padding-top: 13px;
+    padding-top: 0px;
+    margin-top: 0px;
     margin-bottom: 90px;
+    font-size: 16pt;
+}
+
+#setter_prop {
+    list-style-type: none;
+    line-height: 1.7em;
+    font-size: 12pt;
+    margin-left: 0px;
+    padding: 0;
+}
+
+#setter_prop li {
 }
 
 div.setter_histogram {
@@ -231,9 +330,12 @@ div.setter_boulders {
     margin-top : 50px;
     margin-left: 50px;
     min-height : 247px;
+    width      : 470px;
 }
 
 #boulder_setters {
+    margin-top: 0px;
+    padding-top: 5px;
     position: absolute;
     left: 120px;
     list-style-type: none;
@@ -274,10 +376,12 @@ div.setter_boulders {
  *******************************/
 
 div.boulder_header {
+    margin-top: 15px;
     min-height : 132px;
 }
 
 div.boulder_rating {
+    margin-top: 25px;
     min-height : 121px;
 }
 
@@ -346,6 +450,18 @@ img.grade_tag {
     z-index     : 5;
 }
 
+#boulder_gradenr {
+    display:inline-block;
+    width:110px;
+    font-size:70pt;
+    float:left;
+    text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;
+    font-weight: bold;
+    margin-top: -15px;
+    padding-top: 0px;
+    max-height: 70px;
+}
+
 #boulder_setters {
     position: absolute;
     left: 120px;
@@ -388,7 +504,9 @@ img.grade_tag {
 
 #team {
     list-style-type: none;
-    line-height: 1.7em;
+    line-height: 2.0em;
+    margin-left: 20px;
+    padding-top: 10px;
 }
 
 #team li {

@@ -1,3 +1,5 @@
+{ _ } = require 'underscore'
+
 # some helper functions
 
 findSetterNick = (setter_id, setters) ->
@@ -6,6 +8,18 @@ findSetterNick = (setter_id, setters) ->
             return fs.nickname
 
     return null
+
+
+bayesianRating = (boulder, avg_votes, avg_ratings) ->
+    if boulder.stars.length is 0
+        boulder.bayesian_rating = 0
+    else
+        my_votes = boulder.stars.length
+        my_ratings = boulder.rating()
+
+        boulder.bayesian_rating = (avg_votes * avg_ratings) + (my_votes * my_ratings) / (avg_votes * my_votes)
+
+    return boulder.bayesian_rating
 
 
 exports.setterNicknames = (ids, setters) ->
@@ -17,6 +31,25 @@ exports.meanStarRating = (boulder) ->
         return ""
     else
         return [1..Math.round(boulder.rating())].map((x) -> '*').join('')
+
+
+exports.computeBayesianRating = (boulders) ->
+        num_boulders_with_votes = 0
+        sum_votes = 0
+        sum_ratings = 0
+        for boulder in boulders
+            if boulder.stars.length isnt 0
+                sum_votes += boulder.stars.length
+                sum_ratings += boulder.rating()
+                num_boulders_with_votes += 1
+
+        avg_votes = sum_votes / num_boulders_with_votes
+        avg_ratings = sum_ratings / num_boulders_with_votes
+
+        rated = _.values(boulders).sort (lhs, rhs) ->
+            bayesianRating(rhs, avg_votes, avg_ratings) - bayesianRating(lhs, avg_votes, avg_ratings)
+
+        return rated
 
 
 exports.fromGradeID = (grade_id) ->

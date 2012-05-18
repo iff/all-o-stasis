@@ -1,11 +1,9 @@
 #minimum-right-title
 
-#minimum-right-content
-  h2= "Es hat " + totalBoulders + " Boulders an der Wand, allez!"
+#minimum-right-content(style="padding-top:15px;")
+  h3= "Es hat " + totalBoulders + " Boulders an der Wand, allez!"
 
-  p(style="width: 85%;") Willkommen in der Welt der Minimum-Boulders. Hier findest du aktuelle Infos rund um die Boulderprobleme.
-
-  p(style="width: 85%;") Du kannst Boulders bewerten indem du deinem Lieblingsboulder Sternchen (*) verschenkst.
+  p(style="width: 88%;") Willkommen in der Welt der Minimum-Boulders. Hier findest du aktuelle Infos rund um die Boulderprobleme.
 
   div.chartlist
     ul.chartlist
@@ -21,17 +19,25 @@
 
 
   div(style="padding-top:20px;")
-    h4= "Top 5 Boulders:"
-    ul#boulderlist
-      - for (var id in top5)
-        li(class="active")
-          span(class="active, #{top5[id].color}", style="display:inline-block;width:40px;")
-            a(href="/boulder/#{top5[id].id}", class="#{top5[id].color}")
-              = top5[id].gradenr
-          span(class="active", style="display:inline-block;width: 90px;")
-            = top5[id].prettySetters
-          span(class="active", style="display:inline-block;width: 100px;text-align:right;")
-            = top5[id].prettyDate
-          -if (top5[id].stars.length)
-            span(class="active", style="display:inline-block;width: 30px;")
-            = top5[id].mean_stars
+    h4= "Top 10 Boulders:"
+    ul#boulderlist(style="padding-left:70px;")
+      - var rank = 1
+      - var rating = top10[0].num_rating
+      - for (var id in top10)
+        - if (top10[id].num_rating < rating)
+          - var rank = rank + 1
+          - var rating = top10[id].num_rating
+        li
+          div(class="boulder", style="margin-bottom:5px;width:30px;float:left;text-align:center;")
+            =rank
+          div(class="boulder", style="margin-bottom:5px;width:410px;")
+            -for (var setter in top10[id].prettySetters)
+              a(href="/setter/#{top10[id].prettySetters[setter]}")
+                img(class="mini_avatar", style="float:left;", src="/avatars/#{top10[id].prettySetters[setter]}_small.jpg")
+
+            div(class="description", style="margin-left: 25px;")
+              span(class="#{top10[id].color}", style="display:inline-block;width:200px;")
+                a(href="/boulder/#{top10[id].id}", class="#{top10[id].color}")
+                  = top10[id].gradenr
+              -if (top10[id].stars.length)
+                = (parseFloat(top10[id].num_rating) / parseFloat(top10[0].num_rating) * 3.0).toFixed(2)
