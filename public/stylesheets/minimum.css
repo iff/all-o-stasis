@@ -177,8 +177,8 @@ div.chartlist {
 }
 
 #setter-boulderlist span.removed {
-    background: gray;
-    opacity   : 0.4;
+    background: #7d7171;
+    opacity   : 0.5;
     text-decoration: line-through;
 }
 
