@@ -17,7 +17,7 @@ bayesianRating = (boulder, avg_votes, avg_ratings) ->
         my_votes = boulder.stars.length
         my_ratings = boulder.rating()
 
-        boulder.bayesian_rating = (avg_votes * avg_ratings) + (my_votes * my_ratings) / (avg_votes * my_votes)
+        boulder.bayesian_rating = ((avg_votes * avg_ratings) + (my_votes * my_ratings)) / (avg_votes + my_votes)
 
     return boulder.bayesian_rating
 
