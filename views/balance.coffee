@@ -16,8 +16,8 @@ class BalanceView extends View
         for boulder in @req.boulders
             percentages[boulder.grade] += 1
 
-        percentages = percentages,map((x) -> x / @req.boulders.length * 100)
-        return percentages
+        #percentages = percentages.map((x) -> x / @req.boulders.length * 100)
+        #return percentages
 
 
 module.exports = BalanceView

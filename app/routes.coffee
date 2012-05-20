@@ -20,6 +20,8 @@ app.get '/', (req, res) ->
 app.get '/team', mw.loadBoulders, (req, res) ->
     renderTwoColumn req, res, 'boulderlist', 'team'
 
+app.get '/balance', (req, res) ->
+    renderTwoColumn req, res, 'boulderlist', 'balance'
 
 # ----------------------------------------------------------------------------
 # Boulder search
