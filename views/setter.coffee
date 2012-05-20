@@ -43,8 +43,11 @@ class SetterView extends View
         top = computeBayesianRating(active)
 
         top_boulder = (_.first(top, 1))[0]
-        top_boulder.color = top_boulder.colorName()
-        return top_boulder
+        if top_boulder?
+            top_boulder.color = top_boulder.colorName()
+            return top_boulder
+        else
+            return null
 
 
     totalBoulders: ->

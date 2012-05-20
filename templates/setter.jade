@@ -11,15 +11,14 @@
       =name
     ul#setter_prop
       li
-        span(style="display:inline-block;width: 100px;")
-          ='Grading: '
-        =grading
-      li
-        span(style="display:inline-block;width: 100px;")
-          ='Best rated: '
-        span(class="#{topBoulder.color}", style="display:inline-block;width:40px;")
-          a(href="/boulder/#{topBoulder.id}", class="#{topBoulder.color}")
-            = topBoulder.gradenr
+        ='bewertet seine/ihre Boulder ' + grading
+      -if (topBoulder)
+        li
+          ='hat fuer '
+          span(class="#{topBoulder.color}", style="display:inline-block;width:25px;")
+            a(href="/boulder/#{topBoulder.id}", class="#{topBoulder.color}")
+              = topBoulder.gradenr
+          ='die meisten Sterne erhalten'
 
   div.setter_histogram
     div.chartlist
