@@ -30,13 +30,13 @@
         li
           div(class="boulder", style="margin-bottom:5px;width:30px;float:left;text-align:center;")
             =rank
-          div(class="boulder", style="margin-bottom:5px;width:410px;")
+          div(class="boulder", style="margin-bottom:5px;width:310px;")
             -for (var setter in top10[id].prettySetters)
               a(href="/setter/#{top10[id].prettySetters[setter]}")
                 img(class="mini_avatar", style="float:left;", src="/avatars/#{top10[id].prettySetters[setter]}_small.jpg")
 
             div(class="description", style="margin-left: 25px;")
-              span(class="#{top10[id].color}", style="display:inline-block;width:200px;")
+              span(class="#{top10[id].color}", style="display:inline-block;width:100px;")
                 a(href="/boulder/#{top10[id].id}", class="#{top10[id].color}")
                   = top10[id].gradenr
               -if (top10[id].stars.length)

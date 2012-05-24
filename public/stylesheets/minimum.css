@@ -155,7 +155,6 @@ div.chartlist {
     list-style-type: none;
     font-size: 14pt;
     margin-left: 4px;
-    width:400px;
 }
 
 #setter-boulderlist li {
@@ -330,7 +329,7 @@ div.setter_boulders {
     margin-top : 50px;
     margin-left: 50px;
     min-height : 247px;
-    width      : 470px;
+    width      : 75%;
 }
 
 #boulder_setters {
