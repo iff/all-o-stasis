@@ -5,14 +5,15 @@ div(style="width: 100%; min-height: 445px; background: #E5E5E5; overflow-x: hidd
 
     ul.chartlist
       - var colors = ["#ffcc00", "#33cc00", "#ff7900", "#0000ff", "#ff0000", "#ffffff"]
+      - var grades = ["1a - 4c", "5a - 6a", "6a+ - 6b+", "6c - 7a", "7a+ - 7b+", "7c - ?"]
       - var color_labels = ["gelb", "gruen", "orange", "blau", "rot", "weiss"]
       - for (var id in histogram)
         li
             a(href="http://minimum-bouldering.ch/#{color_labels[id]}.html", target="top")&nbsp;
             span.count
               #{histogram[id]}
-            span.index(style="width: #{histogram[id]}%; background: #{colors[id]}")
-              = histogram[id]%
+            span.index(style="width: #{histogram[id]}%; background: #{colors[id]}, font-size:12pt; text-indent:2px;")
+              = grades[id]
 
     hr
     div(style="text-align:right;")
