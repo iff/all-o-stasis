@@ -21,6 +21,10 @@ class IndexView extends View
 
     top10: ->
         top = computeBayesianRating(@req.boulders)
+
+        if top.length is 0
+            return null
+
         top_ten = _.first(top, 10)
 
         for topb in top_ten

@@ -20,24 +20,25 @@
 
   div(style="padding-top:20px;")
     h4= "Top 10 Boulders:"
-    ul#boulderlist(style="padding-left:70px;")
-      - var rank = 1
-      - var rating = top10[0].num_rating
-      - for (var id in top10)
-        - if (top10[id].num_rating < rating)
-          - var rank = rank + 1
-          - var rating = top10[id].num_rating
-        li
-          div(class="boulder", style="margin-bottom:5px;width:30px;float:left;text-align:center;")
-            =rank
-          div(class="boulder", style="margin-bottom:5px;width:310px;")
-            -for (var setter in top10[id].prettySetters)
-              a(href="/setter/#{top10[id].prettySetters[setter]}")
-                img(class="mini_avatar", style="float:left;", src="/avatars/#{top10[id].prettySetters[setter]}_small.jpg")
+    -if(top10)
+      ul#boulderlist(style="padding-left:70px;")
+        - var rank = 1
+        - var rating = top10[0].num_rating
+        - for (var id in top10)
+          - if (top10[id].num_rating < rating)
+            - var rank = rank + 1
+            - var rating = top10[id].num_rating
+          li
+            div(class="boulder", style="margin-bottom:5px;width:30px;float:left;text-align:center;")
+              =rank
+            div(class="boulder", style="margin-bottom:5px;width:310px;")
+              -for (var setter in top10[id].prettySetters)
+                a(href="/setter/#{top10[id].prettySetters[setter]}")
+                  img(class="mini_avatar", style="float:left;", src="/avatars/#{top10[id].prettySetters[setter]}_small.jpg")
 
-            div(class="description", style="margin-left: 25px;")
-              span(class="#{top10[id].color}", style="display:inline-block;width:100px;")
-                a(href="/boulder/#{top10[id].id}", class="#{top10[id].color}")
-                  = top10[id].gradenr
-              -if (top10[id].stars.length)
-                = (parseFloat(top10[id].num_rating) / parseFloat(top10[0].num_rating) * 3.0).toFixed(2)
+              div(class="description", style="margin-left: 25px;")
+                span(class="#{top10[id].color}", style="display:inline-block;width:100px;")
+                  a(href="/boulder/#{top10[id].id}", class="#{top10[id].color}")
+                    = top10[id].gradenr
+                -if (top10[id].stars.length)
+                  = (parseFloat(top10[id].num_rating) / parseFloat(top10[0].num_rating) * 3.0).toFixed(2)
