@@ -15,7 +15,7 @@ app.use express.methodOverride()
 app.use validator
 
 app.use express.session
-    secret: "YOURMOSTDARKSECRET"
+    secret: process.env.SECRET || "YOURMOSTDARKSECRET"
 
 require './app/routes'
 require './app/params'
