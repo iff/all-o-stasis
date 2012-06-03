@@ -1,7 +1,7 @@
 #minimum-right-title
 
 #minimum-right-content(style="padding-top:15px;")
-  h3= "Es fehlen: "
+  h3= "Welche Boulders braucht es"
 
   div(style="display: none;")
     table
@@ -13,3 +13,47 @@
 
   div(id="chart")
   script(src='/bullets.js')
+
+  h4= "Legende"
+
+  ul(style="list-style: none;")
+    li
+      span(style="display: inline-block; width:35px;")
+        img(src="/images/actual_num_boulders.png", style="float:left")
+      =" so viele Boulders *hat* es von dieser Farbe"
+    li
+      span(style="display: inline-block; width:35px;")
+        img(src="/images/expected_num_boulders.png", style="float:left")
+      =" so viele Boulders *sollte* es von dieser Farbe haben"
+    li
+      span(style="display: inline-block; width:35px;")
+        img(src="/images/max_boulders.png", style="float:left")
+      = " maximale Anzahl Boulders einer Farbe"
+
+      //, d.h. es solle nie ein blauer Balken ueber diesen Strich kommen, sonst rausschrauben"
+
+
+  h5= "Beispiele"
+
+  p(style="font-size:14px;")= "Es hat zu wenig:"
+  img(src="/images/need_yellow.png")
+  p(style="font-size:14px;")= "&rArr; gelbe Boulders schrauben"
+
+  hr
+
+  p(style="font-size:14px;")= "Es hat zu viele:"
+  img(src="/images/no_more_blue.png")
+  p(style="font-size:14px;")= "&rArr; Schraubstopp fuer blaue Boulders"
+
+  hr
+
+  p(style="font-size:14px;")= "Es hat zu viele:"
+  img(src="/images/too_many_blue.png")
+  p(style="font-size:14px;")= "&rArr; Blaue Boulders rausschrauben"
+
+  hr
+
+  p(style="font-size:14px;")= "Genau richtig:"
+  img(src="/images/perfect_yellow.png")
+  p(style="font-size:14px;")= "&rArr; Wenn sonst keine Farbe untervertreten, alle Farben ok"
+

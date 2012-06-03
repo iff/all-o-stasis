@@ -11,6 +11,13 @@ body {
     color       : #000000;
 }
 
+hr {
+    margin: 10px 0px;
+    height: 1px;
+    border: 0;
+    background: #eee;
+}
+
 a {
   text-decoration: none;
   color: #212121;
