@@ -3,6 +3,13 @@
 #minimum-right-content(style="padding-top:15px;")
   h3= "Es fehlen: "
 
+  div(style="display: none;")
+    table
+      tbody
+        - each number in actualDistribution
+          tr
+            td
+              = number
 
   div(id="chart")
   script(src='/bullets.js')
