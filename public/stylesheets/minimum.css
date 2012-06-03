@@ -1,14 +1,14 @@
-@font-face {
-  font-family: 'Droid Sans';
-  src: 'http://fonts.googleapis.com/css?family=Droid+Sans'
-}
+/*@font-face {*/
+  /*font-family: 'Droid Sans';*/
+  /*src: 'http://fonts.googleapis.com/css?family=Droid+Sans'*/
+/*}*/
 
 body {
-    font-family: 'Droid Sans', sans-serif;
-    font-size: 14pt;
-    background: #ffffff;
-    color: #000000;
-    /*color : #D5DED9;*/
+    font        : 14px/1.4 "myriad-pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family : 'Droid Sans', sans-serif;
+    font-size   : 14pt;
+    background  : #ffffff;
+    color       : #000000;
 }
 
 a {
