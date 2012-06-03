@@ -77,10 +77,12 @@ html,body {
     border-right  : 2px solid #7A6A53;
     height        : 100%;
     margin-left   : 40px;
+    min-height    : 740px;
 }
 
 #minimum-right-content {
     padding-top   : 0px;
     height        : 100%;
     margin-left   : 40px;
+    min-height    : 740px;
 }
