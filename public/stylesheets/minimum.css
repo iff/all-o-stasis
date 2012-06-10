@@ -615,3 +615,13 @@ span.shadow:before {
     -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
     -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
 }
+
+.balance { font: 10px sans-serif; }
+.balance .marker { stroke: #000; stroke-width: 2px; }
+.balance .tick line { stroke: #666; stroke-width: .5px; }
+.balance .range.s0 { fill: #eee; }
+.balance .range.s1 { fill: #ddd; }
+.balance .range.s2 { fill: #ccc; }
+.balance .measure.s0 { fill: steelblue; border: 1px solid black;}
+.balance .title { font-size: 14px; font-weight: bold; }
+.balance .subtitle { fill: #999; }
