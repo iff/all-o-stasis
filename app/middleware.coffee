@@ -86,13 +86,24 @@ exports.removeBoulder = (req, res, next) ->
     next()
 
 
-exports.vote = (req, res, next) ->
+exports.like = (req, res, next) ->
     now = new Date()
     if req.session.next_vote < now.getTime() or not req.session.next_vote?
-        new_seconds = now.getSeconds() + 10
+        new_seconds = now.getSeconds() + 5
         now.setSeconds new_seconds
         req.session.next_vote = now.getTime()
-        Boulder.vote(req.params['boulder'], req.params['stars'])
+        Boulder.like(req.params['boulder'])
+
+    next()
+
+
+exports.dislike = (req, res, next) ->
+    now = new Date()
+    if req.session.next_vote < now.getTime() or not req.session.next_vote?
+        new_seconds = now.getSeconds() + 5
+        now.setSeconds new_seconds
+        req.session.next_vote = now.getTime()
+        Boulder.dislike(req.params['boulder'])
 
     next()
 

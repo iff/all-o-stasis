@@ -57,11 +57,11 @@ class BoulderView extends View
         return @req.boulder.sector
 
     totalStars: ->
-        return 1 if @req.boulder.stars.length is 0
-        return @req.boulder.stars.length
+        return 0
 
     starsCount: ->
         count = [0,0,0]
+        return count
         for star in @req.boulder.stars
             count[star-1] += 1
         return count
