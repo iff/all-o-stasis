@@ -180,7 +180,7 @@ exports.loadProfile = (req, res, next) ->
                 return renderError req, res, 500, { err } if err
                 req.setter_boulders = setter_boulders; next()
     else
-        res.redirect "/login"; next()
+        res.redirect "/login"
 
 
 exports.createBoulder = (req, res, next) ->
