@@ -18,11 +18,14 @@
             = set.name
 
   div.boulder_rating
-    li.vote
-      a(href='/boulder/#{boulder._id}/like', data-method='post')
-        = "↟"
-      a(href='/boulder/#{boulder._id}/dislike', data-method='post')
-        = "↡"
+    a(href='/boulder/#{boulder._id}/like', data-method='post')
+      = "↟"
+    a(href='/boulder/#{boulder._id}/dislike', data-method='post')
+      = "↡"
+    span.index(style="width: #{dislikesPixels}px; background: red; float: right; height: 15px;")
+      = "&nbsp;"
+    span.index(style="width: #{likesPixels}px; background: green; float: right; height: 15px;")
+      = "&nbsp;"
 
   div.boulder_sector
     img(src="/sectors/Sektoren_#{sector}.svg")

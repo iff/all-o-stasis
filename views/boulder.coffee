@@ -56,15 +56,23 @@ class BoulderView extends View
     sector: ->
         return @req.boulder.sector
 
-    totalStars: ->
-        return 0
+    likes: ->
+        if @req.boulder.likes?
+            return @req.boulder.likes
+        else
+            return 0
 
-    starsCount: ->
-        count = [0,0,0]
-        return count
-        for star in @req.boulder.stars
-            count[star-1] += 1
-        return count
+    likesPixels: ->
+        return @likes * 200 / (@likes + @dislikes)
+
+    dislikes: ->
+        if @req.boulder.dislikes?
+            return @req.boulder.dislikes
+        else
+            return 0
+
+    dislikesPixels: ->
+        return @dislikes * 200 / (@likes + @dislikes)
 
     hasBeenRemoved: ->
         return @req.boulder.removed?

@@ -26,6 +26,17 @@ class BoulderListView extends View
             boulder.prettySetters = setterNicknames boulder.setters, @req.setters
             boulder.prettyDate    = boulder.formattedDate()
 
+            likes = 0
+            dislikes = 0
+
+            if boulder.likes?
+                likes = boulder.likes
+            if boulder.dislikes?
+                dislikes = boulder.dislikes
+
+            boulder.likes = likes * 60 / (likes + dislikes)
+            boulder.dislikes = dislikes * 60 / (likes + dislikes)
+
             boulder
 
 module.exports = BoulderListView
