@@ -90,6 +90,9 @@ BoulderSchema.statics =
 
 
 BoulderSchema.methods =
+    rating: ->
+        return @likes - @dislikes
+
     colorName: ->
         switch @grade
             when '0' then 'yellow'

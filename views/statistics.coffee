@@ -1,5 +1,5 @@
 View = require('../view')
-{ setterNicknames } = require '../app/helpers'
+{ setterNicknames, computeBayesianRating } = require '../app/helpers'
 { _ } = require 'underscore'
 
 class IndexView extends View
@@ -20,8 +20,7 @@ class IndexView extends View
         return percentages
 
     top10: ->
-        return null
-        top = computeBayesianRating(@req.boulders)
+        top = computeBayesianRating @req.boulders
 
         if top.length is 0
             return null
