@@ -22,10 +22,13 @@
       = "↟"
     a(href='/boulder/#{boulder._id}/dislike', data-method='post')
       = "↡"
-    span.index(style="width: #{dislikesPixels}px; background: red; float: right; height: 15px;")
+    span.dislikes_small(style="width: #{dislikesPixels}px; float: right; height: 15px;")
       = "&nbsp;"
-    span.index(style="width: #{likesPixels}px; background: green; float: right; height: 15px;")
+    span.likes_small(style="width: #{likesPixels}px; float: right; height: 15px;")
       = "&nbsp;"
+    br
+    span(style="font-size: 10pt; float: right; margin-top: -20px;")
+      | #{likes} likes, #{dislikes} dislikes
 
   div.boulder_sector
     img(src="/sectors/Sektoren_#{sector}.svg")

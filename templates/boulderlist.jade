@@ -24,9 +24,9 @@
                   a(href="/boulder/#{list[id].id}", class="#{list[id].color}")
                     = list[id].gradenr
 
-                span.index(style="display:inline-block; width: #{list[id].likes}px; background: green; height: 11px;")
+                span.likes_small(style="width: #{list[id].likes}px;")
                   = "&nbsp;"
-                span.index(style="display:inline-block; width: #{list[id].dislikes}px; background: red; height: 11px;")
+                span.dislikes_small(style="width: #{list[id].dislikes}px;")
                   = "&nbsp;"
 
           div(style="padding-left:50px; margin-left:10px; border-left:2px solid gray;height:3px;")
