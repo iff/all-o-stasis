@@ -1,5 +1,5 @@
 View = require '../view'
-{ setterNicknames, meanStarRating, computeBayesianRating} = require '../app/helpers'
+{ setterNicknames, computeBayesianRating} = require '../app/helpers'
 { _ } = require 'underscore'
 
 Futures = require 'futures'
@@ -37,13 +37,13 @@ class SetterView extends View
         active = []
 
         for boulder in @req.setter_boulders
-            if boulder.stars.length isnt 0 and not boulder.removed?
+            if not boulder.removed?
                 active.push(boulder)
 
         top = computeBayesianRating(active)
 
         top_boulder = (_.first(top, 1))[0]
-        if top_boulder?
+        if top_boulder? and top_boulder.bayesian_rating > -10000
             top_boulder.color = top_boulder.colorName()
             return top_boulder
         else
@@ -79,7 +79,6 @@ class SetterView extends View
             boulder.color = boulder.colorName()
             boulder.prettySetters = setterNicknames boulder.setters, @req.setters
             boulder.prettyDate    = boulder.formattedDate()
-            boulder.mean_stars    = meanStarRating boulder
 
             boulder
 
