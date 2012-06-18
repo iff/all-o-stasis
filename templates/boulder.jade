@@ -18,10 +18,12 @@
             = set.name
 
   div.boulder_rating
-    a(href='/boulder/#{boulder._id}/like', data-method='post')
-      = "↟"
-    a(href='/boulder/#{boulder._id}/dislike', data-method='post')
-      = "↡"
+    div.boulder(style="width: 68px; float: left;")
+      a(href='/boulder/#{boulder._id}/like', data-method='post')
+        = "☺like"
+    div.boulder(style="width: 102px; float: left; margin-left: 20px;")
+      a(href='/boulder/#{boulder._id}/dislike', data-method='post')
+        = "☹dislike"
     span.dislikes_small(style="width: #{dislikesPixels}px; float: right; height: 15px;")
       = "&nbsp;"
     span.likes_small(style="width: #{likesPixels}px; float: right; height: 15px;")
