@@ -1,6 +1,6 @@
 { _ } = require('underscore')
 View = require('../view')
-{ setterNicknames, meanStarRating } = require '../app/helpers'
+{ setterNicknames } = require '../app/helpers'
 
 class ProfileView extends View
 
@@ -74,17 +74,6 @@ class ProfileView extends View
             boulders_per_grade[boulder.grade] += 1
 
         return boulders_per_grade
-
-
-    boulders: ->
-        for boulder in @req.setter_boulders
-
-            boulder.color = boulder.colorName()
-            boulder.prettySetters = setterNicknames boulder.setters, @req.setters
-            boulder.prettyDate    = boulder.formattedDate()
-            boulder.mean_stars    = meanStarRating boulder
-
-            boulder
 
 
 module.exports = ProfileView
