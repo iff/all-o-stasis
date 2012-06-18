@@ -20,7 +20,7 @@ class IndexView extends View
         return percentages
 
     top10: ->
-        top = computeBayesianRating(@req.boulders)
+        top = computeBayesianRating @req.boulders
 
         if top.length is 0
             return null
@@ -28,7 +28,7 @@ class IndexView extends View
         top_ten = _.first(top, 10)
 
         for topb in top_ten
-            topb.color = topb.colorName()
+            topb.color         = topb.colorName()
             topb.prettySetters = setterNicknames topb.setters, @req.setters
             topb.prettyDate    = topb.formattedDate()
             topb.num_rating    = topb.bayesian_rating
