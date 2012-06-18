@@ -41,5 +41,4 @@
                   span(class="#{top10[id].color}", style="display:inline-block;width:100px;")
                     a(href="/boulder/#{top10[id].id}", class="#{top10[id].color}")
                       = top10[id].gradenr
-                  -if (top10[id].likes)
-                    = (top10[id].num_rating).toFixed(2)
+                  = (top10[id].num_rating).toFixed(2)
