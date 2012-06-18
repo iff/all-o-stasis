@@ -15,8 +15,10 @@
             -for (var setter in grade_list[id].prettySetters)
               a(href="/setter/#{grade_list[id].prettySetters[setter]}")
                 = grade_list[id].prettySetters[setter] + " "
-          = grade_list[id].prettyDate
-          -if (grade_list[id].stars.length)
-            span(style="display:inline-block;width: 30px;")
-            = grade_list[id].mean_stars
+          span(style="display:inline-block;width: 120px;")
+            = grade_list[id].prettyDate
 
+          - if (list[id].likes > 0)
+            span.likes_small(style="width: #{list[id].likes}px;")
+          - if (list[id].dislikes > 0)
+            span.dislikes_small(style="width: #{list[id].dislikes}px;")
