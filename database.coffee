@@ -38,16 +38,17 @@ Setter = mongoose.model 'setter'
 
 
 BoulderSchema = new Schema
-    setters : { type : [ ObjectID ], required : true                     },
-    grade   : { type : String,       required : true                     },
-    gradenr : { type : Number,       required : true                     },
-    sector  : { type : Number,       required : true                     },
-    date    : { type : Date,         required : false, default: Date.now },
-    removed : { type : Date,         required : false, default: null     },
-    stars   : { type : [ Number ],   required : false, default: []       },
-    name    : { type : String,       required : false, default: ""       },
-    comments: { type : [ String ],   requried : false, default: []       },
-    addedBy : { type : ObjectID,     required : false                    }
+    setters  : { type : [ ObjectID ], required : true                     },
+    grade    : { type : String,       required : true                     },
+    gradenr  : { type : Number,       required : true                     },
+    sector   : { type : Number,       required : true                     },
+    date     : { type : Date,         required : false, default: Date.now },
+    removed  : { type : Date,         required : false, default: null     },
+    likes    : { type : Number,       required : false, default: 0        },
+    dislikes : { type : Number,       required : false, default: 0        },
+    name     : { type : String,       required : false, default: ""       },
+    comments : { type : [ String ],   requried : false, default: []       },
+    addedBy  : { type : ObjectID,     required : false                    }
 
 
 BoulderSchema.statics =
@@ -73,8 +74,12 @@ BoulderSchema.statics =
                     setter.gradingLevel = setter.gradingLevel - 1
                     setter.save()
 
-    vote: (id, nr_stars) ->
-        Boulder.update {_id: id}, {$push: {stars : nr_stars}}, (err, boulder) ->
+    like: (id) ->
+        Boulder.update {_id: id}, {$inc: {likes : 1}}, (err, boulder) ->
+            console.log err if err
+
+    dislike: (id) ->
+        Boulder.update {_id: id}, {$inc: {dislikes : 1}}, (err, boulder) ->
             console.log err if err
 
     unscrew: (id) ->
@@ -86,7 +91,7 @@ BoulderSchema.statics =
 
 BoulderSchema.methods =
     rating: ->
-        @stars.reduce(((a, x) -> a + x), 0) / @stars.length || 0
+        return @likes - @dislikes
 
     colorName: ->
         switch @grade

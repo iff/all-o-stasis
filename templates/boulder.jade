@@ -16,18 +16,21 @@
             span(style="display:inline-block;width:40px;")
               img(class="mini_avatar", style="float:left;", src="/avatars/#{set.nickname}_small.jpg")
             = set.name
-      li.vote
-        a(href='/boulder/#{boulder._id}/vote/1', data-method='post')
-          = "* &nbsp;&nbsp;"
-        a(href='/boulder/#{boulder._id}/vote/2', data-method='post')
-          = "** &nbsp;"
-        a(href='/boulder/#{boulder._id}/vote/3', data-method='post')
-          = "***"
 
   div.boulder_rating
-    div(class="boulder_star1", style="height:#{starsCount[0]/totalStars*50 + 1}px; margin-top:#{50 - starsCount[0]/totalStars*50 + 1}px")
-    div(class="boulder_star2", style="height:#{starsCount[1]/totalStars*50 + 1}px; margin-top:#{50 - starsCount[1]/totalStars*50 + 1}px")
-    div(class="boulder_star3", style="height:#{starsCount[2]/totalStars*50 + 1}px; margin-top:#{50 - starsCount[2]/totalStars*50 + 1}px")
+    div.boulder(style="width: 68px; float: left;")
+      a(href='/boulder/#{boulder._id}/like', data-method='post')
+        = "☺like"
+    div.boulder(style="width: 102px; float: left; margin-left: 20px;")
+      a(href='/boulder/#{boulder._id}/dislike', data-method='post')
+        = "☹dislike"
+    span.dislikes_small(style="width: #{dislikesPixels}px; float: right; height: 15px;")
+      = "&nbsp;"
+    span.likes_small(style="width: #{likesPixels}px; float: right; height: 15px;")
+      = "&nbsp;"
+    br
+    span(style="font-size: 10pt; float: right; margin-top: -20px;")
+      | #{likes} likes, #{dislikes} dislikes
 
   div.boulder_sector
     img(src="/sectors/Sektoren_#{sector}.svg")

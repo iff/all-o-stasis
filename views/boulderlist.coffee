@@ -1,5 +1,5 @@
 View = require('../view')
-{ setterNicknames, meanStarRating } = require '../app/helpers'
+{ setterNicknames } = require '../app/helpers'
 
 class BoulderListView extends View
 
@@ -25,7 +25,17 @@ class BoulderListView extends View
             boulder.color = boulder.colorName()
             boulder.prettySetters = setterNicknames boulder.setters, @req.setters
             boulder.prettyDate    = boulder.formattedDate()
-            boulder.mean_stars    = meanStarRating boulder
+
+            likes = 0
+            dislikes = 0
+
+            if boulder.likes?
+                likes = boulder.likes
+            if boulder.dislikes?
+                dislikes = boulder.dislikes
+
+            boulder.likes = likes * 60 / (likes + dislikes)
+            boulder.dislikes = dislikes * 60 / (likes + dislikes)
 
             boulder
 
