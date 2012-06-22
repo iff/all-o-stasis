@@ -18,12 +18,12 @@
             = set.name
 
   div.boulder_rating
-    div.boulder(style="width: 68px; float: left;")
+    div.like_button
       a(href='/boulder/#{boulder._id}/like', data-method='post')
-        = "☺like"
-    div.boulder(style="width: 102px; float: left; margin-left: 20px;")
+        = "like"
+    div.dislike_button
       a(href='/boulder/#{boulder._id}/dislike', data-method='post')
-        = "☹dislike"
+        = "dislike"
     span.dislikes_small(style="width: #{dislikesPixels}px; float: right; height: 15px;")
       = "&nbsp;"
     span.likes_small(style="width: #{likesPixels}px; float: right; height: 15px;")
