@@ -1,6 +1,5 @@
 body {
     font        : 14px/1.4 "myriad-pro", sans-serif;
-    font-family : 'Droid Sans', sans-serif;
     font-size   : 14pt;
     background  : #ffffff;
     color       : #000000;
@@ -561,7 +560,7 @@ div.profile_info{
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 5px;
-    width: 47px;
+    padding-right: 5px;
     font-weight: bold;
     background: #57d463;
     vertical-align: center;
@@ -585,7 +584,7 @@ span.likes_small {
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 5px;
-    width: 80px;
+    padding-right: 5px;
     font-weight: bold;
     background: #ff9696;
     vertical-align: center;
