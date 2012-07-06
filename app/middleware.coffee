@@ -63,24 +63,81 @@ exports.loadSearched = (req, res, next) ->
 # ----------------------------------------------------------------------------
 #
 exports.downgradeBoulder = (req, res, next) ->
+    errors = []
+    req.onValidationError (msg) ->
+        errors.push msg
+
+    req.assert('gradenr'     , 'Grade nummer muss eine Zahl zwischen 1 und 50 sein!').isInt()
+    req.assert('gradenr'     , 'Grade nummer muss kleiner als 50 sein!').max(50)
+    req.assert('gradenr'     , 'Grade nummer muss groesser als 0 sein!').min(1)
+
+    if not isSecretValid(req)
+        errors.push 'Falsches secret eingegeben'
+
+    if errors.length
+        req.errors = errors
+        renderTwoColumn req, res, 'boulderlist', 'boulder'
+        return
+
     if req.body.gradenr isnt "" and isAuth(req) and isAdmin(req) and isSecretValid(req)
         Boulder.downgrade(req.params['boulder'], req.body.gradenr)
+
     next()
 
 
 exports.upgradeBoulder = (req, res, next) ->
+    errors = []
+    req.onValidationError (msg) ->
+        errors.push msg
+
+    req.assert('gradenr'     , 'Grade nummer muss eine Zahl zwischen 1 und 50 sein!').isInt()
+    req.assert('gradenr'     , 'Grade nummer muss kleiner als 50 sein!').max(50)
+    req.assert('gradenr'     , 'Grade nummer muss groesser als 0 sein!').min(1)
+
+    if not isSecretValid(req)
+        errors.push 'Falsches secret eingegeben'
+
+    if errors.length
+        req.errors = errors
+        renderTwoColumn req, res, 'boulderlist', 'boulder'
+        return
+
     if req.body.gradenr isnt "" and isAuth(req) and isAdmin(req) and isSecretValid(req)
         Boulder.upgrade(req.params['boulder'], req.body.gradenr)
     next()
 
 
 exports.deleteBoulder = (req, res, next) ->
+    errors = []
+    req.onValidationError (msg) ->
+        errors.push msg
+
+    if not isSecretValid(req)
+        errors.push 'Falsches secret eingegeben'
+
+    if errors.length
+        req.errors = errors
+        renderTwoColumn req, res, 'boulderlist', 'boulder'
+        return
+
     if isAuth(req) and isAdmin(req) and isSecretValid(req)
         req.boulder.remove()
     next()
 
 
 exports.removeBoulder = (req, res, next) ->
+    errors = []
+    req.onValidationError (msg) ->
+        errors.push msg
+
+    if not isSecretValid(req)
+        errors.push 'Falsches secret eingegeben'
+
+    if errors.length
+        req.errors = errors
+        renderTwoColumn req, res, 'boulderlist', 'boulder'
+        return
+
     if isAuth(req) and isSecretValid(req)
         Boulder.unscrew(req.params['boulder'])
     next()

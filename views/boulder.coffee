@@ -7,6 +7,12 @@ Setter = db.model 'setter'
 
 class BoulderView extends View
 
+    errors: ->
+        if @req.errors?
+            return @req.errors
+        else
+            return []
+
     boulder: ->
         return @req.boulder
 

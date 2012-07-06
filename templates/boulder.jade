@@ -5,6 +5,11 @@
     h2= "Boulder"
 
 #minimum-right-content
+  ul
+  - for (var error in errors)
+    li(style="color:#ff8c3c;")
+      = errors[error]
+
   div.boulder_header
     span#boulder_gradenr
       a(href="/stats/grade/#{gradeName}", class="#{gradeName}")
