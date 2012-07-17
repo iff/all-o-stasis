@@ -49,7 +49,7 @@ exports.loadSearched = (req, res, next) ->
         if req.body.gradenr is ""
             res.redirect "/stats/grade/#{fromGradeID req.body.grade}"
         else
-            Boulder.findOne { 'grade' : req.body.grade, 'gradenr' : req.body.gradenr}, (err, boulder) ->
+            Boulder.findOne { 'grade' : req.body.grade, 'gradenr' : req.body.gradenr, 'removed' : null}, (err, boulder) ->
                 if boulder?.id
                     res.redirect "/boulder/#{boulder.id}"
                 else
