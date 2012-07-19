@@ -7,11 +7,23 @@
       -if (team[setter_id].num_boulders_up > 0 || (isAuth && authSetterRole == 'admin'))
         li
           a(href="/setter/#{team[setter_id].nickname}")
-            span(style="display:inline-block;width:70px;")
+            span(style="width:70px;")
               img(class="mini_avatar", style="float:left;", src="/avatars/#{team[setter_id].nickname}_small.jpg")
             = team[setter_id].name
+
       -if (isAuth)
         -if (authSetterRole == 'admin')
           li
-            span
-            = "Diesen Monat: " + team[setter_id].num_this_month + " / 3, Total: " + team[setter_id].num_total
+            div.setter_performance
+              - for (var month in team[setter_id].monthlyTable)
+                - if (team[setter_id].monthlyTable[month] > 2)
+                  span.month_performance.good
+                    = team[setter_id].monthlyTable[month]
+                - else
+                  span.month_performance.bad
+                    = team[setter_id].monthlyTable[month]
+              br
+              span.setter_performance_date.left_date
+                | #{team[setter_id].first_date}
+              span.setter_performance_date.right_date
+                | #{team[setter_id].last_date}

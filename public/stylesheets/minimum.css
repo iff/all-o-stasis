@@ -519,7 +519,6 @@ img.grade_tag {
 
 #team span {
     display: inline-block;
-    min-width: 55px;
 }
 
 #team a {
@@ -530,6 +529,42 @@ img.grade_tag {
 #team a:hover {
     color: #ffffff;
     text-decoration: underline;
+}
+
+span.month_performance {
+    display       : inline-block;
+    height        : 30px;
+    width         : 30px;
+    border        : 1px solid;
+    margin-left   : 5px;
+    margin-bottom : 35px;
+    text-align    : center;
+}
+
+span.good {
+    background : #009f10;
+}
+
+span.bad {
+    background : #9f0000;
+}
+
+span.setter_performance_date {
+    font-size  : 8pt;
+    margin-top : -40px;
+    float      : left;
+}
+
+span.left_date {
+    margin-left : 5px;
+}
+
+span.right_date {
+    margin-left : 255px;
+}
+
+div.setter_performance {
+    overflow : hidden;
 }
 
 /*******************************
