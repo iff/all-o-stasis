@@ -4,7 +4,7 @@
 #minimum-right-content
   ul#team
     - for (var setter_id in team)
-      -if (team[setter_id].num_boulders_up > 0)
+      -if (team[setter_id].num_boulders_up > 0 || authSetterRole == 'admin')
         li
           a(href="/setter/#{team[setter_id].nickname}")
             span(style="display:inline-block;width:70px;")
