@@ -1,7 +1,8 @@
-#minimum-banner
-    != partial(headerPartialName)
-#minimum-content
-    span(id="minimum-layout-left")
-        != partial(leftPartialName)
-    span(id="minimum-layout-right")
-        != partial(rightPartialName)
+!= partial(headerPartialName)
+
+div.container(style="margin-top:90px;")
+  div.row
+    div.span6
+      != partial(leftPartialName)
+    div.span6
+      != partial(rightPartialName)

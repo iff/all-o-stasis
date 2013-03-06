@@ -1,33 +1,31 @@
-#minimum-left-title
-  h2 Boulders chronologisch
+h3 Boulders chronologisch
 
-#minimum-left-content
-  .boulderlist
-    // render list of boulders
-    ul#boulderlist
-      - var last_date = '0'
-      - for (var id in list)
-        - if (list[id].prettyDate != last_date)
-          - var last_date = list[id].prettyDate
-          li
-            = list[id].prettyDate
+.boulderlist
+  // render list of boulders
+  ul#boulderlist
+    - var last_date = '0'
+    - for (var id in list)
+      - if (list[id].prettyDate != last_date)
+        - var last_date = list[id].prettyDate
         li
-          div(style="padding-left:50px; margin-left:10px; border-left:2px solid gray;")
+          = list[id].prettyDate
+      li
+        div(style="padding-left:50px; margin-left:10px; border-left:2px solid gray;")
 
-            div(class="boulder")
-              -for (var setter in list[id].prettySetters)
-                a(href="/setter/#{list[id].prettySetters[setter]}")
-                  img(class="mini_avatar", style="float:left;", src="/avatars/#{list[id].prettySetters[setter]}_small.jpg")
+          div(class="boulder")
+            -for (var setter in list[id].prettySetters)
+              a(href="/setter/#{list[id].prettySetters[setter]}")
+                img(class="mini_avatar", style="float:left;", src="/avatars/#{list[id].prettySetters[setter]}_small.jpg")
 
-              div(class="description")
-                span(class="#{list[id].color}", style="display:inline-block;width:100px;")
-                  a(href="/boulder/#{list[id].id}", class="#{list[id].color}")
-                    = list[id].gradenr
+            div(class="description")
+              span(class="#{list[id].color}", style="display:inline-block;width:100px;")
+                a(href="/boulder/#{list[id].id}", class="#{list[id].color}")
+                  = list[id].gradenr
 
-                - if (list[id].likes > 0)
-                  span.likes_small(style="width: #{list[id].likes}px;")
-                - if (list[id].dislikes > 0)
-                  span.dislikes_small(style="width: #{list[id].dislikes}px;")
+              - if (list[id].likes > 0)
+                span.likes_small(style="width: #{list[id].likes}px;")
+              - if (list[id].dislikes > 0)
+                span.dislikes_small(style="width: #{list[id].dislikes}px;")
 
-          div(style="padding-left:50px; margin-left:10px; border-left:2px solid gray;height:3px;")
+        div(style="padding-left:50px; margin-left:10px; border-left:2px solid gray;height:3px;")
 

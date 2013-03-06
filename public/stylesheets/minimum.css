@@ -28,28 +28,28 @@ img {
     margin-right: auto
 }
 
-h1 {
-    color: #cb4b16;
-    font-size: 48px;
-}
+/*h1 {*/
+    /*color: #cb4b16;*/
+    /*font-size: 48px;*/
+/*}*/
 
-h1, footer {
-    text-align: center;
-    margin: 0 auto
-}
+/*h1, footer {*/
+    /*text-align: center;*/
+    /*margin: 0 auto*/
+/*}*/
 
-h1:before {
-    content: '{'
-}
+/*h1:before {*/
+    /*content: '{'*/
+/*}*/
 
-h1:after {
-    content: '}'
-}
+/*h1:after {*/
+    /*content: '}'*/
+/*}*/
 
-h1:before, h1:after {
-    font-size: 62px;
-    color: #586e75
-}
+/*h1:before, h1:after {*/
+    /*font-size: 62px;*/
+    /*color: #586e75*/
+/*}*/
 
 span.nav {
     text-align: right;
@@ -242,7 +242,8 @@ div.chartlist {
     padding-bottom: 5px;
     width: 300px;
     font-weight: bold;
-    background: #cdc8bc;
+    background: #e9e9e9;
+    /*background: #cdc8bc;*/
     vertical-align: center;
     font-size: 18pt;
     /*text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;*/
@@ -272,6 +273,8 @@ img.logo {
     position    : absolute;
     margin-left : 4px;
     margin-top  : 5px;
+    height      : 40px;
+    z-index     : 100;
 }
 
 #nav {

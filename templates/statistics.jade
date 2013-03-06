@@ -1,44 +1,50 @@
-#minimum-right-title
 
-#minimum-right-content(style="padding-top:15px;")
-  h3= "Es hat " + totalBoulders + " Boulders an der Wand, allez!"
+div.container
+  div.row
+    div.span6
+      h3= "Es hat " + totalBoulders + " Boulders an der Wand, allez!"
 
-  p(style="width: 88%;") Willkommen in der Welt der Minimum-Boulders. Hier findest du aktuelle Infos rund um die Boulderprobleme.
+  div.row
+    div.span6
+      blockquote
+        p(style="width: 88%;")
+          | Willkommen in der Welt der Minimum-Boulders. Hier findest du aktuelle
+          | Infos rund um die Boulderprobleme.
 
-  div.chartlist
-    ul.chartlist
-      - var colors = ["#ffcc00", "#33cc00", "#ff7900", "#0000ff", "#ff0000", "#ffffff"]
-      - var color_labels = ["yellow", "green", "orange", "blue", "red", "white"]
-      - for (var id in histogram)
-        li
-            a(href="/stats/grade/#{color_labels[id]}")&nbsp;
-            span.count
-              #{histogram[id]}
-            span.index(style="width: #{histogram[id]}%; background: #{colors[id]}")
-              = histogram[id]%
+  div.row(style="padding-top:40px;")
+  - var colors = ["#ffcc00", "#33cc00", "#ff7900", "#0000ff", "#ff0000", "#ffffff"]
+  - for (var id in histogram)
+    div.row
+      div.span4
+        div.progress
+          div.bar(style="width: #{histogram[id]}%; background: #{colors[id]};")
+      div.span1
+        h4(style="margin-top:-1px;")= "" + histogram[id] + "%"
 
 
-  div(style="padding-top:20px;")
-    h4= "Top 10 Boulders:"
-    -if(top10)
-      ul#boulderlist(style="padding-left:70px;")
-        - var rank = 1
-        - var rating = top10[0].num_rating
-        - for (var id in top10)
-          - if (top10[id].num_rating > -10000)
-            - if (top10[id].num_rating < rating)
-              - var rank = rank + 1
-              - var rating = top10[id].num_rating
-            li
-              div(class="boulder", style="margin-bottom:5px;width:30px;float:left;text-align:center;")
-                =rank
-             div(class="boulder", style="margin-bottom:5px;width:310px;")
-                -for (var setter in top10[id].prettySetters)
-                  a(href="/setter/#{top10[id].prettySetters[setter]}")
-                    img(class="mini_avatar", style="float:left;", src="/avatars/#{top10[id].prettySetters[setter]}_small.jpg")
 
-                div(class="description", style="margin-left: 25px;")
-                  span(class="#{top10[id].color}", style="display:inline-block;width:100px;")
-                    a(href="/boulder/#{top10[id].id}", class="#{top10[id].color}")
-                      = top10[id].gradenr
-                  = (top10[id].num_rating).toFixed(2)
+  div.row(style="padding-top:20px;")
+    div.span6
+      h4= "Top 10 Boulders"
+      -if(top10)
+        ul#boulderlist(style="padding-left:70px; padding-top: 20px;")
+          - var rank = 1
+          - var rating = top10[0].num_rating
+          - for (var id in top10)
+            - if (top10[id].num_rating > -10000)
+              - if (top10[id].num_rating < rating)
+                - var rank = rank + 1
+                - var rating = top10[id].num_rating
+              li
+                div(class="boulder", style="margin-bottom:5px;width:30px;float:left;text-align:center;")
+                  =rank
+                div(class="boulder", style="margin-bottom:5px;width:310px;")
+                  -for (var setter in top10[id].prettySetters)
+                    a(href="/setter/#{top10[id].prettySetters[setter]}")
+                      img(class="mini_avatar", style="float:left;", src="/avatars/#{top10[id].prettySetters[setter]}_small.jpg")
+
+                  div(class="description", style="margin-left: 25px;")
+                    span(class="#{top10[id].color}", style="display:inline-block;width:100px;")
+                      a(href="/boulder/#{top10[id].id}", class="#{top10[id].color}")
+                        = top10[id].gradenr
+                    = (top10[id].num_rating).toFixed(2)

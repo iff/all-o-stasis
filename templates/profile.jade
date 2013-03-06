@@ -1,35 +1,38 @@
-#minimum-left-title
+div.container
+  div.row
+    div.span6
+      h3= authSetterName
 
-#minimum-left-content
-  h2= authSetterName
+  div.row
+    div.span6
+      div.media
+        a.pull-left(href="#")
+          span.shadow
+            img.media-object(src="#{avatar}")
+        div.media-body(style="margin-left: 120px;")
+          div.span5
+            blockquote
+              small
+                = "Total " + totalBoulders + " Boulders"
+            blockquote
+              small
+                = bouldersThisMonth + "/3 Boulders im " + thisMonth
+            blockquote
+              small
+                = percentMinimumBoulders + "% vom Minimum"
 
-  span.avatar
-    span(class="shadow")
-      img(src="#{avatar}", width="100px")
+  div.row(style="padding-top:20px;")
+    div.span4
+      a(href="/change/pw", class="btn btn-small btn-primary") Passwort aendern
+      &nbsp;
+      a(href="/change/secret", class="btn btn-small btn-primary") Secret aendern
 
-  div.profile_info
-    ul#profileinfo
-      li
-        = "Total: " + totalBoulders
-      li
-        = bouldersThisMonth + " von 3 Boulders geschraubt im " + thisMonth
-      li
-        = percentMinimumBoulders + "% von den Boulders im Minimum"
-      li
-        a(href='/change/pw') Passwort aendern
-        = " || "
-        a(href='/change/secret') Secret aendern
-
-  div.setter_histogram
-    div.chartlist
-      ul.chartlist
-        - var colors = ["#ffcc00", "#33cc00", "#ff7900", "#0000ff", "#ff0000", "#ffffff"]
-        - var color_labels = ["yellow", "green", "orange", "blue", "red", "white"]
-        - for (var id in histogram)
-          li
-              a(href="/stats/grade/#{color_labels[id]}")&nbsp;
-              span.count
-                #{histogram[id]}
-              span.index(style="width: #{histogram[id]/maxBoulder*75}%; background: #{colors[id]}")
-                = histogram[id]%
-
+  div.row(style="padding-top:60px;")
+  - var colors = ["#ffcc00", "#33cc00", "#ff7900", "#0000ff", "#ff0000", "#ffffff"]
+  - for (var id in histogram)
+    div.row
+      div.span4
+        div.progress
+          div.bar(style="width: #{histogram[id]/maxBoulder*75}%; background: #{colors[id]};")
+      div.span1
+        h4(style="margin-top:-1px;")= "" + histogram[id] + "%"

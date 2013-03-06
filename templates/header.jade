@@ -1,13 +1,40 @@
-#minimum-banner-content
-  a(href="http://www.minimum-bouldering.ch")
-    img.logo(src="/images/Minimum Logo.svg")
-  ul#nav
-    li: a(href='/') Boulderliste
-    li: a(href='/team') Team
-    li: a(href='/search') Bouldersuche
-    -if (isAuth)
-      li: a(href='/balance') Gleichgewicht
-      li: a(href='/profile') Neuer Boulder
-      li: a(href='/logout') Logout
-    -else
-      li: a(href='/login') Login
+div.navbar.navbar-inverse.navbar-fixed-top
+  div.navbar-inner
+    div.container
+
+      a.btn.btn-navbar(data-toggle="collapse", data-target=".nav-collapse")
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+
+      a.brand(href="/")
+        a(href="http://www.minimum-bouldering.ch")
+          img.logo(src="/images/Minimum Logo w.png")
+
+      div.nav-collapse
+        ul.nav.pull-right
+          li: a(href='/') Boulderliste
+          li: a(href='/team') Team
+          li: a(href='/search') Bouldersuche
+
+          -if (isAuth)
+            li.divider-vertical
+            li: a(href='/balance') Gleichgewicht
+            li: a(href='/profile') Neuer Boulder
+            li: a(href='/logout') Logout
+          -else
+            li.divider-vertical
+            li.dropdown
+              a(href="#", class="dropdown-toggle", data-toggle="dropdown")
+                | External
+                b.caret
+              ul.dropdown-menu
+                li
+                  a(href="http://www.minimum-bouldering.ch")
+                    | Minimum Bouldering
+                li
+                  a(href="http://www.kundalini.ch")
+                    | Kundalini
+            li.divider-vertical
+            li: a(href='/login') Login
+
