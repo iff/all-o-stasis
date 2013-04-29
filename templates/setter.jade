@@ -42,13 +42,3 @@
             span.active
               a(href="/boulder/#{boulders[id].id}", class="#{boulders[id].color}")
                 = boulders[id].gradenr
-
-  div.setter_boulders
-    // render list of boulders
-    ul#setter-boulderlist
-      - for (var id in boulders)
-        -if(boulders[id].removed)
-          li.removed
-            span.removed
-              a(href="/boulder/#{boulders[id].id}", class="#{boulders[id].color}")
-                = boulders[id].gradenr
