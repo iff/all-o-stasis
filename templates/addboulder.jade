@@ -8,6 +8,8 @@ div.container
       ul
       - for (var error in errors)
         div.alert.alert-error
+          button(type="button", class="close", data-dismiss="alert")
+            = "&times;"
           = errors[error]
 
       - var nicks = setternicknames

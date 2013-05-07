@@ -69,7 +69,7 @@ class BoulderView extends View
             return 0
 
     likesPixels: ->
-        return @likes * 200 / (@likes + @dislikes)
+        return @likes * 100 / (@likes + @dislikes)
 
     dislikes: ->
         if @req.boulder.dislikes?
@@ -78,7 +78,7 @@ class BoulderView extends View
             return 0
 
     dislikesPixels: ->
-        return @dislikes * 200 / (@likes + @dislikes)
+        return @dislikes * 100 / (@likes + @dislikes)
 
     hasBeenRemoved: ->
         return @req.boulder.removed?

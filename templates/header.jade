@@ -17,24 +17,17 @@ div.navbar.navbar-inverse.navbar-fixed-top
           li: a(href='/team') Team
           li: a(href='/search') Bouldersuche
 
+          li.divider-vertical
           -if (isAuth)
-            li.divider-vertical
-            li: a(href='/balance') Gleichgewicht
-            li: a(href='/profile') Neuer Boulder
-            li: a(href='/logout') Logout
-          -else
-            li.divider-vertical
             li.dropdown
               a(href="#", class="dropdown-toggle", data-toggle="dropdown")
-                | External
+                | #{authSetterName}
                 b.caret
               ul.dropdown-menu
-                li
-                  a(href="http://www.minimum-bouldering.ch")
-                    | Minimum Bouldering
-                li
-                  a(href="http://www.kundalini.ch")
-                    | Kundalini
-            li.divider-vertical
+                li: a(href='/balance') Gleichgewicht
+                li: a(href='/profile') Neuer Boulder
+                li.divider
+                li: a(href='/logout') Logout
+          -else
             li: a(href='/login') Login
 

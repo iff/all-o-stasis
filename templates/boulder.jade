@@ -1,8 +1,8 @@
 #minimum-right-title
   -if (name)
     h2= name
-  -else
-    h2= "Boulder"
+  //--else
+    //-h2= "Boulder"
 
 #minimum-right-content
   ul
@@ -19,34 +19,31 @@
         li
           a(href="/setter/#{set.nickname}")
             span(style="display:inline-block;width:40px;")
-              img(class="mini_avatar", style="float:left;", src="/avatars/#{set.nickname}_small.jpg")
+              img(class="mini_avatar", src="/avatars/#{set.nickname}_small.jpg")
             = set.name
 
   div.boulder_rating
-    div.like_button
-      a(href='/boulder/#{boulder._id}/like', data-method='post')
-        = "like"
-    div.dislike_button
-      a(href='/boulder/#{boulder._id}/dislike', data-method='post')
-        = "dislike"
-    span.dislikes_small(style="width: #{dislikesPixels}px; float: right; height: 15px;")
-      = "&nbsp;"
-    span.likes_small(style="width: #{likesPixels}px; float: right; height: 15px;")
-      = "&nbsp;"
-    br
-    span(style="font-size: 10pt; float: right; margin-top: -20px;")
-      | #{likes} likes, #{dislikes} dislikes
+    a.btn(href='/boulder/#{boulder._id}/like', data-method='post')
+      i.icon-thumbs-up
+    a.btn(href='/boulder/#{boulder._id}/dislike', data-method='post')
+      i.icon-thumbs-down
+    div.progress(style="width: 100%;")
+      div.bar.bar-success(style="width: #{likesPixels}%;")
+      div.bar.bar-danger(style="width: #{dislikesPixels}%;")
+      span(style="font-size: 10pt; float: right; margin-top: -18px; margin-right: 4px;")
+        | #{likes} like(s), #{dislikes} dislike(s)
 
-  div.boulder_sector
+  div.well.boulder_sector(style="margin-top:20px;")
     img(src="/sectors/Sektoren_#{sector}.svg")
 
   div.boulder_comment
     -if (boulder.comments != "")
-      h4= "Infos: "
-        = boulder.comments
+      div.well
+        h4= "Infos: "
+          = boulder.comments
 
   -if (isAuth)
-    div.boulder_actions
+    div.well.boulder_actions
       h4= "Aktionen"
       form(action="/boulder/#{boulder._id}/remove", method="post")
         input(type="password", name="secret", placeholder="secret", style="width:50px;")
