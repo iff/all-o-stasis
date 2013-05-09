@@ -25,17 +25,17 @@ isSecretValid = (req) ->
 #
 exports.loadBoulders = (req, res, next) ->
     req.bs = {}
-    Boulder.find().sort('date', '-1').exec (err, boulders) ->
+    Boulder.find().sort({date: -1}).exec (err, boulders) ->
         return renderError req, res, 500, { err } if err
         req.all_boulders = boulders; next()
 
 exports.loadActiveBoulders = (req, res, next) ->
-    Boulder.find({ 'removed' : null }).sort('date', '-1', 'grade', '1', 'gradenr', '1').exec (err, boulders) ->
+    Boulder.find({ 'removed' : null }).sort({date: -1, grade: 1, gradenr: 1}).exec (err, boulders) ->
         return renderError req, res, 500, { err } if err
         req.boulders = boulders; next()
 
 exports.loadInactiveBoulders = (req, res, next) ->
-    Boulder.find({ 'removed' : {$ne: null} }).sort('date', '-1').exec (err, boulders) ->
+    Boulder.find({ 'removed' : {$ne: null} }).sort({date: -1}).exec (err, boulders) ->
         return renderError req, res, 500, { err } if err
         req.inactive_boulders = boulders; next()
 
@@ -202,7 +202,7 @@ exports.changeSecret = (req, res, next) ->
 # ----------------------------------------------------------------------------
 #
 exports.loadSetters = (req, res, next) ->
-    Setter.find().sort('nickname', '1').exec (err, setters) ->
+    Setter.find().sort({nickname: 1}).exec (err, setters) ->
         return renderError req, res, 500, { err } if err
         req.setters = setters; next()
 
@@ -244,7 +244,7 @@ exports.loadProfile = (req, res, next) ->
         Setter.findOne { '_id':  req.session.auth_setter_id}, (err, setter) ->
             return renderError req, res, 500, { err } if err
             req.setter = setter
-            Boulder.find({ 'setters' : req.setter._id}).sort('date', '-1').exec (err, setter_boulders) ->
+            Boulder.find({ 'setters' : req.setter._id}).sort({date: -1}).exec (err, setter_boulders) ->
                 return renderError req, res, 500, { err } if err
                 req.setter_boulders = setter_boulders; next()
     else
