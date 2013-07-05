@@ -6,12 +6,7 @@
   -if (isAuth)
     = "Hallo " + authSetterName + " schon angemeldet, logout!"
   -else
-    form(action="/login", method="post")
-      p.text.grade
-        input(type="text", name="nickname", placeholder="nickname")
-        input(type="password", name="password", placeholder="password")
-
-      p.text.search
-        submit
-          button
-            span login
+    form.form-inline(action="/login", method="post")
+      input(type="text", name="nickname", placeholder="nickname")
+      input(type="password", name="password", placeholder="password")
+      button.btn-primary(type="submit", class="btn") Login

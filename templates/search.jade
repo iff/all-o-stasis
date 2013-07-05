@@ -1,21 +1,20 @@
 h3 Bouldersuche
 
-div.container
-  div.row
-    div.span6
+div.row
+  div.span6
 
-      -if (errorMsg)
-        div.alert.alert-error
-          = errorMsg
+    -if (errorMsg)
+      div.alert.alert-error
+        = errorMsg
 
-      form.form-inline(action="/search", method="post")
-        select(name="grade")
-          option(value= "0") Gelb   [1a  -- 4c]
-          option(value= "1") Gruen  [5a  -- 6a]
-          option(value= "2") Orange [6a+ -- 6b+]
-          option(value= "3") Blau   [6c  -- 7a]
-          option(value= "4") Rot    [7a+ -- 7b+]
-          option(value= "5") Weiss  [7c  -- ?]
-        input.input-small(type="text", name="gradenr", placeholder="gradenr")
-        button.btn-primary(type="submit", class="btn") Suchen
+    form.form-inline(action="/search", method="post")
+      select(name="grade")
+        option(value= "0") Gelb   [1a  -- 4c]
+        option(value= "1") Gruen  [5a  -- 6a]
+        option(value= "2") Orange [6a+ -- 6b+]
+        option(value= "3") Blau   [6c  -- 7a]
+        option(value= "4") Rot    [7a+ -- 7b+]
+        option(value= "5") Weiss  [7c  -- ?]
+      input.input-small(type="text", name="gradenr", placeholder="gradenr")
+      button.btn-primary(type="submit", class="btn") Suchen
 

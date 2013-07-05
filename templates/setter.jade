@@ -1,29 +1,26 @@
-div.container
-  div.row
-    div.span6
-      h3= name
+div.row
+  h3= name
 
-  div.row
-    div.span6
-      div.media
-        a.pull-left(href="#")
-          span.shadow
-            img.media-object(src="#{avatar}")
-        div.media-body
-          div.setter_name
-            ul#setter_prop
-              blockquote
-                li
-                  ='bewertet eigene Boulder ' + grading
-                -if (topBoulder)
-                  li
-                    ='hat fuer '
-                    span(class="#{topBoulder.color}", style="display:inline-block;")
-                      a(href="/boulder/#{topBoulder.id}", class="#{topBoulder.color}")
-                        = topBoulder.gradenr
-                    ='&nbsp; die beste Bewertung erhalten'
+div.row
+  div.media
+    a.pull-left(href="#")
+      span.shadow
+        img.media-object(src="#{avatar}")
+    div.media-body
+      div.setter_name
+        ul#setter_prop
+          blockquote
+            li
+              ='bewertet eigene Boulder ' + grading
+            -if (topBoulder)
+              li
+                ='hat fuer '
+                span(class="#{topBoulder.color}", style="display:inline-block;")
+                  a(href="/boulder/#{topBoulder.id}", class="#{topBoulder.color}")
+                    = topBoulder.gradenr
+                ='&nbsp; die beste Bewertung erhalten'
 
-  div.row(style="padding-top:60px;")
+div.row(style="padding-top:60px;")
   - var colors = ["#ffcc00", "#33cc00", "#ff7900", "#0000ff", "#ff0000", "#ffffff"]
   - for (var id in histogram)
     div.row
@@ -34,13 +31,12 @@ div.container
         h4(style="margin-top:-1px;")= "" + histogram[id] + "%"
 
 
-  div.row(style="padding-top:60px;")
-    div.span6
-      ul#setter-boulderlist
-        - for (var id in boulders)
-          -if(! boulders[id].removed)
-            li.active
-              span.active
-                a(href="/boulder/#{boulders[id].id}", class="#{boulders[id].color}")
-                  = boulders[id].gradenr
+div.row(style="padding-top:60px;")
+  ul#setter-boulderlist
+    - for (var id in boulders)
+      -if(! boulders[id].removed)
+        li.active
+          span.active
+            a(href="/boulder/#{boulders[id].id}", class="#{boulders[id].color}")
+              = boulders[id].gradenr
 
