@@ -1,19 +1,22 @@
-View = require('../view')
+View     = require('../view')
+settings = require '../config'
 
 class TeamView extends View
+
+    numMonthlyBoulders: ->
+        return settings.numMonthlyBoulders
 
     team: ->
         for setter in @req.setters
             show_last_num_months = 8
-            monthly_table = {}
+            num_boulders_up      = 0
+            monthly_table        = {}
 
-            num_boulders_up = 0
-
-            now = new Date()
-            year = now.getFullYear()
+            now   = new Date()
+            year  = now.getFullYear()
             month = now.getMonth() - (show_last_num_months - 1 - 1)
             if month <= 0
-                year -= 1
+                year  -= 1
                 month += 12
 
             setter.first_date = [month, year].join('.')
@@ -23,9 +26,7 @@ class TeamView extends View
                     year += 1
                     month = 1
 
-                date_str = [ month
-                        , year
-                        ].join('.')
+                date_str = [ month, year ].join('.')
 
                 monthly_table[date_str] = 0
                 month += 1
@@ -44,7 +45,7 @@ class TeamView extends View
                     if not boulder.removed?
                         num_boulders_up += 1
 
-            setter.monthlyTable = monthly_table
+            setter.monthlyTable    = monthly_table
             setter.num_boulders_up = num_boulders_up
 
             setter

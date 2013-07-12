@@ -474,6 +474,7 @@ img.grade_tag {
 
 #team li {
     display      : block;
+    margin-top   : 10px;
     margin-left  : auto;
     margin-right : auto
 }
@@ -484,11 +485,11 @@ img.grade_tag {
 
 #team a {
     text-decoration : none;
-    color           : #212121;
+    color           : #5e5e5e;
 }
 
 #team a:hover {
-    color           : #ffffff;
+    color           : #5e5e5e;
     text-decoration : underline;
 }
 
@@ -503,11 +504,11 @@ span.month_performance {
 }
 
 span.good {
-    background : #009f10;
+    background : #5ce458;
 }
 
 span.bad {
-    background : #9f0000;
+    background : #e45858;
 }
 
 span.setter_performance_date {
@@ -525,7 +526,9 @@ span.right_date {
 }
 
 div.setter_performance {
-    overflow : hidden;
+    overflow   : hidden;
+    font-size  : 8pt;
+    height     : 45px;
 }
 
 /*******************************

@@ -11,13 +11,14 @@
               img(class="mini_avatar", style="float:left;", src="/avatars/#{team[setter_id].nickname}_small.jpg")
             div(class="description")
               span(style="display:inline-block; width:250px; margin-top:5px; font-size:12px;")
-                = team[setter_id].name
+                a(href="/setter/#{team[setter_id].nickname}")
+                  = team[setter_id].name
 
           - if (isAuth)
-            - if (authSetterRole == 'admin')
-              div.setter_performance
+            div(class="boulder setter_performance")
+              - if (authSetterRole == 'admin')
                 - for (var month in team[setter_id].monthlyTable)
-                  - if (team[setter_id].monthlyTable[month] > 2)
+                  - if (team[setter_id].monthlyTable[month] >= numMonthlyBoulders)
                     span.month_performance.good
                       = team[setter_id].monthlyTable[month]
                   - else
