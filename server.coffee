@@ -1,7 +1,6 @@
 
 express   = require 'express'
 validator = require 'express-validator'
-#up        = require 'up'
 
 app = global.app = express.createServer()
 
@@ -22,8 +21,3 @@ require './app/routes'
 require './app/params'
 app.listen 3000
 
-#master = app.listen 3000
-#srv = up master, __dirname + '/'
-
-#process.on 'SIGUSR2', () ->
-    #srv.reload()
