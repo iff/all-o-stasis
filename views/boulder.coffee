@@ -5,6 +5,8 @@ Futures = require 'futures'
 db = require '../database'
 Setter = db.model 'setter'
 
+{ sectorImage } = require '../app/config-helper'
+
 class BoulderView extends View
 
     errors: ->
@@ -60,7 +62,7 @@ class BoulderView extends View
             return "weiss_#{@req.boulder.gradenr}"
 
     sector: ->
-        return @req.boulder.sector
+        return sectorImage @req.boulder.sector
 
     likes: ->
         if @req.boulder.likes?
