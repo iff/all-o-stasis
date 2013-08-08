@@ -8,7 +8,7 @@ exports.fromGradeID = (grade_id) ->
    return gradeNames[grade_id]
 
 exports.gradeNames = () ->
-    return config.grades.Object.keys()
+    return Object.keys config.grades
 
 exports.gradeValue = (grade_name) ->
     return config.grades[grade_name]
@@ -21,7 +21,7 @@ exports.gradeCSS = (grade_id) ->
 # Sector stuff
 
 exports.sectors = () ->
-    return config.sectors.Object.keys()
+    return Object.keys config.sectors
 
 exports.sectorImage = (sector_name) ->
     return config.sectors[sector_name]

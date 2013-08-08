@@ -1,4 +1,5 @@
-View = require('../view')
+View      = require '../view'
+settings  = require '../app/config-helper'
 
 class AddBoulderView extends View
 
@@ -34,14 +35,7 @@ class AddBoulderView extends View
             return -1
 
     grade_names: ->
-        grades = []
-        grades[0] = "Gelb   [1a  -- 4c]"
-        grades[1] = "Gruen  [5a  -- 6a]"
-        grades[2] = "Orange [6a+ -- 6b+]"
-        grades[3] = "Blau   [6c  -- 7a]"
-        grades[4] = "Rot    [7a+ -- 7b+]"
-        grades[5] = "Weiss  [7c  -- ?]"
-        return grades
+        return settings.gradeNames()
 
     gradenr: ->
         if @req.body.gradenr?
@@ -56,19 +50,7 @@ class AddBoulderView extends View
             return ""
 
     sectors: ->
-        sectors = []
-        sectors[0]  = "11 Block"
-        sectors[1]  = "10"
-        sectors[2]  = "9"
-        sectors[3]  = "8 Platte"
-        sectors[4]  = "7"
-        sectors[5]  = "6 Bug"
-        sectors[6]  = "5"
-        sectors[7]  = "4"
-        sectors[8]  = "3 Dach"
-        sectors[9]  = "2"
-        sectors[10] = "1"
-        return sectors
+        return settings.sectors()
 
     comments: ->
         if @req.body.comments?

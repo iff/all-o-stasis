@@ -23,8 +23,8 @@ h3 Boulders chronologisch
                   = list[id].gradenr
 
               - if (list[id].likes > 0 || list[id].dislikes > 0)
-                span(style="display: inline-block; float:right; margin-right:5px; margin-top:5px;")
-                  div.progress
+                span(style="display: inline-block; float:right; margin-right:5px; margin-top:9px;")
+                  div.progress(style="height: 13px;")
                     div.bar.bar-success(style="width: #{list[id].likes}px;")
                     div.bar.bar-danger(style="width: #{list[id].dislikes}px;")
 

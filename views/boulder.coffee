@@ -1,10 +1,4 @@
-View = require '../view'
-
-Futures = require 'futures'
-
-db = require '../database'
-Setter = db.model 'setter'
-
+View            = require '../view'
 { sectorImage } = require '../app/config-helper'
 
 class BoulderView extends View

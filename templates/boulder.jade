@@ -18,14 +18,20 @@ div.boulder_header
       span#boulder_gradenr
         a(href="/stats/grade/#{gradeName}", class="#{gradeName}")
           = gradeNr
-    div.span4
-      ul#boulder_setters
-        - each set in setters
-          li
-            a(href="/setter/#{set.nickname}")
-              span(style="display:inline-block;width:40px;")
-                img(class="mini_avatar", src="/avatars/#{set.nickname}_small.jpg")
-              = set.name
+    div.span4(style="margin-top:20px;")
+      - each set in setters
+        a(href="/setter/#{set.nickname}")
+          span(style="display:inline-block;width:40px;")
+            img(class="mini_avatar", src="/avatars/#{set.nickname}_small.jpg")
+
+    //-div.span4(style="margin-top: -20px; margin-bottom: 30px;")
+      //-ul#boulder_setters
+        //-- each set in setters
+          //-li
+            //-a(href="/setter/#{set.nickname}")
+              //-span(style="display:inline-block;width:40px;")
+                //-img(class="mini_avatar", src="/avatars/#{set.nickname}_small.jpg")
+              //-= set.name
 
 
 div.row
