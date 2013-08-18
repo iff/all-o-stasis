@@ -1,67 +1,66 @@
-div.container
-  div.row
-    div.span6
-      h3= "Neuer Boulder"
+div.row
+  div.span6
+    h3= "Neuer Boulder"
 
-  div.row
-    div.span6
-      ul
-      - for (var error in errors)
-        div.alert.alert-error
-          button(type="button", class="close", data-dismiss="alert")
-            = "&times;"
-          = errors[error]
+div.row
+  div.span6
+    ul
+    - for (var error in errors)
+      div.alert.alert-error
+        button(type="button", class="close", data-dismiss="alert")
+          = "&times;"
+        = errors[error]
 
-      - var nicks = setternicknames
+    - var nicks = setternicknames
 
-      form(action="/add/boulder", method="post")
-        div.controls.controls-row
-          input.span2(type="text", name="name", placeholder="name", value=bouldername)
-          input.span3(type="text", name="comments", placeholder="comments", value=comments)
-          span.help-inline= "(optional)"
+    form(action="/add/boulder", method="post")
+      div.controls.controls-row
+        input.span2(type="text", name="name", placeholder="name", value=bouldername)
+        input.span3(type="text", name="comments", placeholder="comments", value=comments)
+        span.help-inline= "(optional)"
 
-        hr
+      hr
 
-        div.controls.controls-row
-          select.span3(multiple, name="setter_nicks", size="6")
-            - for (var idx in setters)
-              - var selected = false
-              - for (var nick in nicks)
-                - if(setters[idx].nickname == nicks[nick])
-                  - var selected = true
+      div.controls.controls-row
+        select.span3(multiple, name="setter_nicks", size="6")
+          - for (var idx in setters)
+            - var selected = false
+            - for (var nick in nicks)
+              - if(setters[idx].nickname == nicks[nick])
+                - var selected = true
 
-              - if(selected)
-                option(value="#{setters[idx].nickname}", selected="yes")
-                  = setters[idx].nickname + " [" + setters[idx].name + ']'
-              - else
-                option(value="#{setters[idx].nickname}")
-                  = setters[idx].nickname + " [" + setters[idx].name + ']'
+            - if(selected)
+              option(value="#{setters[idx].nickname}", selected="yes")
+                = setters[idx].nickname + " [" + setters[idx].name + ']'
+            - else
+              option(value="#{setters[idx].nickname}")
+                = setters[idx].nickname + " [" + setters[idx].name + ']'
 
-          select.span3(name="grade", size="6")
-            - for (gr in grade_names)
-              - if (gr != grade)
-                option(value=gr)
-                  =grade_names[gr]
-              - else
-                option(value=gr, selected="yes")
-                  =grade_names[gr]
+        select.span3(name="grade", size="6")
+          - for (gr in grade_names)
+            - if (gr != grade)
+              option(value=gr)
+                =grade_names[gr]
+            - else
+              option(value=gr, selected="yes")
+                =grade_names[gr]
 
-        div.controls.controls-row
-          input.span2(type="text", name="gradenr", placeholder="nr", style="width:50px;", value=gradenr)
+      div.controls.controls-row
+        input.span2(type="text", name="gradenr", placeholder="nr", style="width:50px;", value=gradenr)
 
-          select.span3(name="sector")
-            - for (var idx in sectors)
-              - if (11-idx == sector)
-                option(value="#{11-idx}", selected="yes")
-                  =sectors[idx]
-              - else
-                option(value="#{11-idx}")
-                  =sectors[idx]
+        select.span3(name="sector")
+          - for (var idx in sectors)
+            - if (0 == sector)
+              option(value="#{idx}", selected="yes")
+                =sectors[idx]
+            - else
+              option(value="#{idx}")
+                =sectors[idx]
 
-        hr
+      hr
 
-        div.controls.controls-row
-          input.input-small(type="password", name="secret", placeholder="secret")
+      div.controls.controls-row
+        input.input-small(type="password", name="secret", placeholder="secret")
 
-        div.controls.controls-row
-          button.btn-primary(type="submit", class="btn") Hinzufuegen
+      div.controls.controls-row
+        button.btn-primary(type="submit", class="btn") Hinzufuegen

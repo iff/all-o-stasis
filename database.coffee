@@ -1,7 +1,8 @@
 mongoose = require 'mongoose'
 module.exports = mongoose
+settings = require './config'
 
-mongoose.connect 'mongodb://localhost/minimum'
+mongoose.connect 'mongodb://localhost/' + settings.databaseName
 
 Schema = mongoose.Schema
 ObjectID = Schema.ObjectId

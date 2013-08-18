@@ -24,7 +24,10 @@ exports.sectors = () ->
     return Object.keys config.sectors
 
 exports.sectorImage = (sector_name) ->
-    return config.sectors[sector_name]
-
+    if isNaN sector_name
+        return config.sectors[sector_name]
+    else
+        name = Object.keys(config.sectors)[parseInt(sector_name)]
+        return config.sectors[name]
 
 
