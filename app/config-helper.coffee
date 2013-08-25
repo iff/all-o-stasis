@@ -4,9 +4,6 @@ config = require '../config'
 
 # Grade stuff
 
-exports.fromGradeID = (grade_id) ->
-   return gradeNames[grade_id]
-
 exports.gradeNames = () ->
     return Object.keys config.grades
 

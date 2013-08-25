@@ -1,6 +1,5 @@
 
 { renderTwoColumn, renderError } = require './app'
-{ fromGradeName } = require './helpers'
 
 db      = require('../database')
 Setter  = db.model('setter')

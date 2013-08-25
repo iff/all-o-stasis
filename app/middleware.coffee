@@ -1,7 +1,6 @@
 
 { _ } = require 'underscore'
 { renderTwoColumn, renderError } = require './app'
-{ fromGradeID } = require '../app/helpers'
 
 db      = require('../database')
 Setter  = db.model('setter')

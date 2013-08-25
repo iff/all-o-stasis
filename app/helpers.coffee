@@ -28,21 +28,6 @@ exports.setterNicknames = (ids, setters) ->
     ids.map((id) -> findSetterNick(id, setters)).filter((nick) -> nick isnt null)
 
 
-exports.fromGradeID = (grade_id) ->
-    grade_str = ["yellow", "green", "orange", "blue", "red", "white"]
-    return grade_str[grade_id]
-
-
-exports.fromGradeName = (grade_name) ->
-    switch grade_name
-        when 'yellow' then 0
-        when 'green'  then 1
-        when 'orange' then 2
-        when 'blue'   then 3
-        when 'red'    then 4
-        when 'white'  then 5
-        else               -1
-
 exports.computeBayesianRating = (boulders) ->
         num_boulders_with_votes = 0
         sum_votes = 0
