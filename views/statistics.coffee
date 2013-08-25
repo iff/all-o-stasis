@@ -1,5 +1,6 @@
 View = require('../view')
 { setterNicknames, computeBayesianRating } = require '../app/helpers'
+{ gradeNames, gradeCSS } = require '../app/config-helper'
 { _ } = require 'underscore'
 
 class IndexView extends View
@@ -13,9 +14,12 @@ class IndexView extends View
         {}
 
     histogram: ->
-        percentages = [0, 0, 0, 0, 0, 0]
+        percentages = {}
+        for name in gradeNames()
+            percentages[name] = { val: 0, color: gradeCSS name }
+
         for boulder in @req.boulders
-            percentages[boulder.grade] += 1
+            percentages[boulder.grade].val += 1
 
         return percentages
 
@@ -28,7 +32,7 @@ class IndexView extends View
         top_ten = _.first(top, 10)
 
         for topb in top_ten
-            topb.color         = topb.colorName()
+            topb.color         = gradeCSS topb.grade
             topb.prettySetters = setterNicknames topb.setters, @req.setters
             topb.prettyDate    = topb.formattedDate()
             topb.num_rating    = topb.bayesian_rating

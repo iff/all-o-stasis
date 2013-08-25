@@ -21,14 +21,13 @@ div.row
                 ='&nbsp; die beste Bewertung erhalten'
 
 div.row(style="padding-top:60px;")
-  - var colors = ["#ffcc00", "#33cc00", "#ff7900", "#0000ff", "#ff0000", "#ffffff"]
   - for (var id in histogram)
     div.row
       div.span4
         div.progress
-          div.bar(style="width: #{histogram[id]/maxBoulder*75}%; background: #{colors[id]};")
+          div.bar(style="width: #{histogram[id].val/maxBoulder*75}%; background: #{histogram[id].color};")
       div.span1
-        h4(style="margin-top:-1px;")= "" + histogram[id] + "%"
+        h4(style="margin-top:-1px;")= "" + histogram[id].val + "%"
 
 
 div.row(style="padding-top:60px;")

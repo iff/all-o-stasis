@@ -1,6 +1,7 @@
 { _ } = require('underscore')
 View = require('../view')
 { setterNicknames } = require '../app/helpers'
+{ gradeNames, gradeCSS } = require '../app/config-helper'
 
 class ProfileView extends View
 
@@ -69,11 +70,15 @@ class ProfileView extends View
         return month[now.getMonth()]
 
     histogram: ->
-        boulders_per_grade = [0,0,0,0,0,0]
-        for boulder in @req.setter_boulders
-            boulders_per_grade[boulder.grade] += 1
+        percentages = {}
+        for name in gradeNames()
+            percentages[name] = { val: 0, color: gradeCSS name }
 
-        return boulders_per_grade
+        for boulder in @req.boulders
+            percentages[boulder.grade].val += 1
+
+        return percentages
+
 
 
 module.exports = ProfileView

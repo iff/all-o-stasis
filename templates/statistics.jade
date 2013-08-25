@@ -15,9 +15,9 @@ div.row(style="padding-top:40px;")
   div.row
     div.span4
       div.progress
-        div.bar(style="width: #{histogram[id]}%; background: #{colors[id]};")
+          div.bar(style="width: #{histogram[id].val}%; background: #{histogram[id].color};")
     div.span1
-      h4(style="margin-top:-1px;")= "" + histogram[id] + "%"
+      h4(style="margin-top:-1px;")= "" + histogram[id].val + "%"
 
 
 
