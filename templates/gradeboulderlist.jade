@@ -1,24 +1,22 @@
-#minimum-right-title
-  h2= gradeName + " Boulders im Minimum"
+h2= gradeName + "(e) Boulders im Minimum"
 
-#minimum-right-content
-  .boulderlist
+.boulderlist
 
-    // render list of boulders
-    ul#boulderlist
-      - for (var id in grade_list)
-        li
-          span(class="#{grade_list[id].color}", style="display:inline-block;width:40px;")
-            a(href="/boulder/#{grade_list[id].id}", class="#{grade_list[id].color}")
-              = grade_list[id].gradenr
-          span(style="display:inline-block;width: 90px;")
-            -for (var setter in grade_list[id].prettySetters)
-              a(href="/setter/#{grade_list[id].prettySetters[setter]}")
-                = grade_list[id].prettySetters[setter] + " "
-          span(style="display:inline-block;width: 120px;")
-            = grade_list[id].prettyDate
+  // render list of boulders
+  ul#boulderlist
+    - for (var id in grade_list)
+      li
+        span(class="#{grade_list[id].color}", style="display:inline-block;width:40px;")
+          a(href="/boulder/#{grade_list[id].id}", class="#{grade_list[id].color}")
+            = grade_list[id].gradenr
+        span(style="display:inline-block;width: 90px;")
+          -for (var setter in grade_list[id].prettySetters)
+            a(href="/setter/#{grade_list[id].prettySetters[setter]}")
+              = grade_list[id].prettySetters[setter] + " "
+        span(style="display:inline-block;width: 120px;")
+          = grade_list[id].prettyDate
 
-          - if (list[id].likes > 0)
-            span.likes_small(style="width: #{list[id].likes}px;")
-          - if (list[id].dislikes > 0)
-            span.dislikes_small(style="width: #{list[id].dislikes}px;")
+        - if (list[id].likes > 0)
+          span.likes_small(style="width: #{list[id].likes}px;")
+        - if (list[id].dislikes > 0)
+          span.dislikes_small(style="width: #{list[id].dislikes}px;")

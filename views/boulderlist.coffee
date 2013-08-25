@@ -1,5 +1,6 @@
 View = require('../view')
 { setterNicknames } = require '../app/helpers'
+{ gradeCSS } = require '../app/config-helper'
 
 class BoulderListView extends View
 
@@ -22,7 +23,7 @@ class BoulderListView extends View
     list: ->
         for boulder in @req.boulders
 
-            boulder.color = boulder.colorName()
+            boulder.color = gradeCSS boulder.grade
             boulder.prettySetters = setterNicknames boulder.setters, @req.setters
             boulder.prettyDate    = boulder.formattedDate()
 

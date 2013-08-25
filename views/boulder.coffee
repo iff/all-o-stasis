@@ -1,5 +1,5 @@
-View            = require '../view'
-{ sectorImage } = require '../app/config-helper'
+View = require '../view'
+{ sectorImage, gradeCSS } = require '../app/config-helper'
 
 class BoulderView extends View
 
@@ -27,19 +27,11 @@ class BoulderView extends View
     grade: ->
         return @req.boulder.grade
 
+    gradeCSS: ->
+        return gradeCSS @req.boulder.grade
+
     gradeName: ->
-        if @req.boulder.grade is '0'
-            return "yellow"
-        else if @req.boulder.grade is '1'
-            return "green"
-        else if @req.boulder.grade is '2'
-            return "orange"
-        else if @req.boulder.grade is '3'
-            return "blue"
-        else if @req.boulder.grade is '4'
-            return "red"
-        else if @req.boulder.grade is '5'
-            return "white"
+        return @req.boulder.grade
 
     gradeTag: ->
         if @req.boulder.grade is '0'

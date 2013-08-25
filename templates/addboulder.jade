@@ -39,10 +39,10 @@ div.row
         select.span3(name="grade", size="6")
           - for (gr in grade_names)
             - if (gr != grade)
-              option(value=gr)
+              option(value="#{grade_names[gr]}")
                 =grade_names[gr]
             - else
-              option(value=gr, selected="yes")
+              option(value="#{grade_names[gr]}", selected="yes")
                 =grade_names[gr]
 
       div.controls.controls-row
@@ -51,10 +51,10 @@ div.row
         select.span3(name="sector")
           - for (var idx in sectors)
             - if (0 == sector)
-              option(value="#{idx}", selected="yes")
+              option(value="#{sectors[idx]}", selected="yes")
                 =sectors[idx]
             - else
-              option(value="#{idx}")
+              option(value="#{sectors[idx]}")
                 =sectors[idx]
 
       hr

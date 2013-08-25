@@ -1,5 +1,6 @@
 View = require '../view'
 { setterNicknames, computeBayesianRating} = require '../app/helpers'
+{ gradeCSS } = require '../app/config-helper'
 { _ } = require 'underscore'
 
 Futures = require 'futures'
@@ -76,7 +77,7 @@ class SetterView extends View
     boulders: ->
         for boulder in @req.setter_boulders
 
-            boulder.color = boulder.colorName()
+            boulder.color = gradeCSS boulder.grade
             boulder.prettySetters = setterNicknames boulder.setters, @req.setters
             boulder.prettyDate    = boulder.formattedDate()
 

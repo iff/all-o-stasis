@@ -1,4 +1,5 @@
-View = require('../view')
+View     = require('../view')
+settings = require '../app/config-helper'
 
 class SearchView extends View
 
@@ -7,5 +8,10 @@ class SearchView extends View
             return @req.error_msg
         else
             return ""
+
+    grade_names: ->
+        console.log settings.gradeNames()
+        return settings.gradeNames()
+
 
 module.exports = SearchView

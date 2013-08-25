@@ -42,7 +42,7 @@ BoulderSchema = new Schema
     setters  : { type : [ ObjectID ], required : true                     },
     grade    : { type : String,       required : true                     },
     gradenr  : { type : Number,       required : true                     },
-    sector   : { type : Number,       required : true                     },
+    sector   : { type : String,       required : true                     },
     date     : { type : Date,         required : false, default: Date.now },
     removed  : { type : Date,         required : false, default: null     },
     likes    : { type : Number,       required : false, default: 0        },

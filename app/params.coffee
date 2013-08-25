@@ -19,9 +19,7 @@ app.param 'boulder', (req, res, next, boulder_id) ->
 
 
 app.param 'grade', (req, res, next, grade_name) ->
-    grade_id = fromGradeName grade_name
-
-    Boulder.find({ 'removed' : null, 'grade' : grade_id }).sort({date: -1}).exec (err, boulders) ->
+    Boulder.find({ 'removed' : null, 'grade' : grade_name }).sort({date: -1}).exec (err, boulders) ->
         return renderError req, res, 500, { err } if err
         req.grade_boulders = boulders; next()
 
