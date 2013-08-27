@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>All-o-Stasis by iff</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>All-o-Stasis</h1>
+        <p>Simple nodejs app to manage boulders at Minimum</p>
+
+        <p class="view"><a href="https://github.com/iff/all-o-stasis">View the Project on GitHub <small>iff/all-o-stasis</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/iff/all-o-stasis/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/iff/all-o-stasis/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/iff/all-o-stasis">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="all-o-stasis" class="anchor" href="#all-o-stasis"><span class="octicon octicon-link"></span></a>All-o-stasis</h1>
+
+<p><a href="http://en.wikipedia.org/wiki/Allostasis">"Allostasis is essential in order to maintain internal viability amid
+changing conditions"</a></p>
+
+<p>All-o-stasis is a very simple web interface for route setters and visitors of the
+Minimum boulder gym. The framework provides the following functionality:</p>
+
+<ul>
+<li>tracking all currently available (and history of removed) boulders</li>
+<li>admins can survey the performance of their setters.</li>
+<li>visitors can rate boulders (1 - 3 stars).</li>
+</ul><p>The project is based on nodejs, express, jade and uses mongodb.</p>
+
+<h2>
+<a name="quick-start" class="anchor" href="#quick-start"><span class="octicon octicon-link"></span></a>Quick start</h2>
+
+<p>In order to run the boulder admin install the following dependencies:</p>
+
+<ul>
+<li>
+<a href="http://nodejs.org/">nodejs</a> v0.6.6 or higher</li>
+<li>
+<a href="http://npmjs.org/">npm</a> v1.1.0 or higher</li>
+<li>
+<a href="http://www.mongodb.org/">mongodb</a> v2.0 or higher</li>
+</ul><p>Using npm the rest of the dependencies can be installed:</p>
+
+<pre><code>npm install
+</code></pre>
+
+<p>To start the server</p>
+
+<pre><code>mkdir db (only do that once)
+mongod --dbpath db &amp;
+node_modules/coffee-script/bin/coffee server.coffee
+open localhost:3000 in browser
+</code></pre>
+
+<h3>
+<a name="populating-the-db-testing" class="anchor" href="#populating-the-db-testing"><span class="octicon octicon-link"></span></a>Populating the DB (testing)</h3>
+
+<p>Execute in a mongo shell:</p>
+
+<pre><code>use minimum
+setter = { email: "me@mail.ch", name: "Me", role: "admin", password: "PW", nickname: "ME", secret: "123", gradingLevel: 0 }
+db.setters.save(setter)
+</code></pre>
+
+<p>then visit the webpage, log in and start adding boulders.</p>
+
+<h2>
+<a name="using-all-o-stasis-in-your-gym" class="anchor" href="#using-all-o-stasis-in-your-gym"><span class="octicon octicon-link"></span></a>Using all-o-stasis in your gym?</h2>
+
+<p>Currently the code probably needs quite some tweaking to work for your gym. In
+the (not so near) future I plan to implement a more modular approach abstracting
+common features of climbing gyms. Until then you most probably have to change
+the database layout and code concerning grades.</p>
+
+<p>If you need further assistance feel free to email me.</p>
+
+<h2>
+<a name="contribute" class="anchor" href="#contribute"><span class="octicon octicon-link"></span></a>Contribute</h2>
+
+<p>Send me pull requests or email me patches.</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>The Minimum Logo and sector images are under copyright by the Minimum Boulder
+Gym.</p>
+
+<p>The code is under MIT license, see LICENSE.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/iff">iff</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
