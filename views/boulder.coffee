@@ -50,6 +50,9 @@ class BoulderView extends View
     sector: ->
         return sectorImage @req.boulder.sector
 
+    sectorName: ->
+        return @req.boulder.sector
+
     likes: ->
         if @req.boulder.likes?
             return @req.boulder.likes

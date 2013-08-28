@@ -11,30 +11,23 @@ div.row(style="padding-top:20px;")
     li(style="color:#ff8c3c;")
       = errors[error]
 
-
-div.boulder_header
-  div.row(style="padding-top:20px;")
-    div.span2
-      span#boulder_gradenr
-        a(href="/stats/grade/#{gradeName}", class="#{gradeCSS}")
-          = gradeNr
-    div.span4(style="margin-top:20px;")
+div.row(style="padding-top:20px;")
+  div.span2
+    span#boulder_gradenr
+      a(href="/stats/grade/#{gradeName}", class="#{gradeCSS}")
+        = gradeNr
+    div(style="padding-top:25px;")
       - each set in setters
         a(href="/setter/#{set.nickname}")
           span(style="display:inline-block;width:40px;")
             img(class="mini_avatar", src="/avatars/#{set.nickname}_small.jpg")
+  div.span4
+    span.shadow
+      img(src="/#{sector}")
+    center
+      p(style="padding-top:10px; font-size: 20px;")= sectorName
 
-    //-div.span4(style="margin-top: -20px; margin-bottom: 30px;")
-      //-ul#boulder_setters
-        //-- each set in setters
-          //-li
-            //-a(href="/setter/#{set.nickname}")
-              //-span(style="display:inline-block;width:40px;")
-                //-img(class="mini_avatar", src="/avatars/#{set.nickname}_small.jpg")
-              //-= set.name
-
-
-div.row
+div.row(style="padding-top: 20px;")
   div.boulder_rating
     a.btn(href='/boulder/#{boulder._id}/like', data-method='post')
       i.icon-thumbs-up
@@ -46,18 +39,10 @@ div.row
       span(style="font-size: 10pt; float: right; margin-top: -18px; margin-right: 4px;")
         | #{likes} like(s), #{dislikes} dislike(s)
 
-
 div.row
-  div.well.boulder_sector(style="margin-top:20px;")
-    img(src="/#{sector}")
-
-
-div.row
-  div.boulder_comment
-    -if (boulder.comments != "")
-      div.well
-        h4= "Infos: "
-          = boulder.comments
+  -if (boulder.comments != "")
+    div.well
+      h4= boulder.comments
 
 
 -if (isAuth)
