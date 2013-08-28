@@ -76,10 +76,11 @@ open localhost:3000 in browser
 
 <p>Execute in a mongo shell:</p>
 
-<pre><code>use minimum
-mongo
-setter = { email: "me@mail.ch", name: "Me", role: "admin", password: "PW", \
-           nickname: "ME", secret: "123", gradingLevel: 0 }
+<pre><code>mongo
+use minimum
+setter = { email: "me@mail.ch", name: "Me", role: "admin", \
+           password: "PW", nickname: "ME", secret: "123", \
+           gradingLevel: 0 }
 db.setters.save(setter)
 </code></pre>
 
