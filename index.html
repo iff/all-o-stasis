@@ -29,7 +29,8 @@
       </header>
       <section>
         <h1>
-<a name="all-o-stasis" class="anchor" href="#all-o-stasis"><span class="octicon octicon-link"></span></a>All-o-stasis</h1>
+<a name="all-o-stasis" class="anchor" href="#all-o-stasis"><span
+        class="octicon octicon-link"></span></a>Introduction</h1>
 
 <p><a href="http://en.wikipedia.org/wiki/Allostasis">"Allostasis is essential in order to maintain internal viability amid
 changing conditions"</a></p>
@@ -40,7 +41,7 @@ Minimum boulder gym. The framework provides the following functionality:</p>
 <ul>
 <li>tracking all currently available (and history of removed) boulders</li>
 <li>admins can survey the performance of their setters.</li>
-<li>visitors can rate boulders (1 - 3 stars).</li>
+<li>visitors can like/dislike boulders.</li>
 </ul><p>The project is based on nodejs, express, jade and uses mongodb.</p>
 
 <h2>
@@ -74,7 +75,9 @@ open localhost:3000 in browser
 <p>Execute in a mongo shell:</p>
 
 <pre><code>use minimum
-setter = { email: "me@mail.ch", name: "Me", role: "admin", password: "PW", nickname: "ME", secret: "123", gradingLevel: 0 }
+mongo
+setter = { email: "me@mail.ch", name: "Me", role: "admin", password: "PW", \
+           nickname: "ME", secret: "123", gradingLevel: 0 }
 db.setters.save(setter)
 </code></pre>
 
@@ -83,10 +86,9 @@ db.setters.save(setter)
 <h2>
 <a name="using-all-o-stasis-in-your-gym" class="anchor" href="#using-all-o-stasis-in-your-gym"><span class="octicon octicon-link"></span></a>Using all-o-stasis in your gym?</h2>
 
-<p>Currently the code probably needs quite some tweaking to work for your gym. In
-the (not so near) future I plan to implement a more modular approach abstracting
-common features of climbing gyms. Until then you most probably have to change
-the database layout and code concerning grades.</p>
+<p>The `next` branch contains changes that allow to setup the app with help of
+a config file (sectors, grades, ..). Once the features have been merged to
+master we will add a more indepth setup guide here.</p>
 
 <p>If you need further assistance feel free to email me.</p>
 
@@ -109,6 +111,6 @@ Gym.</p>
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
-    
+
   </body>
 </html>
