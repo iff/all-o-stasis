@@ -164,6 +164,17 @@ exports.dislike = (req, res, next) ->
     next()
 
 
+exports.vote_grade = (req, res, next) ->
+    now = new Date()
+    if req.session.next_vote < now.getTime() or not req.session.next_vote?
+        new_seconds = now.getSeconds() + 2
+        now.setSeconds new_seconds
+        req.session.next_vote = now.getTime()
+        Boulder.vote_grade(req.params['boulder'], req.body.voteGrade)
+
+    next()
+
+
 # ----------------------------------------------------------------------------
 # Actions on a setter
 # ----------------------------------------------------------------------------

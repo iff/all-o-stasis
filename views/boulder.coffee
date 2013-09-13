@@ -1,5 +1,6 @@
 View = require '../view'
 { sectorImage, gradeCSS } = require '../app/config-helper'
+{ gradeNames } = require '../app/config-helper'
 
 class BoulderView extends View
 
@@ -58,6 +59,21 @@ class BoulderView extends View
             return @req.boulder.likes
         else
             return 0
+
+    gradeRatings: ->
+        ratings = {}
+        for name in gradeNames()
+            ratings[name] = { per: 0, val: 0, color: gradeCSS name }
+
+        total = 0
+        for rating in @req.boulder.grade_vote
+            total += rating.count
+
+        for rating in @req.boulder.grade_vote
+            ratings[rating.name].val = rating.count
+            ratings[rating.name].per = rating.count / total * 100
+
+        return ratings
 
     likesPixels: ->
         return @likes * 100 / (@likes + @dislikes)

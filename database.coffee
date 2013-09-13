@@ -39,23 +39,25 @@ Setter = mongoose.model 'setter'
 
 
 BoulderSchema = new Schema
-    setters  : { type : [ ObjectID ], required : true                     },
-    grade    : { type : String,       required : true                     },
-    gradenr  : { type : Number,       required : true                     },
-    sector   : { type : String,       required : true                     },
-    date     : { type : Date,         required : false, default: Date.now },
-    removed  : { type : Date,         required : false, default: null     },
-    likes    : { type : Number,       required : false, default: 0        },
-    dislikes : { type : Number,       required : false, default: 0        },
-    name     : { type : String,       required : false, default: ""       },
-    comments : { type : [ String ],   requried : false, default: []       },
-    addedBy  : { type : ObjectID,     required : false                    }
+    setters    : { type : [ ObjectID ], required : true                     },
+    grade      : { type : String,       required : true                     },
+    gradenr    : { type : Number,       required : true                     },
+    sector     : { type : String,       required : true                     },
+    date       : { type : Date,         required : false, default: Date.now },
+    removed    : { type : Date,         required : false, default: null     },
+    likes      : { type : Number,       required : false, default: 0        },
+    dislikes   : { type : Number,       required : false, default: 0        },
+    name       : { type : String,       required : false, default: ""       },
+    comments   : { type : [ String ],   requried : false, default: []       },
+    addedBy    : { type : ObjectID,     required : false                    },
+    grade_vote : [ {name:  {type: String, required: true}, count: {type: Number, required: true, default: 0} } ]
 
 
 BoulderSchema.statics =
     downgrade: (id, gradenr) ->
         Boulder.findOne { _id: id }, (err, boulder) ->
             current_grade = parseInt boulder.grade
+            #FIXME:
             boulder.grade = Math.max(current_grade - 1, 0)
             boulder.gradenr = gradenr
             boulder.save()
@@ -67,6 +69,7 @@ BoulderSchema.statics =
     upgrade: (id, gradenr) ->
         Boulder.findOne { _id: id }, (err, boulder) ->
             current_grade = parseInt boulder.grade
+            #FIXME:
             boulder.grade = Math.min(current_grade + 1, 5)
             boulder.gradenr = gradenr
             boulder.save()
@@ -82,6 +85,13 @@ BoulderSchema.statics =
     dislike: (id) ->
         Boulder.update {_id: id}, {$inc: {dislikes : 1}}, (err, boulder) ->
             console.log err if err
+
+    vote_grade: (id, grade) ->
+        Boulder.update {_id: id, 'grade_vote.name': "#{grade}"}, {$inc: {"grade_vote.$.count" : 1}}, (err, boulder) ->
+            console.log err if err
+            if err or boulder is 0
+                Boulder.update {_id : id}, {$push: {'grade_vote' : {'name': grade, 'count': 1}}}, (err, boulder) ->
+                    console.log err if err
 
     unscrew: (id) ->
         Boulder.findOne { _id: id }, (err, boulder) ->

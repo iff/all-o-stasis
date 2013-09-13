@@ -46,6 +46,9 @@ app.post '/boulder/:boulder/like', mw.like, (req, res) ->
 app.post '/boulder/:boulder/dislike', mw.dislike, (req, res) ->
     res.redirect '/boulder/' + req.params['boulder']
 
+app.post '/boulder/:boulder/vote-grade', mw.vote_grade, (req, res) ->
+    res.redirect '/boulder/' + req.params['boulder']
+
 app.post '/boulder/:boulder/upgrade', mw.upgradeBoulder, (req, res) ->
     res.redirect '/boulder/' + req.params['boulder']
 
