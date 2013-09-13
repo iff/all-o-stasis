@@ -18,7 +18,7 @@ module.exports =
     gradeCSSClass:  { Gelb: "yellow", Gruen: "green", Orange: "orange", Blau: "blue", Rot: "red", Weiss: "white" }
 
     # Mapping Sectors to images
-    sectors:        { "Big Boss":  "sectors/BigBoss.png", "Dune":  "sectors/Dune.png", "Starship":  "images/Starship.png", "Klagemauer":  "images/Klagemauer.png", "Kurswand": "images/Kurswand.png", "Spektrum 1":  "images/Spektrum1.png", "Spektrum 2":  "images/Spektrum2.png", "Spektrum 3":  "images/Spektrum3.png", "Spektrum 4":  "images/Spektrum4.png" }
+    sectors:        { "Big Boss":  "sectors/BigBoss.png", "Dune":  "sectors/Dune.png", "Starship":  "sectors/Starship.png", "Klagemauer":  "sectors/Klagemauer.png", "Kurswand": "sectors/Kurswand.png", "Spektrum 1":  "sectors/Spektrum1.png", "Spektrum 2":  "sectors/Spektrum2.png", "Spektrum 3":  "sectors/Spektrum3.png", "Spektrum 4":  "sectors/Spektrum4.png" }
 
 
 
