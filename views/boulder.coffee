@@ -1,6 +1,7 @@
 View = require '../view'
 { sectorImage, gradeCSS } = require '../app/config-helper'
 { gradeNames } = require '../app/config-helper'
+config = require '../config'
 
 class BoulderView extends View
 
@@ -9,6 +10,13 @@ class BoulderView extends View
             return @req.errors
         else
             return []
+
+    showDisLike: ->
+        return config.showDisLike
+
+    showUserGradeVoting: ->
+        return config.showUserGradeVoting
+
 
     boulder: ->
         return @req.boulder

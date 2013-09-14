@@ -36,46 +36,48 @@ div.row(style="padding-top:20px;")
     center
       p(style="padding-top:10px; font-size: 20px;")= sectorName
 
-div.row
-  div.boulder_rating
-    a.btn(href='/boulder/#{boulder._id}/like', data-method='post')
-      i.icon-thumbs-up
-    a.btn(href='/boulder/#{boulder._id}/dislike', data-method='post')
-      i.icon-thumbs-down
-    div.progress(style="width: 100%;")
-      div.bar.bar-success(style="width: #{likesPixels}%;")
-      div.bar.bar-danger(style="width: #{dislikesPixels}%;")
-      span(style="font-size: 10pt; float: right; margin-top: -18px; margin-right: 4px;")
-        | #{likes} like(s), #{dislikes} dislike(s)
+-if (showDisLike)
+  div.row
+    div.boulder_rating
+      a.btn(href='/boulder/#{boulder._id}/like', data-method='post')
+        i.icon-thumbs-up
+      a.btn(href='/boulder/#{boulder._id}/dislike', data-method='post')
+        i.icon-thumbs-down
+      div.progress(style="width: 100%;")
+        div.bar.bar-success(style="width: #{likesPixels}%;")
+        div.bar.bar-danger(style="width: #{dislikesPixels}%;")
+        span(style="font-size: 10pt; float: right; margin-top: -18px; margin-right: 4px;")
+          | #{likes} like(s), #{dislikes} dislike(s)
 
-div.row
-  img(src="/images/grade_rainbow_slim.png", width='100%', style="height:20px; border: 1px solid #e7e7e7; border-radius: 5px; opacity=0.4;")
-  form(action="/boulder/#{boulder._id}/vote-grade", method="post")
-    label.radio.inline
-      input(type="radio", name="voteGrade", id="voteGrade1", value="Gelb", checked)
-      ="Gelb"
-    span(style="margin: 0 30px;")
-    label.radio.inline
-      input(type="radio", name="voteGrade", id="voteGrade2", value="Gruen")
-      ="Gruen"
-    span(style="margin: 0 30px;")
-    label.radio.inline
-      input(type="radio", name="voteGrade", id="voteGrade3", value="Orange")
-      ="Orange"
-    span(style="margin: 0 30px;")
-    label.radio.inline
-      input(type="radio", name="voteGrade", id="voteGrade4", value="Blau")
-      ="Blau"
-    span(style="margin: 0 30px;")
-    label.radio.inline
-      input(type="radio", name="voteGrade", id="voteGrade5", value="Rot")
-      ="Rot"
-    span(style="margin: 0 30px;")
-    label.radio.inline
-      input(type="radio", name="voteGrade", id="voteGrade6", value="Weiss")
-      ="Weiss"
-    button.btn(type="submit")
-      i.icon-ok
+-if (showUserGradeVoting)
+  div.row
+    img(src="/images/grade_rainbow_slim.png", width='100%', style="height:20px; border: 1px solid #e7e7e7; border-radius: 5px; opacity=0.4;")
+    form(action="/boulder/#{boulder._id}/vote-grade", method="post")
+      label.radio.inline
+        input(type="radio", name="voteGrade", id="voteGrade1", value="Gelb", checked)
+        ="Gelb"
+      span(style="margin: 0 30px;")
+      label.radio.inline
+        input(type="radio", name="voteGrade", id="voteGrade2", value="Gruen")
+        ="Gruen"
+      span(style="margin: 0 30px;")
+      label.radio.inline
+        input(type="radio", name="voteGrade", id="voteGrade3", value="Orange")
+        ="Orange"
+      span(style="margin: 0 30px;")
+      label.radio.inline
+        input(type="radio", name="voteGrade", id="voteGrade4", value="Blau")
+        ="Blau"
+      span(style="margin: 0 30px;")
+      label.radio.inline
+        input(type="radio", name="voteGrade", id="voteGrade5", value="Rot")
+        ="Rot"
+      span(style="margin: 0 30px;")
+      label.radio.inline
+        input(type="radio", name="voteGrade", id="voteGrade6", value="Weiss")
+        ="Weiss"
+      button.btn(type="submit")
+        i.icon-ok
 
 div.row(style="padding-top:20px;")
   -if (boulder.comments != "")

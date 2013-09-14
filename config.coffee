@@ -59,7 +59,7 @@ module.exports =
     # --------------
     # Customize some of the views
 
-    showUserGradeVoting:    false
+    showUserGradeVoting:    true
     showDisLike:            true
 
     showInactiveInTeam:     false
