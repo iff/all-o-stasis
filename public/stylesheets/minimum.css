@@ -652,7 +652,7 @@ span.shadow:before {
 }
 
 .arc path {
-    stroke: #fff;
+    stroke: #c2c2c2;
 }
 
 .yellow {
@@ -677,5 +677,4 @@ span.shadow:before {
 
 .white {
     fill: #ffffff;
-    stroke: #000;
 }
