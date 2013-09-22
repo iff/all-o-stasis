@@ -657,24 +657,30 @@ span.shadow:before {
 
 .yellow {
     fill : #ffcc00;
+    fill-opacity: 0.8;
 }
 
 .green {
     fill: #33cc00;
+    fill-opacity: 0.8;
 }
 
 .orange {
     fill: #ff7900;
+    fill-opacity: 0.8;
 }
 
 .blue {
     fill: #0000ff;
+    fill-opacity: 0.8;
 }
 
 .red {
     fill: #ff0000;
+    fill-opacity: 0.8;
 }
 
 .white {
     fill: #ffffff;
+    fill-opacity: 0.8;
 }
