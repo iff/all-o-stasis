@@ -4,10 +4,10 @@ var width = 100,
 
 var vals   = d3.select("body").selectAll("td");
 var values = [];
-var colors = [];
 for( var i = 0; i < vals[0].length; i+=2 ) {
-    values.push(parseInt(vals[0][i].innerText));
-    colors.push(parseInt(vals[0][i+1].innerText));
+    d = { value: parseInt(vals[0][i].innerText),
+          color: vals[0][i+1].innerText };
+    values.push(d);
 }
 
 var arc = d3.svg.arc()
@@ -16,7 +16,7 @@ var arc = d3.svg.arc()
 
 var pie = d3.layout.pie()
     .sort(null)
-    .value(function(d) { return d; });
+    .value(function(d) { return d.value; });
 
 var root = d3.select("#chart")
   .append("svg")
@@ -32,4 +32,4 @@ var g = root.selectAll(".arc")
 
 g.append("path")
     .attr("d", arc)
-    .style("fill", function(d) { return colors[d]; });
+    .attr("class", function(d) { return d.data.color; });

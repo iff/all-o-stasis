@@ -655,3 +655,27 @@ span.shadow:before {
     stroke: #fff;
 }
 
+.yellow {
+    fill : #ffcc00;
+}
+
+.green {
+    fill: #33cc00;
+}
+
+.orange {
+    fill: #ff7900;
+}
+
+.blue {
+    fill: #0000ff;
+}
+
+.red {
+    fill: #ff0000;
+}
+
+.white {
+    fill: #ffffff;
+    stroke: #000;
+}
