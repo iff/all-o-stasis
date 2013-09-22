@@ -61,7 +61,7 @@ function bulletChart() {
       width      = 380,
       height     = 30;
 
-  // For each small multiple…
+  // For each small multiple..
   function bullet(g) {
     g.each(function(d, i) {
       var expected_boulders = expecteds[i].slice().sort(d3.descending),

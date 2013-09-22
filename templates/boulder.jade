@@ -17,11 +17,26 @@ div.row(style="padding-top:20px;")
       a(href="/stats/grade/#{gradeName}", class="#{gradeCSS}")
         = gradeNr
 
-    - for (var id in gradeRatings)
-      div.progress(style="height:18px; margin: 5px;")
-          div.bar(style="width: #{gradeRatings[id].per}%; background: #{gradeRatings[id].color};")
-          span(style="font-size: 10pt; float: right; margin-right: 4px;")
-              | #{gradeRatings[id].val}
+    //-- for (var id in gradeRatings)
+      //-div.progress(style="height:18px; margin: 5px;")
+          //-div.bar(style="width: #{gradeRatings[id].per}%; background: #{gradeRatings[id].color};")
+          //-span(style="font-size: 10pt; float: right; margin-right: 4px;")
+              //-| #{gradeRatings[id].val}
+
+    div(style="display: none;")
+      table
+        tbody
+          - each rating in gradeRatings
+            tr
+              td
+                = rating.per
+              td
+                = rating.color
+
+    div#chart(style="padding-top:20px;")
+    script(src='/javascripts/grade-voting-ring.js')
+
+
 
     div(style="padding-top:25px;")
       - each set in setters
