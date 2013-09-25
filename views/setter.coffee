@@ -55,14 +55,17 @@ class SetterView extends View
         return @req.setter_boulders.length
 
     maxBoulder: ->
-        boulders_per_grade = [0,0,0,0,0,0]
+        boulders_per_grade = {}
+        for name in gradeNames()
+            boulders_per_grade[name] = 0
+
         for boulder in @req.setter_boulders
             boulders_per_grade[boulder.grade] += 1
 
         max = 0
-        for idx in [0..boulders_per_grade.length]
-            if boulders_per_grade[idx] > max
-                max = boulders_per_grade[idx]
+        for val of boulders_per_grade
+            if boulders_per_grade[val] > max
+                max = boulders_per_grade[val]
 
         return max
 
