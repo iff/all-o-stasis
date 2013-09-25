@@ -546,16 +546,44 @@ div.profile_info{
 #profileinfo li {
 }
 
-/*******************************
- * Image shadow
- *******************************/
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************** START WITH NEW CLEAN CSS **********************/
 
 span.avatar {
     position    : absolute;
     margin-left : 0px;
     margin-top  : 0px;
     z-index     : 5;
+}
+
+div.avatar_icon {
+    border-radius: 6px;
+    width: 30px;
+    height: 30px;
+    background: url('/avatars/#{set.nickname}_small.jpg');
+    background-size: cover;
+    float:left;
+    margin-left: 5px;
 }
 
 span.shadow {

@@ -68,6 +68,9 @@ class BoulderView extends View
         else
             return 0
 
+    gradeStr: ->
+        return gradeNames()
+
     gradeRatings: ->
         ratings = {}
         for name in gradeNames()

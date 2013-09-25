@@ -15,7 +15,7 @@ h3 Boulders chronologisch
           div(class="boulder")
             -for (var setter in list[id].prettySetters)
               a(href="/setter/#{list[id].prettySetters[setter]}")
-                img(class="mini_avatar", style="float:left;", src="/avatars/#{list[id].prettySetters[setter]}_small.jpg")
+                div(style="border-radius: 6px; width: 30px; height: 30px; background: url('/avatars/#{list[id].prettySetters[setter]}_small.jpg'); background-size: cover; float:left; margin-left: 5px")
 
             div(class="description")
               span(class="#{list[id].color}", style="display:inline-block; width:100px; margin-top:5px;")

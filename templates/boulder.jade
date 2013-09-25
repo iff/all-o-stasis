@@ -11,6 +11,7 @@ div.row(style="padding-top:20px;")
     li(style="color:#ff8c3c;")
       = errors[error]
 
+
 div.row(style="padding-top:20px;")
   div.span2
     span#boulder_gradenr
@@ -18,18 +19,14 @@ div.row(style="padding-top:20px;")
         = gradeNr
 
 
-    div(style="padding-top:25px;")
+    div(style="padding-top:20px;")
+      p
+        | geschraubt von
       - each set in setters
         a(href="/setter/#{set.nickname}")
-          span(style="display:inline-block;width:40px;")
-            img(class="mini_avatar", src="/avatars/#{set.nickname}_small.jpg")
+          div(style="border-radius: 6px; width: 30px; height: 30px; background: url('/avatars/#{set.nickname}_small.jpg'); background-size: cover; float:left; margin-left: 5px")
+          //-div(style="background: url('/avatars/#{set.nickname}_small.jpg');").avatar_icon
 
-
-    //-- for (var id in gradeRatings)
-      //-div.progress(style="height:18px; margin: 5px;")
-          //-div.bar(style="width: #{gradeRatings[id].per}%; background: #{gradeRatings[id].color};")
-          //-span(style="font-size: 10pt; float: right; margin-right: 4px;")
-              //-| #{gradeRatings[id].val}
 
     div(style="display: none;")
       table
@@ -41,9 +38,8 @@ div.row(style="padding-top:20px;")
               td
                 = rating.color
 
-    div#chart(style="padding-top:20px;")
+    div#chart(style="margin-top: 10px; padding-top:20px; clear:both;")
     script(src='/javascripts/grade-voting-ring.js')
-
 
 
   div.span4
@@ -52,6 +48,7 @@ div.row(style="padding-top:20px;")
     center
       p(style="padding-top:10px; font-size: 20px;")= sectorName
 
+
 -if (showDisLike)
   div.row
     div.boulder_rating
@@ -59,45 +56,30 @@ div.row(style="padding-top:20px;")
         i.icon-thumbs-up
       a.btn(href='/boulder/#{boulder._id}/dislike', data-method='post')
         i.icon-thumbs-down
+      span(style="display:inline-block; font-size: 14px; padding-left: 10px;")
+        | like it?
       div.progress(style="width: 100%;")
         div.bar.bar-success(style="width: #{likesPixels}%;")
         div.bar.bar-danger(style="width: #{dislikesPixels}%;")
         span(style="font-size: 10pt; float: right; margin-top: -18px; margin-right: 4px;")
           | #{likes} like(s), #{dislikes} dislike(s)
 
+
 -if (showUserGradeVoting)
   div.row
-    img(src="/images/grade_rainbow_slim.png", width='100%', style="height:20px; border: 1px solid #e7e7e7; border-radius: 5px; opacity=0.4;")
     form(action="/boulder/#{boulder._id}/vote-grade", method="post")
-      label.radio.inline
-        input(type="radio", name="voteGrade", id="voteGrade1", value="Gelb", checked)
-        ="Gelb"
-      span(style="margin: 0 30px;")
-      label.radio.inline
-        input(type="radio", name="voteGrade", id="voteGrade2", value="Gruen")
-        ="Gruen"
-      span(style="margin: 0 30px;")
-      label.radio.inline
-        input(type="radio", name="voteGrade", id="voteGrade3", value="Orange")
-        ="Orange"
-      span(style="margin: 0 30px;")
-      label.radio.inline
-        input(type="radio", name="voteGrade", id="voteGrade4", value="Blau")
-        ="Blau"
-      span(style="margin: 0 30px;")
-      label.radio.inline
-        input(type="radio", name="voteGrade", id="voteGrade5", value="Rot")
-        ="Rot"
-      span(style="margin: 0 30px;")
-      label.radio.inline
-        input(type="radio", name="voteGrade", id="voteGrade6", value="Weiss")
-        ="Weiss"
-      button.btn(type="submit")
-        i.icon-ok
+      - for (idx in gradeStr)
+        label.radio.inline
+          input(type="radio", name="voteGrade", id="voteGrade#{parseInt(idx)+1}", value="#{gradeStr[idx]}", checked)
+          =gradeStr[idx]
+      span(style="margin: 0 10px;")
+      button.btn.btn-primary(type="submit")
+        | grade it
+
 
 div.row(style="padding-top:20px;")
   -if (boulder.comments != "")
-    div.well
+    div.well(style="padding-top: 0px; padding-bottom: 0px;")
       h4= boulder.comments
 
 
@@ -124,3 +106,4 @@ div.row(style="padding-top:20px;")
             input(type="text", name="gradenr", placeholder="neue grade nummer")
             input(type="password", name="secret", placeholder="secret", style="width:50px;")
             button.btn-primary(type="submit", class="btn") Abwerten
+
