@@ -1,4 +1,5 @@
 View = require('../view')
+{ gradeNames, gradeCSS } = require '../app/config-helper'
 
 class BalanceView extends View
 
@@ -12,9 +13,12 @@ class BalanceView extends View
         return [15, 20, 25, 20, 10, 10]
 
     actualDistribution: ->
-        num_boulders = [0, 0, 0, 0, 0, 0]
+        num_boulders = {}
+        for name in gradeNames()
+            num_boulders[name] = { val: 0, color: gradeCSS name }
+
         for boulder in @req.boulders
-            num_boulders[boulder.grade] += 1
+            num_boulders[boulder.grade].val += 1
 
         return num_boulders
 
