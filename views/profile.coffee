@@ -46,6 +46,8 @@ class ProfileView extends View
 
         return num_this_month
 
+    targetThisMonth: ->
+        return 3
 
     percentMinimumBoulders: ->
         total = @req.boulders.length
@@ -77,8 +79,9 @@ class ProfileView extends View
         for name in gradeNames()
             percentages[name] = { val: 0, color: gradeCSS name }
 
-        for boulder in @req.boulders
-            percentages[boulder.grade].val += 1
+        for boulder in @req.setter_boulders
+            if boulder.removed is null
+                percentages[boulder.grade].val += 1
 
         return percentages
 

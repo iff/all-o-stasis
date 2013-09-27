@@ -13,7 +13,17 @@ exports.gradeValue = (grade_name) ->
 exports.gradeCSS = (grade_id) ->
     return config.gradeCSSClass[grade_id]
 
+exports.nextLowerGrade = (grade_name) ->
+    grades = Object.keys config.grades
+    idx = parseInt(grades.indexOf grade_name)
+    idx = Math.max idx - 1, 0
+    return grades[idx]
 
+exports.nextHigherGrade = (grade_name) ->
+    grades = Object.keys config.grades
+    idx = parseInt(grades.indexOf grade_name)
+    idx = Math.min idx + 1, grades.length
+    return grades[idx]
 
 # Sector stuff
 

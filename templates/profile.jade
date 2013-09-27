@@ -16,7 +16,7 @@ div.container
                 = "Total " + totalBoulders + " Boulders"
             blockquote
               small
-                = bouldersThisMonth + "/3 Boulders im " + thisMonth
+                = bouldersThisMonth + "/" + targetThisMonth + " Boulders im " + thisMonth
             blockquote
               small
                 = percentMinimumBoulders + "% vom Minimum"
@@ -32,6 +32,6 @@ div.container
     div.row
       div.span4
         div.progress
-          div.bar(style="width: #{histogram[id].val/maxBoulder*75}%; background: #{histogram[id].color};")
+          div.bar(style="width: #{histogram[id].val/totalBoulders*100}%; background: #{histogram[id].color};")
       div.span1
         h4(style="margin-top:-1px;")= "" + histogram[id].val + "%"

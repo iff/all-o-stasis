@@ -74,7 +74,7 @@ class SetterView extends View
         for name in gradeNames()
             percentages[name] = { val: 0, color: gradeCSS name }
 
-        for boulder in @req.boulders
+        for boulder in @req.setter_boulders
             percentages[boulder.grade].val += 1
 
         return percentages

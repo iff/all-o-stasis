@@ -2,6 +2,8 @@ mongoose = require 'mongoose'
 module.exports = mongoose
 settings = require './config'
 
+{nextLowerGrade, nextHigherGrade} = require './app/config-helper'
+
 mongoose.connect 'mongodb://localhost/' + settings.databaseName
 
 Schema = mongoose.Schema
@@ -56,9 +58,7 @@ BoulderSchema = new Schema
 BoulderSchema.statics =
     downgrade: (id, gradenr) ->
         Boulder.findOne { _id: id }, (err, boulder) ->
-            current_grade = parseInt boulder.grade
-            #FIXME:
-            boulder.grade = Math.max(current_grade - 1, 0)
+            boulder.grade   = nextLowerGrade boulder.grade
             boulder.gradenr = gradenr
             boulder.save()
             Setter.find { '_id': { $in : boulder.setters } }, (err, setters) ->
@@ -68,9 +68,7 @@ BoulderSchema.statics =
 
     upgrade: (id, gradenr) ->
         Boulder.findOne { _id: id }, (err, boulder) ->
-            current_grade = parseInt boulder.grade
-            #FIXME:
-            boulder.grade = Math.min(current_grade + 1, 5)
+            boulder.grade   = nextHigherGrade boulder.grade
             boulder.gradenr = gradenr
             boulder.save()
             Setter.find { '_id': { $in : boulder.setters } }, (err, setters) ->
