@@ -34,4 +34,4 @@ div.container
         div.progress
           div.bar(style="width: #{histogram[id].val/totalBoulders*100}%; background: #{histogram[id].color};")
       div.span1
-        h4(style="margin-top:-1px;")= "" + histogram[id].val + "%"
+        h4(style="margin-top:-1px;")= "" + (histogram[id].val/totalBoulders*100).toFixed(2) + "%"
