@@ -19,7 +19,7 @@ div.row(style="padding-top:20px;")
         = gradeNr
 
 
-    div(style="padding-top:20px;")
+    div(style="padding-top:10px;")
       p
         | geschraubt von
       - each set in setters
@@ -38,7 +38,9 @@ div.row(style="padding-top:20px;")
               td
                 = rating.color
 
-    div#chart(style="margin-top: 10px; padding-top:20px; clear:both;")
+    p(style="clear:both; padding-top:10px;")
+      | User Bewertung
+    div#chart
     script(src='/javascripts/grade-voting-ring.js')
 
 
@@ -66,7 +68,9 @@ div.row(style="padding-top:20px;")
 
 
 -if (showUserGradeVoting)
-  div.row
+  div.row(style="padding-top:20px;")
+    p
+      | Wie fuehlt sich dieser Boulder fuer dich an?
     form(action="/boulder/#{boulder._id}/vote-grade", method="post")
       - for (idx in gradeStr)
         label.radio.inline
