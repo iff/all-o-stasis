@@ -6,7 +6,7 @@ var width = 470,
     margin = {top: 5, right: 40, bottom: 20, left: 80};
 
 var titles      = [ "Gelb", "Gruen", "Orange", "Blau", "Rot", "Weiss" ];
-var percentages = [0.15, 0.20, 0.25, 0.20, 0.10, 0.10];
+var percentages = [0.17, 0.20, 0.24, 0.19, 0.10, 0.10];
 var actual      = d3.select("body").selectAll("td");
 
 var chart = bulletChart()
@@ -40,7 +40,7 @@ title.append("text")
 function bulletChart() {
 
   var reverse  = false,
-      maximums = [ [21], [28], [35], [28], [14], [14] ],
+      maximums = [ [27], [32], [40], [30], [16], [16] ],
       actuals  = [ [parseInt(actual[0][0].innerText)]
                  , [parseInt(actual[0][1].innerText)]
                  , [parseInt(actual[0][2].innerText)]
