@@ -27,6 +27,18 @@ div.container
       &nbsp;
       a(href="/change/secret", class="btn btn-small btn-primary") Secret aendern
 
+  div.row(style="padding-top:20px;")
+    div(style="display: none;")
+      table
+        tbody
+          - each boulder in boulders
+            tr
+              td
+                = boulder.date
+
+    div#setterPerformance
+    script(src='/javascripts/setter-performance.js')
+
   div.row(style="padding-top:60px;")
   - for (var id in histogram)
     div.row

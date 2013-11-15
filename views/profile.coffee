@@ -1,7 +1,9 @@
 { _ } = require('underscore')
 View = require('../view')
+
 { setterNicknames } = require '../app/helpers'
 { gradeNames, gradeCSS } = require '../app/config-helper'
+config = require '../config'
 
 class ProfileView extends View
 
@@ -16,6 +18,9 @@ class ProfileView extends View
 
     avatar: ->
         return '/avatars/' + @req.setter.nickname + '.jpg'
+
+    boulders: ->
+        return @req.setter_boulders
 
     totalBoulders: ->
         return @req.setter_boulders.length
@@ -47,7 +52,7 @@ class ProfileView extends View
         return num_this_month
 
     targetThisMonth: ->
-        return 3
+        return config.numMonthlyBoulders
 
     percentMinimumBoulders: ->
         total = @req.boulders.length
