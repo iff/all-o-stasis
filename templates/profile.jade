@@ -39,11 +39,3 @@ div.container
     div#setterPerformance
     script(src='/javascripts/setter-performance.js')
 
-  div.row(style="padding-top:60px;")
-  - for (var id in histogram)
-    div.row
-      div.span4
-        div.progress
-          div.bar(style="width: #{histogram[id].val/totalBoulders*100}%; background: #{histogram[id].color};")
-      div.span1
-        h4(style="margin-top:-1px;")= "" + (histogram[id].val/totalBoulders*100).toFixed(2) + "%"
