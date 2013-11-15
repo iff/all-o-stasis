@@ -40,7 +40,7 @@ title.append("text")
 function bulletChart() {
 
   var reverse  = false,
-      maximums = [ [27], [32], [40], [30], [16], [16] ],
+      maximums = [ [31], [36], [43], [34], [18], [18] ],
       actuals  = [ [parseInt(actual[0][0].innerText)]
                  , [parseInt(actual[0][1].innerText)]
                  , [parseInt(actual[0][2].innerText)]
