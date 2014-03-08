@@ -40,7 +40,7 @@ title.append("text")
 function bulletChart() {
 
   var reverse  = false,
-      maximums = [ [31], [36], [43], [34], [18], [18] ],
+      exp_tot  = 200,
       actuals  = [ [parseInt(actual[0][0].innerText)]
                  , [parseInt(actual[0][1].innerText)]
                  , [parseInt(actual[0][2].innerText)]
@@ -57,6 +57,13 @@ function bulletChart() {
                    , [0, total_boulders * percentages[3], 50]
                    , [0, total_boulders * percentages[4], 50]
                    , [0, total_boulders * percentages[5], 50]
+                   ],
+      maximums   = [ [exp_tot * percentages[0]]
+                   , [exp_tot * percentages[1]]
+                   , [exp_tot * percentages[2]]
+                   , [exp_tot * percentages[3]]
+                   , [exp_tot * percentages[4]]
+                   , [exp_tot * percentages[5]]
                    ],
       width      = 380,
       height     = 30;

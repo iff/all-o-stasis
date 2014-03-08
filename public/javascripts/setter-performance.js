@@ -22,7 +22,7 @@ myChart.addMeasureAxis("y", "Boulders");
 
 x.addOrderRule("Date");
 
-myChart.addColorAxis("Boulders", ["green", "yellow", "red"]);
+myChart.addColorAxis("Boulders", ["red", "yellow", "green"]);
 
 var lines = myChart.addSeries(null, dimple.plot.line);
 lines.lineWeight = 5;
