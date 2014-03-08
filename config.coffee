@@ -44,7 +44,7 @@ module.exports =
 
     # The number of boulders a setter is required to put up every month (-1
     # for none)
-    numMonthlyBoulders:     4
+    numMonthlyBoulders:     5
 
     # Send setter a monthly performance statistic
     sendMonthlyStatisctics: false
