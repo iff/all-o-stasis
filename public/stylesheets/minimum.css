@@ -517,13 +517,14 @@ span.left_date {
 }
 
 span.right_date {
-    margin-left : 255px;
+    margin-left : 370px;
 }
 
 div.setter_performance {
     overflow   : hidden;
     font-size  : 8pt;
     height     : 45px;
+    width      : 415px;
 }
 
 /*******************************
