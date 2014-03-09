@@ -1,41 +1,42 @@
-div.container
-  div.row
-    div.span6
-      h3= authSetterName
+div.row
+  div.span6
+    h3= authSetterName
 
-  div.row
-    div.span6
-      div.media
-        a.pull-left(href="#")
-          span.shadow
-            img.media-object(src="#{avatar}")
-        div.media-body(style="margin-left: 120px;")
-          div.span5
-            blockquote
-              small
-                = "Total " + totalBoulders + " Boulders"
-            blockquote
-              small
-                = bouldersThisMonth + "/" + targetThisMonth + " Boulders im " + thisMonth
-            blockquote
-              small
-                = percentMinimumBoulders + "% vom Minimum"
+div.row
+  div.span6
+    div.media
+      a.pull-left(href="#")
+        span.shadow
+          img.media-object(src="#{avatar}")
+      div.media-body(style="margin-left: 120px;")
+        div.span5
+          blockquote
+            small
+              = "Total " + totalBoulders + " Boulders"
+          blockquote
+            small
+              = bouldersThisMonth + "/" + targetThisMonth + " Boulders im " + thisMonth
+          blockquote
+            small
+              = percentMinimumBoulders + "% vom Minimum"
 
-  div.row(style="padding-top:20px;")
-    div.span4
-      a(href="/change/pw", class="btn btn-small btn-primary") Passwort aendern
-      &nbsp;
-      a(href="/change/secret", class="btn btn-small btn-primary") Secret aendern
 
-  div.row(style="padding-top:20px;")
-    div(style="display: none;")
-      table
-        tbody
-          - each boulder in boulders
-            tr
-              td
-                = boulder.date
+div.row(style="padding-top:20px;")
+  div.span4
+    a(href="/change/pw", class="btn btn-small btn-primary") Passwort aendern
+    &nbsp;
+    a(href="/change/secret", class="btn btn-small btn-primary") Secret aendern
 
-    div#setterPerformance
-    script(src='/javascripts/setter-performance.js')
+
+div.row(style="padding-top:20px;")
+  div(style="display: none;")
+    table
+      tbody
+        - each boulder in boulders
+          tr
+            td
+              = boulder.date
+
+  div#setterPerformance
+  script(src='/javascripts/setter-performance.js')
 
