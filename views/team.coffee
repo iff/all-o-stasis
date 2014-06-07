@@ -17,13 +17,13 @@ class TeamView extends View
 
             setter.first_date = [month, year].join('.')
 
-            for i in [1..11]
+            for i in [1..12]
                 date_str = [ month, year ].join('.')
 
                 monthly_table[date_str] = 0
                 month += 1
 
-            setter.last_date = [month, year].join('.')
+            setter.last_date = [month-1, year].join('.')
 
             for boulder in @req.all_boulders
                 if boulder.setters.indexOf(setter.id) isnt -1

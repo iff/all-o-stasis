@@ -4,7 +4,7 @@ ul#team
   - for (var setter_id in team)
     - if (team[setter_id].num_boulders_up > 0 || (isAuth && authSetterRole == 'admin'))
       li
-        div(class="boulder", style="width:415px;")
+        div(class="boulder", style="width:450px;")
           a(href="/setter/#{team[setter_id].nickname}")
             div(style="border-radius: 6px; width: 30px; height: 30px; background: url('/avatars/#{team[setter_id].nickname}_small.jpg'); background-size: cover; float:left; margin-left: 5px")
           div(class="description")
