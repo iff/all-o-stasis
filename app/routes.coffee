@@ -72,6 +72,12 @@ app.get '/profile', mw.loadProfile, (req, res) ->
 app.post '/add/boulder', mw.loadProfile, mw.createBoulder, (req, res) ->
     #renderTwoColumn req, res, 'profile', 'boulder'
 
+app.get '/batchremove', mw.loadProfile, (req, res) ->
+    renderTwoColumn req, res, 'profile', 'batchremove'
+
+app.post '/rem/batch', mw.loadProfile, mw.batchRemove, (req, res) ->
+    #renderTwoColumn req, res, 'profile', 'boulder'
+
 app.get '/change/pw', mw.loadProfile, (req, res) ->
     renderTwoColumn req, res, 'profile', 'pwchange'
 

@@ -26,6 +26,8 @@ div.navbar.navbar-inverse.navbar-fixed-top
               ul.dropdown-menu
                 li: a(href='/balance') Gleichgewicht
                 li: a(href='/profile') Neuer Boulder
+                - if (authSetterRole == 'admin')
+                  li: a(href='/batchremove') Batch remove
                 li.divider
                 li: a(href='/logout') Logout
           -else

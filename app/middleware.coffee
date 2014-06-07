@@ -304,6 +304,42 @@ exports.createBoulder = (req, res, next) ->
                     res.redirect '/boulder/' + boulder.id
 
 
+exports.batchRemove = (req, res, next) ->
+
+    errors = []
+    req.onValidationError (msg) ->
+        errors.push msg
+
+    if not isSecretValid(req)
+        errors.push 'Falsches secret eingegeben'
+
+    if errors.length
+        req.errors = errors
+        renderTwoColumn req, res, 'profile', 'batchremove'
+        return
+    else
+        removed = []
+        for i in [0...req.body.grade.length]
+            color = req.body.grade[i]
+            num   = req.body.gradenr[i]
+
+            #FIXME: reporting
+            #req.assert('grade'  , 'Grade auswaehlen!').notNull()
+            #req.assert('gradenr', 'Grade nummer muss eine Zahl zwischen 1 und 50 sein!').isInt()
+            #req.assert('gradenr', 'Grade nummer muss kleiner als 50 sein!').max(50)
+            #req.assert('gradenr', 'Grade nummer muss groesser als 0 sein!').min(1)
+
+            Boulder.findOne { 'grade' : color, 'gradenr' : num, 'removed' : null}, (err, boulder) ->
+                if boulder?.id
+                    Boulder.unscrew(boulder.id)
+                else
+                    errors.push 'Cannot remove boulder: '
+
+        req.errors  = errors
+        req.removed = removed
+        renderTwoColumn req, res, 'profile', 'batchremove'
+
+
 # ----------------------------------------------------------------------------
 # TODO
 # ----------------------------------------------------------------------------

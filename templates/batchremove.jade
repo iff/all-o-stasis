@@ -1,0 +1,52 @@
+div.row
+  div.span6
+    h3= "Batch Remove"
+
+- if (isAuth)
+  - if (authSetterRole == 'admin')
+    script(src='/javascripts/batch_remove.js')
+    div.row
+      div.span6
+        ul
+        - for (var error in errors)
+          div.alert.alert-error
+            button(type="button", class="close", data-dismiss="alert")
+              = "&times;"
+            = errors[error]
+
+        ul
+        - for (var idx in removed)
+          div.alert.alert-error
+            button(type="button", class="close", data-dismiss="alert")
+              = "&times;"
+            = removed[idx]
+
+        div.controls.controls-row
+          button.btn-primary(class="btn", id="addrow") Another
+
+        hr
+
+        form(action="/rem/batch", method="post")
+          div.controls.controls-row
+            table(id="boulders")
+              tbody
+                tr
+                  td
+                    select.span3(name="grade", size="1")
+                      - for (gr in grade_names)
+                        - if (gr != grade)
+                          option(value="#{grade_names[gr]}")
+                            =grade_names[gr]
+                        - else
+                          option(value="#{grade_names[gr]}", selected="yes")
+                            =grade_names[gr]
+                    input.span2(type="text", name="gradenr", placeholder="nr", style="width:50px;", value=gradenr)
+
+
+          hr
+
+          div.controls.controls-row
+            input.input-small(type="password", name="secret", placeholder="secret")
+
+          div.controls.controls-row
+            button.btn-primary(type="submit", class="btn") Abgeschraubt
