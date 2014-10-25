@@ -10,8 +10,11 @@ class SearchView extends View
             return ""
 
     grade_names: ->
-        console.log settings.gradeNames()
         return settings.gradeNames()
+
+    sectors: ->
+        secs = [""]
+        return secs.concat settings.sectors()
 
 
 module.exports = SearchView

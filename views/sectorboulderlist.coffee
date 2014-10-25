@@ -2,15 +2,15 @@ View = require('../view')
 { setterNicknames } = require '../app/helpers'
 { gradeCSS } = require '../app/config-helper'
 
-class GradeBoulderListView extends View
+class SectorBoulderListView extends View
 
-    gradeName: ->
+    sectorName: ->
         if @req.grade_boulders[0]
-            return @req.grade_boulders[0].grade
+            return @req.grade_boulders[0].sector
         else
             return ""
 
-    grade_list: ->
+    boulder_list: ->
         for boulder in @req.grade_boulders
 
             boulder.color         = gradeCSS boulder.grade
@@ -19,4 +19,4 @@ class GradeBoulderListView extends View
 
             boulder
 
-module.exports = GradeBoulderListView
+module.exports = SectorBoulderListView

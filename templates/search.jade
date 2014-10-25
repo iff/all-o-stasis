@@ -13,5 +13,9 @@ div.row
           option(value="#{grade_names[gr]}")
             =grade_names[gr]
       input.input-small(type="text", name="gradenr", placeholder="gradenr")
+      select(name="sector")
+        - for (sec in sectors)
+          option(value="#{sectors[sec]}")
+            =sectors[sec]
       button.btn-primary(type="submit", class="btn") Suchen
 

@@ -125,6 +125,8 @@ app.get '/logout', mw.logout, (req, res) ->
 app.get '/stats/grade/:grade', (req, res) ->
     renderTwoColumn req, res, 'boulderlist', 'gradeboulderlist'
 
+app.get '/stats/sector/:sector', (req, res) ->
+    renderTwoColumn req, res, 'boulderlist', 'sectorboulderlist'
 
 # ----------------------------------------------------------------------------
 # Routes for activity (see github/wow...)

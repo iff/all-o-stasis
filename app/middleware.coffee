@@ -45,7 +45,9 @@ exports.loadInactiveBoulders = (req, res, next) ->
 #
 exports.loadSearched = (req, res, next) ->
     if req.body.grade?
-        if req.body.gradenr is ""
+        if req.body.sector isnt ""
+            res.redirect "/stats/sector/#{req.body.sector}"
+        else if req.body.gradenr is ""
             res.redirect "/stats/grade/#{req.body.grade}"
         else
             Boulder.findOne { 'grade' : req.body.grade, 'gradenr' : req.body.gradenr, 'removed' : null}, (err, boulder) ->
