@@ -1,17 +1,25 @@
 {
-    "name"    : "minimum-boulderadmin",
-    "version" : "0.0.2",
-    "private" : true,
+      "name"    : "all-o-stasis"
+    , "version" : "0.0.3"
+    , "private" : true,
 
     "dependencies": {
-          "express"       : "2.5.11"
-        , "coffee-script" : "1.2.0"
-        , "jade"          : "0.13.0"
-        , "underscore"    : "1.2.4"
-        , "mongoose"      : "3.6.10"
-        , "connect-mongo" : "0.1.9"
-        , "futures"       : "2.3.1"
-        , "http-proxy"    : "0.10.2"
-        , "express-validator" : "0.3.2"
+          "express"           : "*"
+        , "morgan"            : "*"
+        , "multer"            : "*"
+        , "body-parser"       : "*"
+        , "express-session"   : "*"
+        , "express-partials"  : "*"
+        , "cookie-session"    : "*"
+        , "cookie-parser"     : "*"
+        , "method-override"   : "*"
+        , "express-validator" : "*"
+        , "jade"              : "*"
+        , "underscore"        : "*"
+        , "mongoose"          : "*"
+        , "futures"           : "*"
+        , "coffee-script"     : "1.*"
+        , "react-tools"       : "0.11.*"
+        , "typescript"        : "1.3.0"
     }
 }
