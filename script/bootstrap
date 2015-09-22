@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set -e
+die () { echo; printf "!!! "; echo "$*"; exit 1; }
+
+
+# ----------------------------------------------------------------------------
+# Check runtime requirements
+
+command -v npm >/dev/null || die "Node.js runtime not found. Please install v0.10.x."
+
+
+# ----------------------------------------------------------------------------
+# Install node modules
+
+test -f node_modules/.checksum && shasum -cs node_modules/.checksum || (
+    npm install
+#    shasum npm-shrinkwrap.json > node_modules/.checksum
+)
