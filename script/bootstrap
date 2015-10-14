@@ -13,7 +13,4 @@ command -v npm >/dev/null || die "Node.js runtime not found. Please install v0.1
 # ----------------------------------------------------------------------------
 # Install node modules
 
-test -f node_modules/.checksum && shasum -cs node_modules/.checksum || (
-    npm install
-#    shasum npm-shrinkwrap.json > node_modules/.checksum
-)
+npm install

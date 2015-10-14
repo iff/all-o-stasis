@@ -4,7 +4,7 @@ settings = require './config'
 
 {nextLowerGrade, nextHigherGrade} = require './app/config-helper'
 
-mongoose.connect 'mongodb://localhost/' + settings.databaseName
+mongoose.connect 'mongodb://braavos/' + settings.databaseName
 
 Schema = mongoose.Schema
 ObjectID = Schema.ObjectId
