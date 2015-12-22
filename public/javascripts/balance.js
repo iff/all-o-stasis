@@ -51,12 +51,12 @@ function bulletChart() {
       total_boulders =   parseInt(actuals[0]) + parseInt(actuals[1])
                        + parseInt(actuals[2]) + parseInt(actuals[3])
                        + parseInt(actuals[4]) + parseInt(actuals[5]),
-      expecteds  = [ [0, total_boulders * percentages[0], 50]
-                   , [0, total_boulders * percentages[1], 50]
-                   , [0, total_boulders * percentages[2], 50]
-                   , [0, total_boulders * percentages[3], 50]
-                   , [0, total_boulders * percentages[4], 50]
-                   , [0, total_boulders * percentages[5], 50]
+      expecteds  = [ [0, total_boulders * percentages[0], 100]
+                   , [0, total_boulders * percentages[1], 100]
+                   , [0, total_boulders * percentages[2], 100]
+                   , [0, total_boulders * percentages[3], 100]
+                   , [0, total_boulders * percentages[4], 100]
+                   , [0, total_boulders * percentages[5], 100]
                    ],
       maximums   = [ [exp_tot * percentages[0]]
                    , [exp_tot * percentages[1]]

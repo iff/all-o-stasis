@@ -68,8 +68,8 @@ exports.downgradeBoulder = (req, res, next) ->
     req.onValidationError (msg) ->
         errors.push msg
 
-    req.assert('gradenr'     , 'Grade nummer muss eine Zahl zwischen 1 und 50 sein!').isInt()
-    req.assert('gradenr'     , 'Grade nummer muss kleiner als 50 sein!').max(50)
+    req.assert('gradenr'     , 'Grade nummer muss eine Zahl zwischen 1 und 99 sein!').isInt()
+    req.assert('gradenr'     , 'Grade nummer muss kleiner als 100 sein!').max(99)
     req.assert('gradenr'     , 'Grade nummer muss groesser als 0 sein!').min(1)
 
     if not isSecretValid(req)
@@ -91,8 +91,8 @@ exports.upgradeBoulder = (req, res, next) ->
     req.onValidationError (msg) ->
         errors.push msg
 
-    req.assert('gradenr'     , 'Grade nummer muss eine Zahl zwischen 1 und 50 sein!').isInt()
-    req.assert('gradenr'     , 'Grade nummer muss kleiner als 50 sein!').max(50)
+    req.assert('gradenr'     , 'Grade nummer muss eine Zahl zwischen 1 und 99 sein!').isInt()
+    req.assert('gradenr'     , 'Grade nummer muss kleiner als 100 sein!').max(99)
     req.assert('gradenr'     , 'Grade nummer muss groesser als 0 sein!').min(1)
 
     if not isSecretValid(req)
@@ -272,8 +272,8 @@ exports.createBoulder = (req, res, next) ->
     req.assert('setter_nicks', 'Mindestens ein Schrauber auswaehlen!').notNull()
     req.assert('grade'       , 'Grade auswaehlen!').notNull()
     req.assert('sector'      , 'Sektor auswaehlen!').notNull()
-    req.assert('gradenr'     , 'Grade nummer muss eine Zahl zwischen 1 und 50 sein!').isInt()
-    req.assert('gradenr'     , 'Grade nummer muss kleiner als 50 sein!').max(50)
+    req.assert('gradenr'     , 'Grade nummer muss eine Zahl zwischen 1 und 99 sein!').isInt()
+    req.assert('gradenr'     , 'Grade nummer muss kleiner als 100 sein!').max(99)
     req.assert('gradenr'     , 'Grade nummer muss groesser als 0 sein!').min(1)
 
     if not isSecretValid(req)
@@ -327,8 +327,8 @@ exports.batchRemove = (req, res, next) ->
 
             #FIXME: reporting
             #req.assert('grade'  , 'Grade auswaehlen!').notNull()
-            #req.assert('gradenr', 'Grade nummer muss eine Zahl zwischen 1 und 50 sein!').isInt()
-            #req.assert('gradenr', 'Grade nummer muss kleiner als 50 sein!').max(50)
+            #req.assert('gradenr', 'Grade nummer muss eine Zahl zwischen 1 und 99 sein!').isInt()
+            #req.assert('gradenr', 'Grade nummer muss kleiner als 100 sein!').max(99)
             #req.assert('gradenr', 'Grade nummer muss groesser als 0 sein!').min(1)
 
             Boulder.findOne { 'grade' : color, 'gradenr' : num, 'removed' : null}, (err, boulder) ->
